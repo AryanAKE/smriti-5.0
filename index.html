@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smriti 5.0 | Civil Engineering Farewell</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Playfair Display for premium headings, Inter for clean body text -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400;1,700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Custom Configuration -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'slate-deep': '#0f172a', /* Cinematic Dark Slate */
+                        'gold-accent': '#d4af37', /* Metallic Gold */
+                        'gold-light': '#f3e5ab',
+                    },
+                    fontFamily: {
+                        'serif': ['"Playfair Display"', 'serif'],
+                        'sans': ['"Inter"', 'sans-serif'],
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'glow-pulse': 'glow-pulse 3s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-20px)' },
+                        },
+                        'glow-pulse': {
+                            '0%, 100%': { opacity: 1 },
+                            '50%': { opacity: 0.7 },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        /* Strict Mobile Width Control */
+        body, html {
+            overflow-x: hidden;
+            width: 100%;
+            scroll-behavior: smooth;
+            background-color: #0f172a;
+        }
+
+        /* Subtle Architectural Draft Background */
+        .draft-grid {
+            background-image: 
+                linear-gradient(rgba(212, 175, 55, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(212, 175, 55, 0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+        }
+
+        /* Premium Glass Panel */
+        .glass-panel {
+            background: rgba(15, 23, 42, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(212, 175, 55, 0.15);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Cinematic Gold Gradient Text */
+        .text-gold-gradient {
+            background: linear-gradient(135deg, #f3e5ab 0%, #d4af37 50%, #b5952f 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Dynamic Text Glow */
+        .glow-text {
+            text-shadow: 0 0 30px rgba(212, 175, 55, 0.4);
+        }
+
+        /* Entry Overlay Styles */
+        #entry-overlay {
+            transition: opacity 0.8s ease-in-out, visibility 0.8s ease-in-out;
+        }
+    </style>
+</head>
+<body class="draft-grid text-gray-200 font-sans antialiased selection:bg-gold-accent selection:text-slate-deep relative">
+
+    <!-- OVERLAY: Unlocks audio on first interaction -->
+    <div id="entry-overlay" class="fixed inset-0 z-50 flex flex-col items-center justify-center bg-slate-deep cursor-pointer">
+        <div class="absolute inset-0 bg-gradient-to-b from-transparent to-black/90"></div>
+        <div class="relative z-10 flex flex-col items-center animate-pulse">
+            <!-- Compass / Drafting Tool Icon -->
+            <svg class="w-16 h-16 text-gold-accent mb-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 2l3 6 4 1-3 4 1 5-5-3-5 3 1-5-3-4 4-1 3-6z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 22V12"></path></svg>
+            <h2 class="text-3xl md:text-5xl font-serif italic text-gold-gradient mb-4 text-center">Tap to Enter</h2>
+            <p class="text-gray-400 tracking-[0.2em] uppercase text-sm font-medium">Initialize Project Handover</p>
+        </div>
+    </div>
+
+    <!-- Cinematic Background Lighting (Animated) -->
+    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-3/4 h-[500px] bg-gold-accent/10 rounded-full blur-[150px] -z-10 animate-float pointer-events-none"></div>
+
+    <!-- Hero Section -->
+    <header class="relative min-h-[90vh] flex flex-col items-center justify-center text-center px-4">
+        <div class="relative z-10 space-y-6 max-w-4xl glass-panel p-10 md:p-16 rounded-sm border-t-2 border-t-gold-accent transition-transform duration-700 hover:scale-[1.01]">
+            
+            <div class="inline-block px-5 py-1.5 border border-gold-accent/40 bg-gold-accent/5 text-gold-accent uppercase tracking-[0.3em] font-semibold text-xs mb-4 rounded-full shadow-[0_0_15px_rgba(212,175,55,0.1)] animate-glow-pulse">
+                The Official Farewell Invitation
+            </div>
+            
+            <h1 class="text-6xl md:text-8xl font-serif font-black leading-tight tracking-tight">
+                <span class="text-white drop-shadow-lg">Welcome to</span> <br>
+                <span class="text-gold-gradient italic glow-text">Smriti 5.0</span>
+            </h1>
+            
+            <p class="text-lg md:text-xl text-gray-300 font-medium pb-6 mb-6 border-b border-white/10 w-3/4 mx-auto uppercase tracking-widest">
+                Department of Civil Engineering
+            </p>
+            
+            <p class="text-base md:text-lg text-gray-400 leading-relaxed max-w-2xl mx-auto font-light">
+                The foundations are laid, and the structural integrity is verified. Before you leave the site for good, we have engineered one final presentation exclusively for you.
+            </p>
+            
+            <div class="pt-8">
+                <button onclick="scrollToVideo()" class="group relative inline-flex items-center justify-center gap-3 px-10 py-4 font-bold text-slate-deep uppercase tracking-[0.15em] bg-gold-accent rounded-sm overflow-hidden transition-all duration-300 hover:scale-105 hover:bg-gold-light hover:shadow-[0_0_30px_rgba(212,175,55,0.5)]">
+                    <svg class="w-5 h-5 relative z-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
+                    <span class="relative z-10">Access Video Core</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Video Invitation Section -->
+    <section id="video-section" class="py-24 px-4 w-full relative z-10 bg-black/40 border-y border-gold-accent/20">
+        <div class="max-w-6xl mx-auto flex flex-col items-center">
+            
+            <div class="mb-10 text-center">
+                <h2 class="text-3xl md:text-5xl font-serif text-white mb-4">
+                    The <span class="text-gold-accent italic font-bold">Blueprint</span> of Memories
+                </h2>
+                <div class="inline-flex items-center gap-2 px-4 py-1 bg-white/5 border border-white/10 rounded-full backdrop-blur-sm">
+                    <div class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+                    <p class="text-gray-300 font-light text-xs tracking-widest uppercase">Video auto-plays on scroll</p>
+                </div>
+            </div>
+
+            <!-- Video Container -->
+            <div class="w-full relative rounded-sm shadow-[0_0_50px_rgba(0,0,0,0.9)] border border-gold-accent/40 bg-black flex justify-center items-center aspect-video p-1 group">
+                
+                <video
+                    id="invitation-video"
+                    class="w-full h-full object-cover rounded-sm"
+                    loop
+                    playsinline
+                    controls>
+                    <!-- Replace with your video file -->
+                    <source src="Farewell 3.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Event Logistics -->
+    <section class="py-24 px-4 relative z-10">
+        <div class="max-w-5xl mx-auto text-center space-y-16">
+            <h2 class="text-4xl md:text-5xl font-serif text-white">
+                Mission <span class="text-gold-accent italic font-bold">Coordinates</span>
+            </h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+                <!-- Date Card -->
+                <div class="glass-panel p-10 rounded-sm transform transition-all duration-500 hover:-translate-y-3 hover:border-gold-accent/60 hover:shadow-[0_15px_40px_rgba(212,175,55,0.15)] group">
+                    <div class="w-14 h-14 border border-gold-accent/30 bg-gold-accent/5 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
+                        <svg class="w-6 h-6 text-gold-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                    </div>
+                    <h3 class="text-gray-400 font-semibold mb-3 uppercase tracking-[0.2em] text-xs">Date</h3>
+                    <p class="text-white font-serif text-2xl tracking-wide font-bold">TBD</p>
+                </div>
+                
+                <!-- Time Card -->
+                <div class="glass-panel p-10 rounded-sm transform transition-all duration-500 hover:-translate-y-3 hover:border-gold-accent/60 hover:shadow-[0_15px_40px_rgba(212,175,55,0.15)] group relative overflow-hidden">
+                    <div class="absolute inset-0 bg-gradient-to-b from-gold-accent/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    <div class="w-14 h-14 border border-gold-accent/30 bg-gold-accent/5 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300 relative z-10">
+                        <svg class="w-6 h-6 text-gold-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    </div>
+                    <h3 class="text-gray-400 font-semibold mb-3 uppercase tracking-[0.2em] text-xs relative z-10">Time</h3>
+                    <p class="text-gold-light font-serif text-3xl tracking-wide font-bold relative z-10">3:30 PM</p>
+                </div>
+                
+                <!-- Venue Card -->
+                <div class="glass-panel p-10 rounded-sm transform transition-all duration-500 hover:-translate-y-3 hover:border-gold-accent/60 hover:shadow-[0_15px_40px_rgba(212,175,55,0.15)] group">
+                    <div class="w-14 h-14 border border-gold-accent/30 bg-gold-accent/5 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
+                        <svg class="w-6 h-6 text-gold-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                    </div>
+                    <h3 class="text-gray-400 font-semibold mb-3 uppercase tracking-[0.2em] text-xs">Venue</h3>
+                    <p class="text-white font-serif text-2xl tracking-wide font-bold">Seminar Hall</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-8 text-center border-t border-white/5 mt-10 relative z-10 bg-black/80">
+        <p class="text-gray-500 text-sm tracking-[0.2em] uppercase font-semibold">
+            Designed by Aryan Kumar Ekka
+        </p>
+    </footer>
+
+    <!-- JavaScript for Intersection Observer and Audio -->
+    <script>
+        const overlay = document.getElementById('entry-overlay');
+        const video = document.getElementById('invitation-video');
+        const videoSection = document.getElementById('video-section');
+        let isAudioUnlocked = false;
+
+        // 1. Handle Overlay Tap
+        overlay.addEventListener('click', () => {
+            // Hide the overlay
+            overlay.style.opacity = '0';
+            setTimeout(() => {
+                overlay.style.visibility = 'hidden';
+            }, 800);
+
+            // Unlock audio but do NOT play yet
+            video.muted = false;
+            isAudioUnlocked = true;
+        });
+
+        // 2. Setup Intersection Observer (Scroll to Play)
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.4 // Triggers when 40% of the video is visible
+        };
+
+        const videoObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting && isAudioUnlocked) {
+                    // Video is in view and audio is unlocked -> Play
+                    video.play().catch(error => console.log("Autoplay prevented:", error));
+                } else {
+                    // Video is out of view -> Pause
+                    video.pause();
+                }
+            });
+        }, observerOptions);
+
+        // Start observing the video section
+        videoObserver.observe(videoSection);
+
+        // Smooth scroll button
+        function scrollToVideo() {
+            videoSection.scrollIntoView({ 
+                behavior: 'smooth' 
+            });
+        }
+    </script>
+</body>
+</html>
