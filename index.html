@@ -98,6 +98,40 @@
         #entry-overlay {
             transition: opacity 0.8s ease-in-out, visibility 0.8s ease-in-out;
         }
+
+        /* Countdown Timer */
+        .countdown-unit {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-width: 70px;
+        }
+        .countdown-number {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            font-weight: 900;
+            line-height: 1;
+            background: linear-gradient(135deg, #f3e5ab 0%, #d4af37 50%, #b5952f 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: none;
+        }
+        .countdown-label {
+            font-size: 0.65rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: #9ca3af;
+            margin-top: 4px;
+            font-weight: 600;
+        }
+        .countdown-sep {
+            font-size: 2.5rem;
+            color: rgba(212,175,55,0.4);
+            font-family: 'Playfair Display', serif;
+            line-height: 1;
+            padding-bottom: 20px;
+        }
     </style>
 </head>
 <body class="draft-grid text-gray-200 font-sans antialiased selection:bg-gold-accent selection:text-slate-deep relative">
@@ -149,6 +183,34 @@ where every goodbye feels like a blockbuster climax.
             </div>
         </div>
     </header>
+
+    <!-- Countdown Timer Section -->
+    <section class="py-12 px-4 relative z-10">
+        <div class="max-w-3xl mx-auto text-center">
+            <p class="text-xs uppercase tracking-[0.3em] text-gold-accent font-semibold mb-6 opacity-80">Counting Down to the Final Premiere</p>
+            <div id="countdown-timer" class="glass-panel rounded-sm p-8 flex items-center justify-center gap-2 md:gap-4 flex-wrap">
+                <div class="countdown-unit">
+                    <span class="countdown-number" id="cd-days">00</span>
+                    <span class="countdown-label">Days</span>
+                </div>
+                <div class="countdown-sep">:</div>
+                <div class="countdown-unit">
+                    <span class="countdown-number" id="cd-hours">00</span>
+                    <span class="countdown-label">Hours</span>
+                </div>
+                <div class="countdown-sep">:</div>
+                <div class="countdown-unit">
+                    <span class="countdown-number" id="cd-minutes">00</span>
+                    <span class="countdown-label">Minutes</span>
+                </div>
+                <div class="countdown-sep">:</div>
+                <div class="countdown-unit">
+                    <span class="countdown-number" id="cd-seconds">00</span>
+                    <span class="countdown-label">Seconds</span>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <!-- Video Invitation Section -->
     <section id="video-section" class="py-24 px-4 w-full relative z-10 bg-black/40 border-y border-gold-accent/20">
@@ -279,6 +341,30 @@ where every goodbye feels like a blockbuster climax.
                 behavior: 'smooth' 
             });
         }
+
+        // Countdown Timer
+        function updateCountdown() {
+            const eventDate = new Date('2026-05-14T15:30:00+05:30').getTime();
+            const now = new Date().getTime();
+            const diff = eventDate - now;
+
+            if (diff <= 0) {
+                document.getElementById('countdown-timer').innerHTML = '<p class="text-gold-accent font-serif text-2xl italic">🎉 The Premiere Has Begun!</p>';
+                return;
+            }
+
+            const days    = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours   = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+            document.getElementById('cd-days').textContent    = String(days).padStart(2, '0');
+            document.getElementById('cd-hours').textContent   = String(hours).padStart(2, '0');
+            document.getElementById('cd-minutes').textContent = String(minutes).padStart(2, '0');
+            document.getElementById('cd-seconds').textContent = String(seconds).padStart(2, '0');
+        }
+        updateCountdown();
+        setInterval(updateCountdown, 1000);
     </script>
 </body>
 </html>
