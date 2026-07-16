@@ -111,6 +111,19 @@
             opacity: 0.6;
         }
 
+        /* Scroll Progress Bar */
+        #scroll-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 3px;
+            width: 0%;
+            background: linear-gradient(90deg, #b5952f, #d4af37, #f3e5ab, #d4af37);
+            z-index: 9999;
+            transition: width 0.1s linear;
+            box-shadow: 0 0 8px rgba(212, 175, 55, 0.8);
+        }
+
         /* Countdown Timer */
         .countdown-unit {
             display: flex;
@@ -158,6 +171,9 @@
             <p class="text-gray-400 tracking-[0.2em] uppercase text-sm font-medium">Initialize Project Handover</p>
         </div>
     </div>
+
+    <!-- Scroll Progress Bar -->
+    <div id="scroll-progress"></div>
 
     <!-- Particle Canvas -->
     <canvas id="particle-canvas"></canvas>
@@ -432,6 +448,15 @@ where every goodbye feels like a blockbuster climax.
             }
             drawParticles();
         })();
+
+        // Scroll Progress Bar
+        const progressBar = document.getElementById('scroll-progress');
+        window.addEventListener('scroll', () => {
+            const scrollTop     = window.scrollY;
+            const docHeight     = document.documentElement.scrollHeight - window.innerHeight;
+            const scrollPercent = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+            progressBar.style.width = scrollPercent + '%';
+        });
     </script>
 </body>
 </html>
