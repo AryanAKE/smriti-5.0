@@ -124,6 +124,34 @@
             box-shadow: 0 0 8px rgba(212, 175, 55, 0.8);
         }
 
+        /* Back to Top Button */
+        #back-to-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 1.5rem;
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, #d4af37, #b5952f);
+            border: none;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 999;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.4s ease, transform 0.4s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 20px rgba(212, 175, 55, 0.3);
+        }
+        #back-to-top.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        #back-to-top:hover {
+            box-shadow: 0 0 25px rgba(212, 175, 55, 0.7);
+        }
+
         /* Countdown Timer */
         .countdown-unit {
             display: flex;
@@ -174,6 +202,11 @@
 
     <!-- Scroll Progress Bar -->
     <div id="scroll-progress"></div>
+
+    <!-- Back to Top Button -->
+    <button id="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="Back to Top" aria-label="Back to Top">
+        <svg width="20" height="20" fill="none" stroke="#0f172a" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 15l7-7 7 7"/></svg>
+    </button>
 
     <!-- Particle Canvas -->
     <canvas id="particle-canvas"></canvas>
@@ -449,13 +482,15 @@ where every goodbye feels like a blockbuster climax.
             drawParticles();
         })();
 
-        // Scroll Progress Bar
+        // Scroll Progress Bar + Back to Top
         const progressBar = document.getElementById('scroll-progress');
+        const backToTop   = document.getElementById('back-to-top');
         window.addEventListener('scroll', () => {
             const scrollTop     = window.scrollY;
             const docHeight     = document.documentElement.scrollHeight - window.innerHeight;
             const scrollPercent = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
             progressBar.style.width = scrollPercent + '%';
+            backToTop.classList.toggle('visible', scrollTop > 300);
         });
     </script>
 </body>
