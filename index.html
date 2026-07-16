@@ -347,7 +347,23 @@ where every goodbye feels like a blockbuster climax.
         </div>
     </section>
 
-    <!-- Footer -->
+    <!-- Share the Invitation Section -->
+    <section class="py-16 px-4 relative z-10 border-t border-white/5">
+        <div class="max-w-xl mx-auto text-center space-y-6">
+            <p class="text-xs uppercase tracking-[0.3em] text-gold-accent font-semibold opacity-80">Spread the Word</p>
+            <h2 class="text-2xl md:text-3xl font-serif text-white">Share the <span class="text-gold-accent italic font-bold">Invitation</span></h2>
+            <p class="text-gray-400 text-sm leading-relaxed">Pass this link to your batchmates and friends so they don't miss the premiere.</p>
+            <div class="flex items-center gap-3 glass-panel rounded-sm px-4 py-3 max-w-sm mx-auto">
+                <span id="share-url" class="flex-1 text-xs text-gray-300 truncate text-left font-mono select-all"></span>
+                <button id="copy-btn" onclick="copyInviteLink()" class="shrink-0 px-4 py-2 bg-gold-accent text-slate-deep text-xs font-bold uppercase tracking-wider rounded-sm hover:bg-gold-light transition-colors duration-200">
+                    Copy
+                </button>
+            </div>
+            <p id="copy-feedback" class="text-green-400 text-xs tracking-wider opacity-0 transition-opacity duration-300">✓ Copied to clipboard!</p>
+        </div>
+    </section>
+
+
     <footer class="py-8 text-center border-t border-white/5 mt-10 relative z-10 bg-black/80">
         <p class="text-gray-500 text-sm tracking-[0.2em] uppercase font-semibold">
             Plastered By Civil 2nd Years
@@ -492,6 +508,16 @@ where every goodbye feels like a blockbuster climax.
             progressBar.style.width = scrollPercent + '%';
             backToTop.classList.toggle('visible', scrollTop > 300);
         });
+
+        // Share / Copy Link
+        document.getElementById('share-url').textContent = window.location.href;
+        function copyInviteLink() {
+            navigator.clipboard.writeText(window.location.href).then(() => {
+                const fb = document.getElementById('copy-feedback');
+                fb.style.opacity = '1';
+                setTimeout(() => { fb.style.opacity = '0'; }, 2500);
+            });
+        }
     </script>
 </body>
 </html>
