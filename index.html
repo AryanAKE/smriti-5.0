@@ -186,6 +186,12 @@
             line-height: 1;
             padding-bottom: 20px;
         }
+
+        /* Marquee Animation */
+        @keyframes marquee {
+            from { transform: translateX(0); }
+            to   { transform: translateX(-50%); }
+        }
     </style>
 </head>
 <body class="draft-grid text-gray-200 font-sans antialiased selection:bg-gold-accent selection:text-slate-deep relative">
@@ -256,7 +262,20 @@ where every goodbye feels like a blockbuster climax.
         </div>
     </header>
 
+    <!-- Cinematic Marquee Quote Banner -->
+    <div class="w-full overflow-hidden border-y border-gold-accent/20 bg-black/60 py-3 relative z-10" style="--marquee-speed: 30s;">
+        <div class="flex whitespace-nowrap" style="animation: marquee var(--marquee-speed) linear infinite;">
+            <span class="inline-flex items-center gap-8 text-xs uppercase tracking-[0.3em] font-semibold text-gold-accent/70 px-8">
+                ✦ Smriti 5.0 &nbsp; · &nbsp; Civil Engineering Farewell &nbsp; · &nbsp; 14th May 2026 &nbsp; · &nbsp; Lights dim. Cameras roll. Memories play. &nbsp; · &nbsp; Seminar Hall &nbsp; · &nbsp; 3:30 PM IST &nbsp; · &nbsp; The Final Premiere &nbsp; · &nbsp; Mistree Furwell &nbsp; · &nbsp; Class of 2026 &nbsp; · &nbsp; Department of Civil Engineering &nbsp; · &nbsp;
+            </span>
+            <span class="inline-flex items-center gap-8 text-xs uppercase tracking-[0.3em] font-semibold text-gold-accent/70 px-8" aria-hidden="true">
+                ✦ Smriti 5.0 &nbsp; · &nbsp; Civil Engineering Farewell &nbsp; · &nbsp; 14th May 2026 &nbsp; · &nbsp; Lights dim. Cameras roll. Memories play. &nbsp; · &nbsp; Seminar Hall &nbsp; · &nbsp; 3:30 PM IST &nbsp; · &nbsp; The Final Premiere &nbsp; · &nbsp; Mistree Furwell &nbsp; · &nbsp; Class of 2026 &nbsp; · &nbsp; Department of Civil Engineering &nbsp; · &nbsp;
+            </span>
+        </div>
+    </div>
+
     <!-- Countdown Timer Section -->
+
     <section class="py-12 px-4 relative z-10">
         <div class="max-w-3xl mx-auto text-center">
             <p class="text-xs uppercase tracking-[0.3em] text-gold-accent font-semibold mb-6 opacity-80">Counting Down to the Final Premiere</p>
