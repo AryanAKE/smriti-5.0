@@ -192,6 +192,29 @@
             from { transform: translateX(0); }
             to   { transform: translateX(-50%); }
         }
+
+        /* Ornamental Gold Divider */
+        .gold-divider {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin: 0 auto;
+            max-width: 400px;
+            padding: 0 1rem;
+        }
+        .gold-divider::before,
+        .gold-divider::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(212,175,55,0.5), transparent);
+        }
+        .gold-divider-icon {
+            color: rgba(212, 175, 55, 0.6);
+            font-size: 1rem;
+            animation: glow-pulse 3s ease-in-out infinite;
+            flex-shrink: 0;
+        }
     </style>
 </head>
 <body class="draft-grid text-gray-200 font-sans antialiased selection:bg-gold-accent selection:text-slate-deep relative">
@@ -384,6 +407,15 @@ where every goodbye feels like a blockbuster climax.
             </div>
         </div>
     </section>
+
+    <!-- Ornamental Divider -->
+    <div class="relative z-10 py-4">
+        <div class="gold-divider">
+            <span class="gold-divider-icon">✦</span>
+            <span class="gold-divider-icon" style="font-size:0.6rem;">◆</span>
+            <span class="gold-divider-icon">✦</span>
+        </div>
+    </div>
 
     <!-- Share the Invitation Section -->
     <section class="py-16 px-4 relative z-10 border-t border-white/5">
