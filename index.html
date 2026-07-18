@@ -379,6 +379,12 @@ where every goodbye feels like a blockbuster climax.
                 </button>
             </div>
             <p id="copy-feedback" class="text-green-400 text-xs tracking-wider opacity-0 transition-opacity duration-300">✓ Copied to clipboard!</p>
+            <!-- WhatsApp Share Button -->
+            <a id="whatsapp-share-btn" href="#" target="_blank" rel="noopener noreferrer"
+               class="inline-flex items-center gap-2 px-6 py-3 bg-[#25D366] text-white text-xs font-bold uppercase tracking-wider rounded-sm hover:bg-[#1ebe5d] transition-all duration-300 hover:shadow-[0_0_20px_rgba(37,211,102,0.4)] hover:scale-105">
+                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12.003 2C6.476 2 2 6.478 2 12.003c0 1.78.467 3.535 1.354 5.082L2.046 22l5.042-1.322A9.944 9.944 0 0012.003 22C17.524 22 22 17.522 22 12.003 22 6.478 17.524 2 12.003 2zm0 18.154a8.143 8.143 0 01-4.154-1.138l-.298-.178-3.094.811.825-3.016-.195-.31A8.138 8.138 0 013.847 12.003c0-4.501 3.663-8.157 8.156-8.157 4.497 0 8.154 3.656 8.154 8.157 0 4.497-3.657 8.151-8.154 8.151z"/></svg>
+                Share on WhatsApp
+            </a>
         </div>
     </section>
 
@@ -538,6 +544,8 @@ where every goodbye feels like a blockbuster climax.
 
         // Share / Copy Link
         document.getElementById('share-url').textContent = window.location.href;
+        const waBtn = document.getElementById('whatsapp-share-btn');
+        if (waBtn) waBtn.href = 'https://wa.me/?text=' + encodeURIComponent('🎬 You\'re invited to Smriti 5.0 — Civil Engineering Farewell! 14th May, 2026 | 3:30 PM | Seminar Hall\n' + window.location.href);
         function copyInviteLink() {
             navigator.clipboard.writeText(window.location.href).then(() => {
                 const fb = document.getElementById('copy-feedback');
