@@ -22,6 +22,10 @@ A premium, **cinematic single-page web invitation** designed for the Civil Engin
 | 💅 **Glassmorphism UI** | Premium frosted-glass panel cards with gold border accents |
 | 📱 **Fully Responsive** | Strict mobile width control for a flawless experience on any device |
 | 🏗️ **Zero Build Tools** | Powered entirely by Tailwind CSS CDN — no npm, no bundler |
+| 👥 **Organised By Section** | Three-card committee showcase with hover lift animations |
+| 📈 **Legacy in Numbers** | Cinematic stats bar with oversized gold gradient numerals |
+| 🎭 **Closing Quote Banner** | Full-width dramatic quote with ambient glow vignette |
+| ⬇️ **Animated Scroll Hint** | Bouncing chevron below hero CTA for visual guidance |
 
 ---
 
@@ -73,6 +77,21 @@ smriti-5.0/
 
 ---
 
+## 📋 Changelog
+
+### v5.0 — July 2026 (Latest)
+- 🆕 **Organised By** — Three glassmorphism cards for committee, creative team & hosting roles
+- 🆕 **Legacy in Numbers** — Cinematic stats bar with gold gradient large numerals (5 Editions, 4 Years, 1 Night, ∞ Memories)
+- 🆕 **Closing Quote Banner** — Full-width dramatic quote with ambient glow vignette before footer
+- 🆕 **Animated Scroll Hint** — Bouncing chevron below hero CTA for visual guidance
+- 🆕 **Typewriter blink cursor** — CSS `cursor-blink` utility class for interactive text effects
+- ✨ **Programme Schedule** — Alternating evening timeline with hover-lit numbered nodes
+- ✨ **Cinematic Marquee Banner** — Scrolling ticker between hero and countdown sections
+- ✨ **WhatsApp Share Button** — Pre-filled invitation message for instant sharing
+- ✨ **Footer Logo Badge** — Smriti 5.0 branding pill with animated pulse dot
+
+---
+
 ## 👏 Credits
 
 - **Designed & Developed by:** Rudrangshu Sonowal
@@ -81,4 +100,4 @@ smriti-5.0/
 
 ---
 
-*"Lights dim. Cameras roll. Memories play."*
+*"Not all stories end. Some become legends."*
