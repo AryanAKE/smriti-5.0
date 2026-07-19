@@ -187,6 +187,17 @@
             padding-bottom: 20px;
         }
 
+        /* Scroll Reveal Animation */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.7s cubic-bezier(0.4,0,0.2,1), transform 0.7s cubic-bezier(0.4,0,0.2,1);
+        }
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
         /* Marquee Animation */
         @keyframes marquee {
             from { transform: translateX(0); }
@@ -378,7 +389,7 @@ where every goodbye feels like a blockbuster climax.
     </header>
 
     <!-- Cinematic Marquee Quote Banner -->
-    <div class="w-full overflow-hidden border-y border-gold-accent/20 bg-black/60 py-3 relative z-10" style="--marquee-speed: 30s;">
+    <div class="w-full overflow-hidden border-y border-gold-accent/20 bg-black/60 py-3 relative z-10 reveal" style="--marquee-speed: 30s;">
         <div class="flex whitespace-nowrap" style="animation: marquee var(--marquee-speed) linear infinite;">
             <span class="inline-flex items-center gap-8 text-xs uppercase tracking-[0.3em] font-semibold text-gold-accent/70 px-8">
                 ✦ Smriti 5.0 &nbsp; · &nbsp; Civil Engineering Farewell &nbsp; · &nbsp; 14th May 2026 &nbsp; · &nbsp; Lights dim. Cameras roll. Memories play. &nbsp; · &nbsp; Seminar Hall &nbsp; · &nbsp; 3:30 PM IST &nbsp; · &nbsp; The Final Premiere &nbsp; · &nbsp; Mistree Furwell &nbsp; · &nbsp; Class of 2026 &nbsp; · &nbsp; Department of Civil Engineering &nbsp; · &nbsp;
@@ -877,6 +888,21 @@ where every goodbye feels like a blockbuster climax.
                 dot.classList.toggle('active', dot.dataset.target === current);
             });
         }, { passive: true });
+
+        // Scroll Reveal Observer
+        const revealEls = document.querySelectorAll('section, footer, .reveal');
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    revealObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.12 });
+        revealEls.forEach(el => {
+            el.classList.add('reveal');
+            revealObserver.observe(el);
+        });
 
         // Share / Copy Link
         document.getElementById('share-url').textContent = window.location.href;
