@@ -79,7 +79,11 @@ smriti-5.0/
 
 ## 📋 Changelog
 
-### v5.0 — July 2026 (Latest)
+### v5.1 — July 2026 (Latest)
+- 🆕 **Memories Wall** — 6 glassmorphism quote cards capturing iconic batch moments (lab nights, field visits, exam season, legacy)
+- 🆕 **Premium Footer** — 3-column cinematic footer with branding, quick nav links, event details, social icons, and a gold gradient accent bar
+
+### v5.0 — July 2026
 - 🆕 **Organised By** — Three glassmorphism cards for committee, creative team & hosting roles
 - 🆕 **Legacy in Numbers** — Cinematic stats bar with gold gradient large numerals (5 Editions, 4 Years, 1 Night, ∞ Memories)
 - 🆕 **Closing Quote Banner** — Full-width dramatic quote with ambient glow vignette before footer
