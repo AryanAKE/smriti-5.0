@@ -1033,6 +1033,14 @@ where every goodbye feels like a blockbuster climax.
             const ctx = canvas.getContext('2d');
             let particles = [];
 
+            // Palette: mix of gold and silver-white particles
+            const COLORS = [
+                [212, 175, 55],  // metallic gold
+                [212, 175, 55],  // gold (weighted 2×)
+                [220, 215, 200], // warm silver
+                [243, 229, 171], // gold-light
+            ];
+
             function resize() {
                 canvas.width  = window.innerWidth;
                 canvas.height = window.innerHeight;
@@ -1043,19 +1051,21 @@ where every goodbye feels like a blockbuster climax.
             function randomBetween(a, b) { return a + Math.random() * (b - a); }
 
             function spawnParticle() {
+                const color = COLORS[Math.floor(Math.random() * COLORS.length)];
                 return {
                     x: randomBetween(0, canvas.width),
                     y: randomBetween(canvas.height * 0.3, canvas.height),
-                    r: randomBetween(1, 2.5),
-                    alpha: randomBetween(0.2, 0.7),
+                    r: randomBetween(0.8, 2.5),
+                    alpha: randomBetween(0.2, 0.8),
                     speed: randomBetween(0.3, 0.9),
                     drift: randomBetween(-0.3, 0.3),
-                    life: randomBetween(80, 200),
-                    age: 0
+                    life: randomBetween(80, 220),
+                    age: 0,
+                    color: color
                 };
             }
 
-            for (let i = 0; i < 60; i++) particles.push(spawnParticle());
+            for (let i = 0; i < 100; i++) particles.push(spawnParticle());
 
             function drawParticles() {
                 ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -1065,9 +1075,9 @@ where every goodbye feels like a blockbuster climax.
                     const alpha   = p.alpha * fadeIn * fadeOut;
                     ctx.beginPath();
                     ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-                    ctx.fillStyle = `rgba(212, 175, 55, ${alpha})`;
+                    ctx.fillStyle = `rgba(${p.color[0]}, ${p.color[1]}, ${p.color[2]}, ${alpha})`;
                     ctx.shadowBlur = 6;
-                    ctx.shadowColor = `rgba(212,175,55,${alpha})`;
+                    ctx.shadowColor = `rgba(${p.color[0]}, ${p.color[1]}, ${p.color[2]}, ${alpha})`;
                     ctx.fill();
                     p.x   += p.drift;
                     p.y   -= p.speed;
