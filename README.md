@@ -79,7 +79,13 @@ smriti-5.0/
 
 ## 📋 Changelog
 
-### v5.1 — July 2026 (Latest)
+### v5.2 — July 2026 (Latest)
+- ✨ **Enhanced Particle System** — Increased particle count to 100 with gold/silver colour variation for a richer cinematic atmosphere
+- 🎨 **Mission Coordinates Grid** — Fixed layout to a proper 4-column grid on desktop for all four event detail cards
+- 🔍 **SEO Improvements** — Added `robots` meta tag, `canonical` link, and version identifier for better discoverability
+- 🖱️ **Overlay UX Polish** — Added a subtle "Press Enter ↵" keyboard hint to the tap-to-enter overlay
+
+### v5.1 — July 2026
 - 🆕 **Memories Wall** — 6 glassmorphism quote cards capturing iconic batch moments (lab nights, field visits, exam season, legacy)
 - 🆕 **Premium Footer** — 3-column cinematic footer with branding, quick nav links, event details, social icons, and a gold gradient accent bar
 
