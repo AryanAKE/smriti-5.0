@@ -354,6 +354,7 @@
                 <span class="w-1.5 h-1.5 rounded-full bg-gold-accent/60 animate-bounce" style="animation-delay:0.15s"></span>
                 <span class="w-1.5 h-1.5 rounded-full bg-gold-accent animate-bounce" style="animation-delay:0.3s"></span>
             </div>
+            <p class="mt-6 text-gold-accent/30 text-xs tracking-[0.25em] uppercase font-medium hidden md:block">Press Enter ↵ or Space to continue</p>
         </div>
     </div>
 
@@ -972,6 +973,13 @@ where every goodbye feels like a blockbuster climax.
             // Unlock audio but do NOT play yet
             video.muted = false;
             isAudioUnlocked = true;
+        });
+
+        // 1b. Keyboard dismiss for overlay (Enter / Space)
+        document.addEventListener('keydown', (e) => {
+            if ((e.key === 'Enter' || e.key === ' ') && overlay.style.visibility !== 'hidden') {
+                overlay.click();
+            }
         });
 
         // 2. Setup Intersection Observer (Scroll to Play)
