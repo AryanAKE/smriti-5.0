@@ -16,7 +16,7 @@
     <meta name="twitter:title" content="Smriti 5.0 | Civil Engineering Farewell">
     <meta name="twitter:description" content="Lights dim. Cameras roll. Memories play. Join us on 14th May, 2026 at 3:30 PM.">
     <meta name="robots" content="index, follow">
-    <meta name="version" content="5.3">
+    <meta name="version" content="5.4">
     <link rel="canonical" href="https://aryanake.github.io/smriti-5.0/">
 
     <!-- Tailwind CSS -->
@@ -405,6 +405,29 @@
         #toast-notification.show {
             opacity: 1;
             transform: translateX(-50%) translateY(0);
+        }
+
+        /* Cinematic Page-Load Reveal */
+        @keyframes pageReveal {
+            0%   { opacity: 0; transform: scale(1.03); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+        body.page-revealed {
+            animation: pageReveal 0.9s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        }
+
+        /* Active nav dot pulse ring */
+        .nav-dot.active::after {
+            content: '';
+            position: absolute;
+            inset: -4px;
+            border-radius: 50%;
+            border: 1px solid rgba(212,175,55,0.35);
+            animation: navPulse 2s ease-in-out infinite;
+        }
+        @keyframes navPulse {
+            0%, 100% { transform: scale(1); opacity: 0.6; }
+            50%       { transform: scale(1.4); opacity: 0; }
         }
     </style>
 </head>
@@ -1044,7 +1067,7 @@ where every goodbye feels like a blockbuster climax.
                 <p class="text-gray-700 text-xs tracking-widest uppercase">
                     Made with <span class="text-red-500">♥</span> for the Class of 2026
                 </p>
-                <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-gold-accent/10 border border-gold-accent/20 text-gold-accent/50 text-[10px] font-mono tracking-widest">v5.3</span>
+                <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-gold-accent/10 border border-gold-accent/20 text-gold-accent/50 text-[10px] font-mono tracking-widest">v5.4</span>
             </div>
             <p class="text-gray-700 text-xs tracking-[0.2em] uppercase">
                 Designed &amp; Developed by <span class="text-gold-accent/70">Rudrangshu Sonowal</span>
@@ -1069,6 +1092,8 @@ where every goodbye feels like a blockbuster climax.
             overlay.style.opacity = '0';
             setTimeout(() => {
                 overlay.style.visibility = 'hidden';
+                // Cinematic page-reveal animation
+                document.body.classList.add('page-revealed');
             }, 800);
 
             // Unlock audio but do NOT play yet
