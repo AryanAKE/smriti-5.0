@@ -79,7 +79,16 @@ smriti-5.0/
 
 ## 📋 Changelog
 
-### v5.2 — July 2026 (Latest)
+### v5.3 — July 2026 (Latest)
+- 🎬 **Hero Subtitle Badge** — Added cinematic *Mistree Furwell* italic subtitle with gold flanking lines between the main title and department tagline
+- ✨ **Sparkle Particle Shape** — Enhanced particle system with 4-point star/sparkle shapes (25%) alongside existing circles for a richer starry atmosphere
+- 🎞️ **Filmstrip Border** — Added CSS repeating-gradient filmstrip hole border decoration to the video container, reinforcing the cinematic theme
+- 📊 **Count-Up Animation** — Legacy Stats Bar numbers (5, 4, 1) now animate up from zero on scroll-reveal using ease-out cubic easing
+- 💫 **Shimmer Hover Effect** — Memory Wall cards now show a diagonal gold shimmer sweep on hover, giving a premium "light-catching glass" feel
+- 🏷️ **v5.3 Version Badge** — Footer bottom strip now displays a monospace `v5.3` badge alongside the attribution
+- 🔔 **RSVP Toast Notification** — Clicking "Yes, I'll Be There" triggers a spring-animated gold glass toast confirming attendance
+
+### v5.2 — July 2026
 - ✨ **Enhanced Particle System** — Increased particle count to 100 with gold/silver colour variation for a richer cinematic atmosphere
 - 🎨 **Mission Coordinates Grid** — Fixed layout to a proper 4-column grid on desktop for all four event detail cards
 - 🔍 **SEO Improvements** — Added `robots` meta tag, `canonical` link, and version identifier for better discoverability
