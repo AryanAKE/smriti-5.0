@@ -558,7 +558,14 @@ where every goodbye feels like a blockbuster climax.
 
     <section id="countdown-section" class="py-12 px-4 relative z-10">
         <div class="max-w-3xl mx-auto text-center">
-            <p class="text-xs uppercase tracking-[0.3em] text-gold-accent font-semibold mb-6 opacity-80">Counting Down to the Final Premiere</p>
+            <div class="flex items-center justify-center gap-3 mb-6">
+                <p class="text-xs uppercase tracking-[0.3em] text-gold-accent font-semibold opacity-80">Counting Down to the Final Premiere</p>
+                <!-- Live recording badge -->
+                <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-red-500/10 border border-red-500/30 text-red-400 text-[9px] font-bold uppercase tracking-[0.2em]">
+                    <span class="w-1.5 h-1.5 rounded-full bg-red-500 animate-pulse inline-block"></span>
+                    Live
+                </span>
+            </div>
             <div id="countdown-timer" class="glass-panel rounded-sm p-8 flex items-center justify-center gap-2 md:gap-4 flex-wrap">
                 <div class="countdown-unit">
                     <span class="countdown-number" id="cd-days">00</span>
