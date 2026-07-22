@@ -478,6 +478,7 @@
         <div class="nav-dot" data-target="video-section" data-label="Video"></div>
         <div class="nav-dot" data-target="logistics-section" data-label="Details"></div>
         <div class="nav-dot" data-target="schedule-section" data-label="Schedule"></div>
+        <div class="nav-dot" data-target="rsvp-section" data-label="RSVP"></div>
         <div class="nav-dot" data-target="share-section" data-label="Share"></div>
     </nav>
 
@@ -1079,6 +1080,19 @@ where every goodbye feels like a blockbuster climax.
         </div>
     </footer>
 
+    <!-- Keyboard Shortcut Hint Badge -->
+    <div id="kbd-hint" style="position:fixed;bottom:1.5rem;left:1.5rem;z-index:500;opacity:0;transition:opacity 0.5s ease;pointer-events:none;">
+        <div style="background:rgba(15,23,42,0.85);border:1px solid rgba(212,175,55,0.2);border-radius:4px;padding:8px 12px;backdrop-filter:blur(8px);">
+            <p style="color:rgba(212,175,55,0.6);font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;font-weight:600;margin-bottom:5px;">Keyboard Shortcuts</p>
+            <div style="display:flex;flex-direction:column;gap:3px;">
+                <span style="color:#6b7280;font-size:0.6rem;"><kbd style="background:rgba(212,175,55,0.1);border:1px solid rgba(212,175,55,0.2);border-radius:2px;padding:1px 4px;color:rgba(212,175,55,0.7);font-family:monospace;">H</kbd> Hero</span>
+                <span style="color:#6b7280;font-size:0.6rem;"><kbd style="background:rgba(212,175,55,0.1);border:1px solid rgba(212,175,55,0.2);border-radius:2px;padding:1px 4px;color:rgba(212,175,55,0.7);font-family:monospace;">V</kbd> Video</span>
+                <span style="color:#6b7280;font-size:0.6rem;"><kbd style="background:rgba(212,175,55,0.1);border:1px solid rgba(212,175,55,0.2);border-radius:2px;padding:1px 4px;color:rgba(212,175,55,0.7);font-family:monospace;">S</kbd> Schedule</span>
+                <span style="color:#6b7280;font-size:0.6rem;"><kbd style="background:rgba(212,175,55,0.1);border:1px solid rgba(212,175,55,0.2);border-radius:2px;padding:1px 4px;color:rgba(212,175,55,0.7);font-family:monospace;">R</kbd> RSVP</span>
+            </div>
+        </div>
+    </div>
+
     <!-- JavaScript for Intersection Observer and Audio -->
     <script>
         const overlay = document.getElementById('entry-overlay');
@@ -1348,6 +1362,29 @@ where every goodbye feels like a blockbuster climax.
             toast.classList.add('show');
             setTimeout(() => { toast.classList.remove('show'); }, 3500);
         }
+
+        // Keyboard Shortcuts: H=Hero, V=Video, S=Schedule, R=RSVP
+        const kbdShortcuts = { h: 'hero', v: 'video-section', s: 'schedule-section', r: 'rsvp-section' };
+        document.addEventListener('keydown', (e) => {
+            if (overlay.style.visibility === 'hidden' && !e.ctrlKey && !e.metaKey && !e.altKey) {
+                const target = kbdShortcuts[e.key.toLowerCase()];
+                if (target) {
+                    const el = document.getElementById(target);
+                    if (el) el.scrollIntoView({ behavior: 'smooth' });
+                }
+            }
+        });
+
+        // Show keyboard hint badge briefly after overlay is dismissed
+        const kbdHint = document.getElementById('kbd-hint');
+        overlay.addEventListener('click', () => {
+            setTimeout(() => {
+                if (kbdHint) {
+                    kbdHint.style.opacity = '1';
+                    setTimeout(() => { kbdHint.style.opacity = '0'; }, 4000);
+                }
+            }, 1200);
+        });
     </script>
 </body>
 </html>
