@@ -79,7 +79,15 @@ smriti-5.0/
 
 ## 📋 Changelog
 
-### v5.3 — July 2026 (Latest)
+### v5.4 — July 2026 (Latest)
+- 🎬 **Cinematic Page-Reveal Animation** — Body smoothly fades in and scales up when the entry overlay is dismissed, delivering a premium cinematic entrance effect
+- 💫 **Active Nav-Dot Pulse Ring** — The active floating sidebar navigation dot now emits a subtle gold pulse ring animation for better visual feedback
+- ⌨️ **Keyboard Shortcuts** — Press `H` (Hero), `V` (Video), `S` (Schedule), or `R` (RSVP) to instantly jump to any section; a hint badge briefly appears after entry
+- 🔴 **LIVE Countdown Badge** — A red animated recording-style LIVE pulse badge now appears next to the countdown section header, reinforcing the cinematic premiere theme
+- 🎨 **Dress Code Colour Swatch** — The Dress Code card in Mission Coordinates now features a Black & Gold colour swatch pill so guests can see the palette at a glance
+- 🔘 **RSVP Nav Dot** — Added an RSVP entry to the floating section navigation sidebar for quick access
+
+### v5.3 — July 2026
 - 🎬 **Hero Subtitle Badge** — Added cinematic *Mistree Furwell* italic subtitle with gold flanking lines between the main title and department tagline
 - ✨ **Sparkle Particle Shape** — Enhanced particle system with 4-point star/sparkle shapes (25%) alongside existing circles for a richer starry atmosphere
 - 🎞️ **Filmstrip Border** — Added CSS repeating-gradient filmstrip hole border decoration to the video container, reinforcing the cinematic theme
