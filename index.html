@@ -336,6 +336,39 @@
         .filmstrip-frame::before { left: -18px; border-radius: 3px 0 0 3px; }
         .filmstrip-frame::after  { right: -18px; border-radius: 0 3px 3px 0; }
 
+        /* Shimmer sweep on hover for memory wall cards */
+        @keyframes shimmerSweep {
+            0%   { transform: translateX(-100%) skewX(-20deg); }
+            100% { transform: translateX(250%) skewX(-20deg); }
+        }
+        .shimmer-card {
+            overflow: hidden;
+        }
+        .shimmer-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 40%;
+            height: 100%;
+            background: linear-gradient(
+                90deg,
+                transparent 0%,
+                rgba(212, 175, 55, 0.08) 40%,
+                rgba(212, 175, 55, 0.18) 50%,
+                rgba(212, 175, 55, 0.08) 60%,
+                transparent 100%
+            );
+            opacity: 0;
+            transition: opacity 0.2s ease;
+            pointer-events: none;
+            z-index: 3;
+        }
+        .shimmer-card:hover::after {
+            opacity: 1;
+            animation: shimmerSweep 0.7s ease forwards;
+        }
+
         /* Entry Overlay Stars */
         .overlay-stars {
             position: absolute;
@@ -796,7 +829,7 @@ where every goodbye feels like a blockbuster climax.
             </div>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
                 <!-- Memory Card 1 -->
-                <div class="glass-panel rounded-sm p-7 transform transition-all duration-500 hover:-translate-y-3 hover:border-gold-accent/60 hover:shadow-[0_15px_40px_rgba(212,175,55,0.12)] group relative overflow-hidden">
+                <div class="glass-panel shimmer-card rounded-sm p-7 transform transition-all duration-500 hover:-translate-y-3 hover:border-gold-accent/60 hover:shadow-[0_15px_40px_rgba(212,175,55,0.12)] group relative">
                     <div class="absolute top-0 right-0 w-20 h-20 bg-gold-accent/5 rounded-bl-full pointer-events-none"></div>
                     <div class="text-4xl mb-4 text-gold-accent/30 font-serif leading-none select-none">"</div>
                     <p class="text-gray-300 font-light text-sm leading-relaxed italic mb-5">Late-night lab submissions, chai-fuelled all-nighters, and the kind of laughter that only engineers share — those were the nights worth staying up for.</p>
@@ -809,7 +842,7 @@ where every goodbye feels like a blockbuster climax.
                 </div>
 
                 <!-- Memory Card 2 -->
-                <div class="glass-panel rounded-sm p-7 transform transition-all duration-500 hover:-translate-y-3 hover:border-gold-accent/60 hover:shadow-[0_15px_40px_rgba(212,175,55,0.12)] group relative overflow-hidden">
+                <div class="glass-panel shimmer-card rounded-sm p-7 transform transition-all duration-500 hover:-translate-y-3 hover:border-gold-accent/60 hover:shadow-[0_15px_40px_rgba(212,175,55,0.12)] group relative">
                     <div class="absolute top-0 right-0 w-20 h-20 bg-gold-accent/5 rounded-bl-full pointer-events-none"></div>
                     <div class="text-4xl mb-4 text-gold-accent/30 font-serif leading-none select-none">"</div>
                     <p class="text-gray-300 font-light text-sm leading-relaxed italic mb-5">From the first brick of semester one to the final blueprint of year four — every crack in the concrete was us building something greater than ourselves.</p>
@@ -822,7 +855,7 @@ where every goodbye feels like a blockbuster climax.
                 </div>
 
                 <!-- Memory Card 3 -->
-                <div class="glass-panel rounded-sm p-7 transform transition-all duration-500 hover:-translate-y-3 hover:border-gold-accent/60 hover:shadow-[0_15px_40px_rgba(212,175,55,0.12)] group relative overflow-hidden">
+                <div class="glass-panel shimmer-card rounded-sm p-7 transform transition-all duration-500 hover:-translate-y-3 hover:border-gold-accent/60 hover:shadow-[0_15px_40px_rgba(212,175,55,0.12)] group relative">
                     <div class="absolute top-0 right-0 w-20 h-20 bg-gold-accent/5 rounded-bl-full pointer-events-none"></div>
                     <div class="text-4xl mb-4 text-gold-accent/30 font-serif leading-none select-none">"</div>
                     <p class="text-gray-300 font-light text-sm leading-relaxed italic mb-5">The field visits weren't just about soil surveys — they were our escape routes, our adventures, and our loudest memories. The bus rides alone deserve a sequel.</p>
@@ -835,7 +868,7 @@ where every goodbye feels like a blockbuster climax.
                 </div>
 
                 <!-- Memory Card 4 -->
-                <div class="glass-panel rounded-sm p-7 transform transition-all duration-500 hover:-translate-y-3 hover:border-gold-accent/60 hover:shadow-[0_15px_40px_rgba(212,175,55,0.12)] group relative overflow-hidden">
+                <div class="glass-panel shimmer-card rounded-sm p-7 transform transition-all duration-500 hover:-translate-y-3 hover:border-gold-accent/60 hover:shadow-[0_15px_40px_rgba(212,175,55,0.12)] group relative">
                     <div class="absolute top-0 right-0 w-20 h-20 bg-gold-accent/5 rounded-bl-full pointer-events-none"></div>
                     <div class="text-4xl mb-4 text-gold-accent/30 font-serif leading-none select-none">"</div>
                     <p class="text-gray-300 font-light text-sm leading-relaxed italic mb-5">Smriti 1.0 felt like a small farewell. By Smriti 5.0, we realised we weren't just saying goodbye — we were preserving the soul of a generation that built bridges, literally and figuratively.</p>
@@ -848,7 +881,7 @@ where every goodbye feels like a blockbuster climax.
                 </div>
 
                 <!-- Memory Card 5 -->
-                <div class="glass-panel rounded-sm p-7 transform transition-all duration-500 hover:-translate-y-3 hover:border-gold-accent/60 hover:shadow-[0_15px_40px_rgba(212,175,55,0.12)] group relative overflow-hidden">
+                <div class="glass-panel shimmer-card rounded-sm p-7 transform transition-all duration-500 hover:-translate-y-3 hover:border-gold-accent/60 hover:shadow-[0_15px_40px_rgba(212,175,55,0.12)] group relative">
                     <div class="absolute top-0 right-0 w-20 h-20 bg-gold-accent/5 rounded-bl-full pointer-events-none"></div>
                     <div class="text-4xl mb-4 text-gold-accent/30 font-serif leading-none select-none">"</div>
                     <p class="text-gray-300 font-light text-sm leading-relaxed italic mb-5">Every exam season had the same script — panic, procrastination, last-minute miracles. But we showed up every time. That's civil engineering resilience, right there.</p>
@@ -861,7 +894,7 @@ where every goodbye feels like a blockbuster climax.
                 </div>
 
                 <!-- Memory Card 6 -->
-                <div class="glass-panel rounded-sm p-7 transform transition-all duration-500 hover:-translate-y-3 hover:border-gold-accent/60 hover:shadow-[0_15px_40px_rgba(212,175,55,0.12)] group relative overflow-hidden">
+                <div class="glass-panel shimmer-card rounded-sm p-7 transform transition-all duration-500 hover:-translate-y-3 hover:border-gold-accent/60 hover:shadow-[0_15px_40px_rgba(212,175,55,0.12)] group relative">
                     <div class="absolute top-0 right-0 w-20 h-20 bg-gold-accent/5 rounded-bl-full pointer-events-none"></div>
                     <div class="text-4xl mb-4 text-gold-accent/30 font-serif leading-none select-none">"</div>
                     <p class="text-gray-300 font-light text-sm leading-relaxed italic mb-5">Class of 2026 — we didn't just study structures. We were the structure. The one that held up through every storm, every stress test, and every impossible deadline.</p>
