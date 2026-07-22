@@ -1067,6 +1067,7 @@ where every goodbye feels like a blockbuster climax.
 
             function spawnParticle() {
                 const color = COLORS[Math.floor(Math.random() * COLORS.length)];
+                const shapes = ['circle', 'circle', 'circle', 'sparkle']; // 75% circles, 25% sparkles
                 return {
                     x: randomBetween(0, canvas.width),
                     y: randomBetween(canvas.height * 0.3, canvas.height),
@@ -1076,11 +1077,33 @@ where every goodbye feels like a blockbuster climax.
                     drift: randomBetween(-0.3, 0.3),
                     life: randomBetween(80, 220),
                     age: 0,
-                    color: color
+                    color: color,
+                    shape: shapes[Math.floor(Math.random() * shapes.length)],
+                    rotation: randomBetween(0, Math.PI)
                 };
             }
 
             for (let i = 0; i < 100; i++) particles.push(spawnParticle());
+
+            function drawSparkle(ctx, x, y, r, alpha, color) {
+                const a = `rgba(${color[0]}, ${color[1]}, ${color[2]}, ${alpha})`;
+                ctx.save();
+                ctx.strokeStyle = a;
+                ctx.shadowBlur = 8;
+                ctx.shadowColor = a;
+                ctx.lineWidth = r * 0.6;
+                ctx.lineCap = 'round';
+                // Horizontal arm
+                ctx.beginPath(); ctx.moveTo(x - r * 2, y); ctx.lineTo(x + r * 2, y); ctx.stroke();
+                // Vertical arm
+                ctx.beginPath(); ctx.moveTo(x, y - r * 2); ctx.lineTo(x, y + r * 2); ctx.stroke();
+                // Diagonal arms (shorter)
+                const d = r * 1.2;
+                ctx.lineWidth = r * 0.3;
+                ctx.beginPath(); ctx.moveTo(x - d, y - d); ctx.lineTo(x + d, y + d); ctx.stroke();
+                ctx.beginPath(); ctx.moveTo(x + d, y - d); ctx.lineTo(x - d, y + d); ctx.stroke();
+                ctx.restore();
+            }
 
             function drawParticles() {
                 ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -1088,12 +1111,16 @@ where every goodbye feels like a blockbuster climax.
                     const fadeIn  = Math.min(p.age / 20, 1);
                     const fadeOut = Math.min((p.life - p.age) / 30, 1);
                     const alpha   = p.alpha * fadeIn * fadeOut;
-                    ctx.beginPath();
-                    ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-                    ctx.fillStyle = `rgba(${p.color[0]}, ${p.color[1]}, ${p.color[2]}, ${alpha})`;
-                    ctx.shadowBlur = 6;
-                    ctx.shadowColor = `rgba(${p.color[0]}, ${p.color[1]}, ${p.color[2]}, ${alpha})`;
-                    ctx.fill();
+                    if (p.shape === 'sparkle') {
+                        drawSparkle(ctx, p.x, p.y, p.r, alpha, p.color);
+                    } else {
+                        ctx.beginPath();
+                        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+                        ctx.fillStyle = `rgba(${p.color[0]}, ${p.color[1]}, ${p.color[2]}, ${alpha})`;
+                        ctx.shadowBlur = 6;
+                        ctx.shadowColor = `rgba(${p.color[0]}, ${p.color[1]}, ${p.color[2]}, ${alpha})`;
+                        ctx.fill();
+                    }
                     p.x   += p.drift;
                     p.y   -= p.speed;
                     p.age += 1;
