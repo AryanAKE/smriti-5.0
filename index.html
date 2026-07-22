@@ -390,6 +390,22 @@
             0%   { opacity: 0.4; }
             100% { opacity: 1; }
         }
+
+        /* Toast Notification */
+        #toast-notification {
+            position: fixed;
+            bottom: 5rem;
+            left: 50%;
+            transform: translateX(-50%) translateY(80px);
+            opacity: 0;
+            z-index: 10000;
+            transition: opacity 0.4s ease, transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            pointer-events: none;
+        }
+        #toast-notification.show {
+            opacity: 1;
+            transform: translateX(-50%) translateY(0);
+        }
     </style>
 </head>
 <body class="draft-grid text-gray-200 font-sans antialiased selection:bg-gold-accent selection:text-slate-deep relative">
@@ -400,6 +416,16 @@
             <p style="color:#d4af37;font-family:serif;font-size:1.5rem;">⚠️ JavaScript is required to view this invitation.<br><span style="font-size:1rem;color:#9ca3af;">Please enable JavaScript in your browser settings.</span></p>
         </div>
     </noscript>
+
+    <!-- Toast Notification -->
+    <div id="toast-notification" role="alert" aria-live="polite">
+        <div class="flex items-center gap-3 px-5 py-3 glass-panel border border-gold-accent/30 rounded-sm shadow-[0_8px_32px_rgba(0,0,0,0.6)]">
+            <svg class="w-5 h-5 text-gold-accent shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+            </svg>
+            <span class="text-white text-sm font-semibold tracking-wide">Attendance Confirmed — See you at <span class="text-gold-accent">Smriti 5.0!</span></span>
+        </div>
+    </div>
 
     <!-- OVERLAY: Unlocks audio on first interaction -->
     <div id="entry-overlay" role="button" aria-label="Tap to enter the invitation" tabindex="0" class="fixed inset-0 z-50 flex flex-col items-center justify-center bg-slate-deep cursor-pointer">
@@ -661,6 +687,7 @@ where every goodbye feels like a blockbuster climax.
                 <div class="flex flex-col md:flex-row gap-4 items-center justify-center">
                     <!-- Yes Button -->
                     <a href="mailto:civil2ndyear@example.com?subject=RSVP%3A%20Yes%2C%20I%27ll%20be%20at%20Smriti%205.0&body=Hey%20Team%2C%0A%0ACount%20me%20in%20for%20Smriti%205.0%20on%2014th%20May%202026%20at%203%3A30%20PM.%20See%20you%20there%21%0A%0A%E2%80%94%20Excited%20Guest"
+                       onclick="showRSVPToast()"
                        class="inline-flex items-center gap-2 px-8 py-4 bg-gold-accent text-slate-deep font-bold text-sm uppercase tracking-[0.15em] rounded-sm hover:bg-gold-light hover:shadow-[0_0_30px_rgba(212,175,55,0.4)] hover:scale-105 transition-all duration-300">
                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
                         Yes, I'll Be There
@@ -1287,6 +1314,14 @@ where every goodbye feels like a blockbuster climax.
                 }
             }, { threshold: 0.4 });
             statsObs.observe(statsSection);
+        }
+
+        // RSVP Toast Notification
+        function showRSVPToast() {
+            const toast = document.getElementById('toast-notification');
+            if (!toast) return;
+            toast.classList.add('show');
+            setTimeout(() => { toast.classList.remove('show'); }, 3500);
         }
     </script>
 </body>
