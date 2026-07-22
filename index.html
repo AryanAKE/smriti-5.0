@@ -1219,6 +1219,39 @@ where every goodbye feels like a blockbuster climax.
                 setTimeout(() => { fb.style.opacity = '0'; }, 2500);
             });
         }
+
+        // Count-up animation for Legacy Stats Bar
+        function animateCountUp(el, target, duration) {
+            const start = performance.now();
+            function step(now) {
+                const elapsed = now - start;
+                const progress = Math.min(elapsed / duration, 1);
+                const eased = 1 - Math.pow(1 - progress, 3); // Ease-out cubic
+                el.textContent = Math.round(eased * target);
+                if (progress < 1) requestAnimationFrame(step);
+                else el.textContent = target;
+            }
+            requestAnimationFrame(step);
+        }
+
+        // Observe the stats bar, trigger count-up once visible
+        const statsSection = document.querySelector('.grid.grid-cols-2');
+        if (statsSection) {
+            const statsObs = new IntersectionObserver((entries) => {
+                if (entries[0].isIntersecting) {
+                    const targets = [5, 4, 1]; // ∞ skipped
+                    let idx = 0;
+                    statsSection.querySelectorAll('p.text-gold-gradient').forEach(el => {
+                        const val = parseInt(el.textContent);
+                        if (!isNaN(val) && idx < targets.length) {
+                            animateCountUp(el, targets[idx++], 1500);
+                        }
+                    });
+                    statsObs.disconnect();
+                }
+            }, { threshold: 0.4 });
+            statsObs.observe(statsSection);
+        }
     </script>
 </body>
 </html>
