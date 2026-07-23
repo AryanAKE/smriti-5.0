@@ -26,6 +26,8 @@ A premium, **cinematic single-page web invitation** designed for the Civil Engin
 | 📈 **Legacy in Numbers** | Cinematic stats bar with oversized gold gradient numerals |
 | 🎭 **Closing Quote Banner** | Full-width dramatic quote with ambient glow vignette |
 | ⬇️ **Animated Scroll Hint** | Bouncing chevron below hero CTA for visual guidance |
+| 🌟 **Hero Glow Ring** | Animated pulsing gold glow ring around the hero invitation card |
+| 🖼️ **Photo Gallery** | Mosaic bento-grid gallery placeholder with 6 themed tiles and Coming Soon badges |
 
 ---
 
@@ -79,7 +81,13 @@ smriti-5.0/
 
 ## 📋 Changelog
 
-### v5.4 — July 2026 (Latest)
+### v5.5 — July 2026 (Latest)
+- 🌟 **Hero Glow Ring** — The hero invitation card now emits a slow-pulsing ambient gold glow ring animation for a premium cinematic entrance feel
+- 🖼️ **Photo Gallery Section** — New mosaic bento-grid gallery with 6 themed tiles (Graduation Day, Field Visit, Lab Sessions, Cultural Events, Chai Breaks, Survey Trips) and animated "Coming Soon" badges
+- 🔘 **Memories & Gallery Nav Dots** — Two new floating sidebar nav dots for instant jump-to access to the Memories Wall and Photo Gallery sections
+- ⌨️ **M + G Keyboard Shortcuts** — Press `M` to jump to the Memories Wall and `G` to jump to the Photo Gallery; both appear in the keyboard hint badge
+
+### v5.4 — July 2026
 - 🎬 **Cinematic Page-Reveal Animation** — Body smoothly fades in and scales up when the entry overlay is dismissed, delivering a premium cinematic entrance effect
 - 💫 **Active Nav-Dot Pulse Ring** — The active floating sidebar navigation dot now emits a subtle gold pulse ring animation for better visual feedback
 - ⌨️ **Keyboard Shortcuts** — Press `H` (Hero), `V` (Video), `S` (Schedule), or `R` (RSVP) to instantly jump to any section; a hint badge briefly appears after entry
