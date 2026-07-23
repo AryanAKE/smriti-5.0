@@ -16,7 +16,7 @@
     <meta name="twitter:title" content="Smriti 5.0 | Civil Engineering Farewell">
     <meta name="twitter:description" content="Lights dim. Cameras roll. Memories play. Join us on 14th May, 2026 at 3:30 PM.">
     <meta name="robots" content="index, follow">
-    <meta name="version" content="5.4">
+    <meta name="version" content="5.5">
     <link rel="canonical" href="https://aryanake.github.io/smriti-5.0/">
 
     <!-- Tailwind CSS -->
@@ -489,6 +489,7 @@
         <div class="nav-dot" data-target="schedule-section" data-label="Schedule"></div>
         <div class="nav-dot" data-target="rsvp-section" data-label="RSVP"></div>
         <div class="nav-dot" data-target="memories-section" data-label="Memories"></div>
+        <div class="nav-dot" data-target="gallery-section" data-label="Gallery"></div>
         <div class="nav-dot" data-target="share-section" data-label="Share"></div>
     </nav>
 
@@ -1153,7 +1154,7 @@ where every goodbye feels like a blockbuster climax.
                 <p class="text-gray-700 text-xs tracking-widest uppercase">
                     Made with <span class="text-red-500">♥</span> for the Class of 2026
                 </p>
-                <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-gold-accent/10 border border-gold-accent/20 text-gold-accent/50 text-[10px] font-mono tracking-widest">v5.4</span>
+                <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-gold-accent/10 border border-gold-accent/20 text-gold-accent/50 text-[10px] font-mono tracking-widest">v5.5</span>
             </div>
             <p class="text-gray-700 text-xs tracking-[0.2em] uppercase">
                 Designed &amp; Developed by <span class="text-gold-accent/70">Rudrangshu Sonowal</span>
@@ -1173,6 +1174,7 @@ where every goodbye feels like a blockbuster climax.
                 <span style="color:#6b7280;font-size:0.6rem;"><kbd style="background:rgba(212,175,55,0.1);border:1px solid rgba(212,175,55,0.2);border-radius:2px;padding:1px 4px;color:rgba(212,175,55,0.7);font-family:monospace;">H</kbd> Hero</span>
                 <span style="color:#6b7280;font-size:0.6rem;"><kbd style="background:rgba(212,175,55,0.1);border:1px solid rgba(212,175,55,0.2);border-radius:2px;padding:1px 4px;color:rgba(212,175,55,0.7);font-family:monospace;">V</kbd> Video</span>
                 <span style="color:#6b7280;font-size:0.6rem;"><kbd style="background:rgba(212,175,55,0.1);border:1px solid rgba(212,175,55,0.2);border-radius:2px;padding:1px 4px;color:rgba(212,175,55,0.7);font-family:monospace;">M</kbd> Memories</span>
+                <span style="color:#6b7280;font-size:0.6rem;"><kbd style="background:rgba(212,175,55,0.1);border:1px solid rgba(212,175,55,0.2);border-radius:2px;padding:1px 4px;color:rgba(212,175,55,0.7);font-family:monospace;">G</kbd> Gallery</span>
                 <span style="color:#6b7280;font-size:0.6rem;"><kbd style="background:rgba(212,175,55,0.1);border:1px solid rgba(212,175,55,0.2);border-radius:2px;padding:1px 4px;color:rgba(212,175,55,0.7);font-family:monospace;">S</kbd> Schedule</span>
                 <span style="color:#6b7280;font-size:0.6rem;"><kbd style="background:rgba(212,175,55,0.1);border:1px solid rgba(212,175,55,0.2);border-radius:2px;padding:1px 4px;color:rgba(212,175,55,0.7);font-family:monospace;">R</kbd> RSVP</span>
             </div>
@@ -1449,8 +1451,8 @@ where every goodbye feels like a blockbuster climax.
             setTimeout(() => { toast.classList.remove('show'); }, 3500);
         }
 
-        // Keyboard Shortcuts: H=Hero, V=Video, S=Schedule, R=RSVP, M=Memories
-        const kbdShortcuts = { h: 'hero', v: 'video-section', s: 'schedule-section', r: 'rsvp-section', m: 'memories-section' };
+        // Keyboard Shortcuts: H=Hero, V=Video, S=Schedule, R=RSVP, M=Memories, G=Gallery
+        const kbdShortcuts = { h: 'hero', v: 'video-section', s: 'schedule-section', r: 'rsvp-section', m: 'memories-section', g: 'gallery-section' };
         document.addEventListener('keydown', (e) => {
             if (overlay.style.visibility === 'hidden' && !e.ctrlKey && !e.metaKey && !e.altKey) {
                 const target = kbdShortcuts[e.key.toLowerCase()];
