@@ -81,7 +81,15 @@ smriti-5.0/
 
 ## 📋 Changelog
 
-### v5.6 — July 2026 (Latest)
+### v5.7 — July 2026 (Latest)
+- ✨ **Gold Mouse-Trail Sparkle** — Tiny gold radial-gradient dots spawn and float upward wherever the cursor moves, giving the page a premium magical cinematic feel
+- 🎉 **RSVP Confetti Burst** — Clicking "Yes, I'll Be There" triggers a canvas-based gold & white confetti explosion that fans outward with gravity physics and auto-cleans after 3.5 seconds
+- 🌀 **Rotating Gradient Hero Border** — The hero invitation card is now wrapped in a conic-gradient border that slowly rotates 360° using CSS `@property --angle`, giving a premium animated "liquid gold" frame effect
+- 🎚️ **"Now Screening" Equalizer Strip** — A CSS-only animated 5-bar audio equalizer strip with staggered bounce animations sits between the hero and the marquee banner, reinforcing the cinematic premiere atmosphere
+- 💛 **Memory Wall Reaction Buttons** — All 6 Memory Wall quote cards now have a 💛 React button; clicking spawns a random floating emoji (💛 ✨ 🎓 🏗️ ❤️) that animates upward with a session counter
+- 🏷️ **v5.7 Version Bump** — Footer badge and meta version tag updated to v5.7
+
+### v5.6 — July 2026
 - 🌙 **Cinematic Theme Toggle** — A floating 🌙/☀️ pill button lets visitors switch between the default cold dark slate and a warm amber-sepia cinematic palette; preference is saved to `localStorage` and restored on revisit
 - ✍️ **Typewriter Hero Subtitle** — "Mistree Furwell" now types itself letter-by-letter with a gold cursor blink immediately after the entry overlay is dismissed, creating a cinematic on-screen reveal effect
 - © **Dynamic Copyright Year** — The footer bottom strip now auto-updates its copyright year via JavaScript so it never goes stale
