@@ -568,6 +568,42 @@
             100% { opacity: 0; transform: translate(-50%, calc(-50% - 30px)) scale(0.2); }
         }
 
+        /* Floating emoji reaction */
+        .float-emoji {
+            position: absolute;
+            pointer-events: none;
+            font-size: 1.4rem;
+            z-index: 50;
+            animation: floatUp 1.2s ease-out forwards;
+        }
+        @keyframes floatUp {
+            0%   { opacity: 1;   transform: translateY(0) scale(1); }
+            60%  { opacity: 0.8; transform: translateY(-50px) scale(1.2); }
+            100% { opacity: 0;   transform: translateY(-90px) scale(0.8); }
+        }
+        .react-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            margin-top: 12px;
+            padding: 4px 10px;
+            border: 1px solid rgba(212,175,55,0.2);
+            border-radius: 999px;
+            background: rgba(212,175,55,0.05);
+            color: rgba(212,175,55,0.6);
+            font-size: 0.65rem;
+            font-weight: 600;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+        }
+        .react-btn:hover {
+            background: rgba(212,175,55,0.12);
+            border-color: rgba(212,175,55,0.5);
+            color: #d4af37;
+        }
+
         /* Confetti canvas overlay */
         #confetti-canvas {
             position: fixed;
@@ -1073,6 +1109,7 @@ where every goodbye feels like a blockbuster climax.
                         </div>
                         <span class="text-gold-accent/60 text-xs uppercase tracking-[0.2em] font-semibold">Civil Lab · Batch 2022</span>
                     </div>
+                    <button class="react-btn" onclick="reactToMemory(this)" aria-label="React to this memory">💛 <span class="react-count">0</span></button>
                 </div>
 
                 <!-- Memory Card 2 -->
@@ -1086,6 +1123,7 @@ where every goodbye feels like a blockbuster climax.
                         </div>
                         <span class="text-gold-accent/60 text-xs uppercase tracking-[0.2em] font-semibold">Semester 1 · Foundation Year</span>
                     </div>
+                    <button class="react-btn" onclick="reactToMemory(this)" aria-label="React to this memory">💛 <span class="react-count">0</span></button>
                 </div>
 
                 <!-- Memory Card 3 -->
@@ -1099,6 +1137,7 @@ where every goodbye feels like a blockbuster climax.
                         </div>
                         <span class="text-gold-accent/60 text-xs uppercase tracking-[0.2em] font-semibold">Field Visit · Year 3</span>
                     </div>
+                    <button class="react-btn" onclick="reactToMemory(this)" aria-label="React to this memory">💛 <span class="react-count">0</span></button>
                 </div>
 
                 <!-- Memory Card 4 -->
@@ -1112,6 +1151,7 @@ where every goodbye feels like a blockbuster climax.
                         </div>
                         <span class="text-gold-accent/60 text-xs uppercase tracking-[0.2em] font-semibold">Smriti Legacy · 5 Editions</span>
                     </div>
+                    <button class="react-btn" onclick="reactToMemory(this)" aria-label="React to this memory">💛 <span class="react-count">0</span></button>
                 </div>
 
                 <!-- Memory Card 5 -->
@@ -1125,6 +1165,7 @@ where every goodbye feels like a blockbuster climax.
                         </div>
                         <span class="text-gold-accent/60 text-xs uppercase tracking-[0.2em] font-semibold">Exam Season · Every Semester</span>
                     </div>
+                    <button class="react-btn" onclick="reactToMemory(this)" aria-label="React to this memory">💛 <span class="react-count">0</span></button>
                 </div>
 
                 <!-- Memory Card 6 -->
@@ -1138,6 +1179,7 @@ where every goodbye feels like a blockbuster climax.
                         </div>
                         <span class="text-gold-accent/60 text-xs uppercase tracking-[0.2em] font-semibold">Class of 2026 · The Legacy</span>
                     </div>
+                    <button class="react-btn" onclick="reactToMemory(this)" aria-label="React to this memory">💛 <span class="react-count">0</span></button>
                 </div>
             </div>
         </div>
@@ -1745,6 +1787,23 @@ where every goodbye feels like a blockbuster climax.
                 setTimeout(() => dot.remove(), 820);
             });
         })();
-    </script>
+
+        // Memory Wall reaction button handler
+        function reactToMemory(btn) {
+            const countEl = btn.querySelector('.react-count');
+            countEl.textContent = parseInt(countEl.textContent) + 1;
+            // Spawn floating emoji
+            const emojis = ['💛','✨','🎓','🏗️','❤️'];
+            const emoji = emojis[Math.floor(Math.random() * emojis.length)];
+            const floater = document.createElement('span');
+            floater.className = 'float-emoji';
+            floater.textContent = emoji;
+            // Position relative to the button's parent card
+            const card = btn.closest('.glass-panel');
+            if (card) {
+                const cardRect = card.getBoundingClientRect();
+                const btnRect  = btn.getBoundingClientRect();
+                floater.style.left = (btnRect.left - cardRect.left + btnRect.width / 2) + 'px';
+                floater.style.bottom = (cardRect.bottom - btnRect.bottom + btnRect.height + 8) + 'px';\n                card.appendChild(floater);\n            } else {\n                document.body.appendChild(floater);\n            }\n            setTimeout(() => floater.remove(), 1300);\n        }\n    </script>
 </body>
 </html>
