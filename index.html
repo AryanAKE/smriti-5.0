@@ -430,6 +430,25 @@
             50%       { transform: scale(1.4); opacity: 0; }
         }
 
+        /* CSS Equalizer Bars */
+        .eq-bar {
+            display: inline-block;
+            width: 3px;
+            border-radius: 2px;
+            background: linear-gradient(to top, #b5952f, #f3e5ab);
+            animation: eqBounce 1.2s ease-in-out infinite alternate;
+            transform-origin: bottom;
+        }
+        .eq-bar:nth-child(1) { height: 10px; animation-delay: 0s;    animation-duration: 0.9s; }
+        .eq-bar:nth-child(2) { height: 18px; animation-delay: 0.15s; animation-duration: 1.1s; }
+        .eq-bar:nth-child(3) { height: 24px; animation-delay: 0.3s;  animation-duration: 0.8s; }
+        .eq-bar:nth-child(4) { height: 16px; animation-delay: 0.45s; animation-duration: 1.3s; }
+        .eq-bar:nth-child(5) { height: 10px; animation-delay: 0.6s;  animation-duration: 1.0s; }
+        @keyframes eqBounce {
+            0%   { transform: scaleY(0.3); opacity: 0.5; }
+            100% { transform: scaleY(1);   opacity: 1; }
+        }
+
         /* Hero card animated glow ring */
         @keyframes heroGlowRing {
             0%, 100% { box-shadow: 0 0 0 0 rgba(212,175,55,0), 0 10px 40px rgba(0,0,0,0.5), inset 0 0 60px rgba(212,175,55,0.02); }
@@ -681,6 +700,18 @@ where every goodbye feels like a blockbuster climax.
     </header>
 
     <!-- Cinematic Marquee Quote Banner -->
+    <!-- Now Screening Equalizer Strip -->
+    <div class="w-full flex items-center justify-center gap-3 py-3 border-b border-gold-accent/10 bg-black/50 relative z-10">
+        <span class="text-gold-accent/30 text-[9px] uppercase tracking-[0.3em] font-semibold">Now Screening</span>
+        <div class="flex items-end gap-[3px]" aria-hidden="true">
+            <div class="eq-bar"></div>
+            <div class="eq-bar"></div>
+            <div class="eq-bar"></div>
+            <div class="eq-bar"></div>
+            <div class="eq-bar"></div>
+        </div>
+        <span class="text-gold-accent/30 text-[9px] uppercase tracking-[0.3em] font-semibold">Smriti 5.0</span>
+    </div>
     <div class="w-full overflow-hidden border-y border-gold-accent/20 bg-black/60 py-3 relative z-10 reveal" style="--marquee-speed: 30s;">
         <div class="flex whitespace-nowrap" style="animation: marquee var(--marquee-speed) linear infinite;">
             <span class="inline-flex items-center gap-8 text-xs uppercase tracking-[0.3em] font-semibold text-gold-accent/70 px-8">
