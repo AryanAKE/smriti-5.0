@@ -482,6 +482,28 @@
             box-shadow: 0 0 20px rgba(212, 175, 55, 0.4);
             border-color: rgba(212, 175, 55, 0.7);
         }
+
+        /* Typewriter effect for hero subtitle */
+        #hero-subtitle-text {
+            display: inline-block;
+            overflow: hidden;
+            white-space: nowrap;
+            border-right: 2px solid rgba(212,175,55,0.8);
+            width: 0;
+            max-width: 100%;
+            transition: none;
+            vertical-align: bottom;
+        }
+        #hero-subtitle-text.typed {
+            border-right: none;
+        }
+        @keyframes cursorBlink {
+            0%, 100% { border-right-color: rgba(212,175,55,0.8); }
+            50%       { border-right-color: transparent; }
+        }
+        #hero-subtitle-text:not(.typed) {
+            animation: cursorBlink 0.75s step-end infinite;
+        }
     </style>
 </head>
 <body class="draft-grid text-gray-200 font-sans antialiased selection:bg-gold-accent selection:text-slate-deep relative">
@@ -570,7 +592,7 @@
             <!-- Cinematic Film-Title Subtitle -->
             <div class="flex items-center justify-center gap-3 my-2">
                 <span class="h-px w-12 bg-gold-accent/40 inline-block"></span>
-                <span class="text-gold-accent/80 font-serif italic text-xl md:text-2xl tracking-[0.15em]">Mistree Furwell</span>
+                <span class="text-gold-accent/80 font-serif italic text-xl md:text-2xl tracking-[0.15em]" id="hero-subtitle-text"></span>
                 <span class="h-px w-12 bg-gold-accent/40 inline-block"></span>
             </div>
             
@@ -1536,6 +1558,25 @@ where every goodbye feels like a blockbuster climax.
                     setTimeout(() => { kbdHint.style.opacity = '0'; }, 4000);
                 }
             }, 1200);
+
+            // Typewriter animation for hero subtitle
+            setTimeout(() => {
+                const subtitleEl = document.getElementById('hero-subtitle-text');
+                if (!subtitleEl) return;
+                const text = 'Mistree Furwell';
+                let i = 0;
+                const speed = 75; // ms per character
+                function typeChar() {
+                    if (i < text.length) {
+                        subtitleEl.style.width = 'auto';
+                        subtitleEl.textContent = text.slice(0, ++i);
+                        setTimeout(typeChar, speed);
+                    } else {
+                        subtitleEl.classList.add('typed');
+                    }
+                }
+                typeChar();
+            }, 1000);
         });
     </script>
 </body>
