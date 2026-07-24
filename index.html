@@ -504,6 +504,23 @@
         #hero-subtitle-text:not(.typed) {
             animation: cursorBlink 0.75s step-end infinite;
         }
+
+        /* Mouse-trail sparkle dots */
+        .cursor-sparkle {
+            position: fixed;
+            pointer-events: none;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(243,229,171,0.9) 0%, rgba(212,175,55,0.6) 50%, transparent 80%);
+            z-index: 99999;
+            transform: translate(-50%, -50%) scale(1);
+            animation: sparkleFloat 0.8s ease-out forwards;
+        }
+        @keyframes sparkleFloat {
+            0%   { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+            100% { opacity: 0; transform: translate(-50%, calc(-50% - 30px)) scale(0.2); }
+        }
     </style>
 </head>
 <body class="draft-grid text-gray-200 font-sans antialiased selection:bg-gold-accent selection:text-slate-deep relative">
@@ -1585,6 +1602,29 @@ where every goodbye feels like a blockbuster climax.
                 typeChar();
             }, 1000);
         });
+
+        // Mouse-trail sparkle system
+        (function() {
+            let lastSparkle = 0;
+            document.addEventListener('mousemove', (e) => {
+                const now = Date.now();
+                if (now - lastSparkle < 40) return; // throttle to ~25fps
+                lastSparkle = now;
+                const dot = document.createElement('div');
+                dot.className = 'cursor-sparkle';
+                // Random offset so they don't stack perfectly
+                const ox = (Math.random() - 0.5) * 10;
+                const oy = (Math.random() - 0.5) * 10;
+                dot.style.left = (e.clientX + ox) + 'px';
+                dot.style.top  = (e.clientY + oy) + 'px';
+                // Randomise size slightly
+                const s = 0.5 + Math.random() * 1;
+                dot.style.width  = (6 * s) + 'px';
+                dot.style.height = (6 * s) + 'px';
+                document.body.appendChild(dot);
+                setTimeout(() => dot.remove(), 820);
+            });
+        })();
     </script>
 </body>
 </html>
