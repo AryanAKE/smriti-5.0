@@ -81,7 +81,12 @@ smriti-5.0/
 
 ## 📋 Changelog
 
-### v5.5 — July 2026 (Latest)
+### v5.6 — July 2026 (Latest)
+- 🌙 **Cinematic Theme Toggle** — A floating 🌙/☀️ pill button lets visitors switch between the default cold dark slate and a warm amber-sepia cinematic palette; preference is saved to `localStorage` and restored on revisit
+- ✍️ **Typewriter Hero Subtitle** — "Mistree Furwell" now types itself letter-by-letter with a gold cursor blink immediately after the entry overlay is dismissed, creating a cinematic on-screen reveal effect
+- © **Dynamic Copyright Year** — The footer bottom strip now auto-updates its copyright year via JavaScript so it never goes stale
+
+### v5.5 — July 2026
 - 🌟 **Hero Glow Ring** — The hero invitation card now emits a slow-pulsing ambient gold glow ring animation for a premium cinematic entrance feel
 - 🖼️ **Photo Gallery Section** — New mosaic bento-grid gallery with 6 themed tiles (Graduation Day, Field Visit, Lab Sessions, Cultural Events, Chai Breaks, Survey Trips) and animated "Coming Soon" badges
 - 🔘 **Memories & Gallery Nav Dots** — Two new floating sidebar nav dots for instant jump-to access to the Memories Wall and Photo Gallery sections
