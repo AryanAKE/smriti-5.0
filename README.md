@@ -1,6 +1,6 @@
 # 🎓 Smriti 5.0 | Civil Engineering Farewell Invitation
 
-A premium, **cinematic single-page web invitation** designed for the Civil Engineering batch farewell — *Mistree Furwell*. Built with a modern architectural aesthetic featuring deep slate backgrounds, metallic gold accents, glassmorphism UI cards, live countdown timer, floating particle effects, and an interactive scroll-to-play video core.
+A premium, **cinematic single-page web invitation** designed for the Civil Engineering batch farewell — *Mistree Furwell*. Built with a modern architectural aesthetic featuring deep slate backgrounds, metallic gold accents, glassmorphism UI cards, live countdown timer, floating particle effects, and an interactive scroll-to-play video core. just made by Rudranshu
 
 ![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)
 ![TailwindCSS](https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white)
