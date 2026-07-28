@@ -81,7 +81,11 @@ smriti-5.0/
 
 ## 📋 Changelog
 
-### v5.7 — July 2026 (Latest)
+### v5.8 — July 2026 (Latest)
+- 🎵 **Generative Ambient Soundtrack** — A procedural Web Audio API synthesizer that loops a warm, cinematic chord progression with delays and high-note sparkles, toggled by a floating audio pill button with equalizer animation
+- 🏷️ **v5.8 Version Bump** — Footer badge and meta version tag updated to v5.8
+
+### v5.7 — July 2026
 - ✨ **Gold Mouse-Trail Sparkle** — Tiny gold radial-gradient dots spawn and float upward wherever the cursor moves, giving the page a premium magical cinematic feel
 - 🎉 **RSVP Confetti Burst** — Clicking "Yes, I'll Be There" triggers a canvas-based gold & white confetti explosion that fans outward with gravity physics and auto-cleans after 3.5 seconds
 - 🌀 **Rotating Gradient Hero Border** — The hero invitation card is now wrapped in a conic-gradient border that slowly rotates 360° using CSS `@property --angle`, giving a premium animated "liquid gold" frame effect

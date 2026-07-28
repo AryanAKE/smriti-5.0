@@ -16,7 +16,7 @@
     <meta name="twitter:title" content="Smriti 5.0 | Civil Engineering Farewell">
     <meta name="twitter:description" content="Lights dim. Cameras roll. Memories play. Join us on 14th May, 2026 at 3:30 PM.">
     <meta name="robots" content="index, follow">
-    <meta name="version" content="5.7">
+    <meta name="version" content="5.8">
     <link rel="canonical" href="https://aryanake.github.io/smriti-5.0/">
 
     <!-- Tailwind CSS -->
@@ -529,6 +529,47 @@
             border-color: rgba(212, 175, 55, 0.7);
         }
 
+        /* Music Toggle Button */
+        #music-toggle {
+            position: fixed;
+            bottom: 2rem;
+            left: 5rem;
+            width: 44px;
+            height: 44px;
+            background: rgba(15, 23, 42, 0.8);
+            border: 1px solid rgba(212, 175, 55, 0.35);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 998;
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            transition: background 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+            font-size: 1.1rem;
+            line-height: 1;
+        }
+        #music-toggle:hover {
+            transform: scale(1.12);
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.4);
+            border-color: rgba(212, 175, 55, 0.7);
+        }
+        @keyframes musicEqBounce {
+            0%, 100% { transform: scaleY(0.3); }
+            50% { transform: scaleY(1); }
+        }
+        .animate-music-eq {
+            animation: musicEqBounce 0.8s ease-in-out infinite alternate;
+            transform-origin: bottom;
+        }
+        .music-eq-bar {
+            display: inline-block;
+            width: 2px;
+            background: #d4af37;
+        }
+
         /* Typewriter effect for hero subtitle */
         #hero-subtitle-text {
             display: inline-block;
@@ -680,6 +721,16 @@
 
     <!-- Cinematic Theme Toggle (Dark / Warm Sepia) -->
     <button id="theme-toggle" title="Toggle Cinematic Warm Mode" aria-label="Toggle theme" onclick="toggleTheme()">🌙</button>
+
+    <!-- Cinematic Audio Controller -->
+    <button id="music-toggle" title="Toggle Background Music" aria-label="Toggle background music" onclick="toggleMusic()">
+        <span id="music-icon">🎵</span>
+        <span id="music-eq" class="hidden flex items-end gap-[2px] h-[12px] w-[14px]">
+            <span class="music-eq-bar w-[2px] rounded-full animate-music-eq" style="height:4px; animation-duration:0.6s;"></span>
+            <span class="music-eq-bar w-[2px] rounded-full animate-music-eq" style="height:10px; animation-duration:0.8s; animation-delay:0.1s;"></span>
+            <span class="music-eq-bar w-[2px] rounded-full animate-music-eq" style="height:6px; animation-duration:0.7s; animation-delay:0.2s;"></span>
+        </span>
+    </button>
 
     <!-- Particle Canvas -->
     <canvas id="particle-canvas"></canvas>
@@ -1354,7 +1405,7 @@ where every goodbye feels like a blockbuster climax.
                 <p class="text-gray-700 text-xs tracking-widest uppercase">
                     Made with <span class="text-red-500">♥</span> for the Class of 2026
                 </p>
-                <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-gold-accent/10 border border-gold-accent/20 text-gold-accent/50 text-[10px] font-mono tracking-widest">v5.7</span>
+                <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-gold-accent/10 border border-gold-accent/20 text-gold-accent/50 text-[10px] font-mono tracking-widest">v5.8</span>
             </div>
             <p class="text-gray-700 text-xs tracking-[0.2em] uppercase">
                 Designed &amp; Developed by <span class="text-gold-accent/70">Rudrangshu Sonowal</span>
@@ -1407,10 +1458,111 @@ where every goodbye feels like a blockbuster climax.
         const footerYear = document.getElementById('footer-year');
         if (footerYear) footerYear.textContent = new Date().getFullYear();
 
-        const overlay = document.getElementById('entry-overlay');
+                const overlay = document.getElementById('entry-overlay');
         const video = document.getElementById('invitation-video');
         const videoSection = document.getElementById('video-section');
         let isAudioUnlocked = false;
+
+        // Procedural Audio Engine (Generative Soundtrack)
+        let audioCtx = null;
+        let isMusicPlaying = false;
+        let mainGain = null;
+        let synthInterval = null;
+
+        function initAudio() {
+            audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+            mainGain = audioCtx.createGain();
+            mainGain.gain.setValueAtTime(0.04, audioCtx.currentTime); // keep it soft and background
+            
+            // Simple delay effect for cinematic depth
+            const delay = audioCtx.createDelay();
+            delay.delayTime.value = 0.45;
+            const delayGain = audioCtx.createGain();
+            delayGain.gain.value = 0.25;
+            
+            mainGain.connect(audioCtx.destination);
+            mainGain.connect(delay);
+            delay.connect(delayGain);
+            delayGain.connect(audioCtx.destination);
+        }
+
+        const chords = [
+            [220.00, 261.63, 329.63, 440.00], // Am
+            [174.61, 220.00, 261.63, 349.23], // F
+            [130.81, 196.00, 261.63, 329.63], // C
+            [196.00, 246.94, 293.66, 392.00]  // G
+        ];
+        let chordIndex = 0;
+
+        function playChordNote(freq, time, duration) {
+            if (!audioCtx) return;
+            const osc = audioCtx.createOscillator();
+            const gainNode = audioCtx.createGain();
+            
+            osc.type = Math.random() > 0.5 ? 'triangle' : 'sine';
+            osc.frequency.setValueAtTime(freq, time);
+            
+            gainNode.gain.setValueAtTime(0, time);
+            gainNode.gain.linearRampToValueAtTime(0.15, time + 1.5);
+            gainNode.gain.exponentialRampToValueAtTime(0.001, time + duration);
+            
+            osc.connect(gainNode);
+            gainNode.connect(mainGain);
+            
+            osc.start(time);
+            osc.stop(time + duration);
+        }
+
+        function playAmbientTrack() {
+            if (!isMusicPlaying) return;
+            const now = audioCtx.currentTime;
+            const chord = chords[chordIndex];
+            
+            chord.forEach((freq, i) => {
+                playChordNote(freq, now + i * 0.12, 7.5);
+            });
+            
+            if (Math.random() > 0.45) {
+                const highNotes = [523.25, 587.33, 659.25, 783.99, 880.00];
+                const highFreq = highNotes[Math.floor(Math.random() * highNotes.length)];
+                playChordNote(highFreq, now + 3 + Math.random() * 2, 4.0);
+            }
+            
+            chordIndex = (chordIndex + 1) % chords.length;
+            synthInterval = setTimeout(playAmbientTrack, 7200);
+        }
+
+        function toggleMusic() {
+            if (!audioCtx) initAudio();
+            
+            const btnIcon = document.getElementById('music-icon');
+            const btnEq = document.getElementById('music-eq');
+            
+            if (audioCtx.state === 'suspended') {
+                audioCtx.resume();
+            }
+            
+            if (isMusicPlaying) {
+                isMusicPlaying = false;
+                clearTimeout(synthInterval);
+                mainGain.gain.setValueAtTime(mainGain.gain.value, audioCtx.currentTime);
+                mainGain.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + 1.0);
+                
+                btnIcon.classList.remove('hidden');
+                btnEq.classList.add('hidden');
+                btnEq.classList.remove('flex');
+            } else {
+                isMusicPlaying = true;
+                mainGain.gain.setValueAtTime(0.0001, audioCtx.currentTime);
+                mainGain.gain.exponentialRampToValueAtTime(0.04, audioCtx.currentTime + 1.0);
+                
+                btnIcon.classList.add('hidden');
+                btnEq.classList.remove('hidden');
+                btnEq.classList.add('flex');
+                
+                playAmbientTrack();
+            }
+        }
 
         // 1. Handle Overlay Tap
         overlay.addEventListener('click', () => {
@@ -1425,6 +1577,13 @@ where every goodbye feels like a blockbuster climax.
             // Unlock audio but do NOT play yet
             video.muted = false;
             isAudioUnlocked = true;
+
+            // Automatically play soundtrack after reveal
+            setTimeout(() => {
+                if (!isMusicPlaying) {
+                    toggleMusic();
+                }
+            }, 1200);
         });
 
         // 1b. Keyboard dismiss for overlay (Enter / Space)
