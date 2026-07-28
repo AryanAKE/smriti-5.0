@@ -16,7 +16,7 @@
     <meta name="twitter:title" content="Smriti 5.0 | Civil Engineering Farewell">
     <meta name="twitter:description" content="Lights dim. Cameras roll. Memories play. Join us on 14th May, 2026 at 3:30 PM.">
     <meta name="robots" content="index, follow">
-    <meta name="version" content="5.8">
+    <meta name="version" content="5.9">
     <link rel="canonical" href="https://aryanake.github.io/smriti-5.0/">
 
     <!-- Tailwind CSS -->
@@ -1232,6 +1232,36 @@ where every goodbye feels like a blockbuster climax.
                     </div>
                     <button class="react-btn" onclick="reactToMemory(this)" aria-label="React to this memory">💛 <span class="react-count">0</span></button>
                 </div>
+
+                <!-- Dynamic Memories Container -->
+                <div id="dynamic-memories-container" class="contents"></div>
+
+                <!-- Interactive Memory Form Card -->
+                <div class="glass-panel rounded-sm p-7 border border-gold-accent/20 hover:border-gold-accent/50 transition-all duration-300 relative flex flex-col justify-between">
+                    <div class="absolute top-0 right-0 w-20 h-20 bg-gold-accent/5 rounded-bl-full pointer-events-none"></div>
+                    <h3 class="text-gold-accent font-serif text-lg font-bold mb-3">Leave a Memory</h3>
+                    <form id="memory-form" onsubmit="submitMemory(event)" class="space-y-3">
+                        <div>
+                            <input type="text" id="mem-name" placeholder="Your Name" required class="w-full bg-slate-deep/60 border border-gold-accent/20 rounded px-3 py-1.5 text-xs text-white placeholder-gray-500 focus:outline-none focus:border-gold-accent/60 transition-colors">
+                        </div>
+                        <div>
+                            <select id="mem-role" required class="w-full bg-slate-deep/60 border border-gold-accent/20 rounded px-3 py-1.5 text-xs text-gray-300 focus:outline-none focus:border-gold-accent/60 transition-colors">
+                                <option value="" disabled selected>Your Batch/Role</option>
+                                <option value="Batch 2022">Senior · Batch 2022</option>
+                                <option value="Batch 2023">Junior · Batch 2023</option>
+                                <option value="Faculty">Faculty Member</option>
+                                <option value="Alumni">Alumni</option>
+                            </select>
+                        </div>
+                        <div>
+                            <textarea id="mem-quote" placeholder="Share a special memory or quote..." required rows="3" class="w-full bg-slate-deep/60 border border-gold-accent/20 rounded px-3 py-1.5 text-xs text-white placeholder-gray-500 focus:outline-none focus:border-gold-accent/60 transition-colors resize-none"></textarea>
+                        </div>
+                        <button type="submit" class="w-full py-2 bg-gold-accent text-slate-deep font-bold text-xs uppercase tracking-wider rounded hover:bg-gold-light transition-colors duration-200">
+                            Post to Wall
+                        </button>
+                    </form>
+                </div>
+
             </div>
         </div>
     </section>
@@ -1405,7 +1435,7 @@ where every goodbye feels like a blockbuster climax.
                 <p class="text-gray-700 text-xs tracking-widest uppercase">
                     Made with <span class="text-red-500">♥</span> for the Class of 2026
                 </p>
-                <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-gold-accent/10 border border-gold-accent/20 text-gold-accent/50 text-[10px] font-mono tracking-widest">v5.8</span>
+                <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-gold-accent/10 border border-gold-accent/20 text-gold-accent/50 text-[10px] font-mono tracking-widest">v5.9</span>
             </div>
             <p class="text-gray-700 text-xs tracking-[0.2em] uppercase">
                 Designed &amp; Developed by <span class="text-gold-accent/70">Rudrangshu Sonowal</span>
@@ -1963,6 +1993,82 @@ where every goodbye feels like a blockbuster climax.
                 const cardRect = card.getBoundingClientRect();
                 const btnRect  = btn.getBoundingClientRect();
                 floater.style.left = (btnRect.left - cardRect.left + btnRect.width / 2) + 'px';
-                floater.style.bottom = (cardRect.bottom - btnRect.bottom + btnRect.height + 8) + 'px';\n                card.appendChild(floater);\n            } else {\n                document.body.appendChild(floater);\n            }\n            setTimeout(() => floater.remove(), 1300);\n        }\n    </script>
+                floater.style.bottom = (cardRect.bottom - btnRect.bottom + btnRect.height + 8) + 'px';
+                card.appendChild(floater);
+            } else {
+                document.body.appendChild(floater);
+            }
+            setTimeout(() => floater.remove(), 1300);
+        }
+
+        // Memories Wall dynamic persistence
+        const dynamicMemoriesContainer = document.getElementById('dynamic-memories-container');
+        
+        function loadMemories() {
+            const saved = JSON.parse(localStorage.getItem('smriti-memories') || '[]');
+            saved.forEach(mem => {
+                renderMemoryCard(mem, false);
+            });
+        }
+
+        function renderMemoryCard(mem, animate = true) {
+            const card = document.createElement('div');
+            card.className = `glass-panel shimmer-card rounded-sm p-7 transform transition-all duration-500 hover:-translate-y-3 hover:border-gold-accent/60 hover:shadow-[0_15px_40px_rgba(212,175,55,0.12)] group relative ${animate ? 'opacity-0 scale-95' : ''}`;
+            card.innerHTML = `
+                <div class="absolute top-0 right-0 w-20 h-20 bg-gold-accent/5 rounded-bl-full pointer-events-none"></div>
+                <div class="text-4xl mb-4 text-gold-accent/30 font-serif leading-none select-none">"</div>
+                <p class="text-gray-300 font-light text-sm leading-relaxed italic mb-5">${escapeHTML(mem.quote)}</p>
+                <div class="flex items-center gap-3 mt-auto">
+                    <div class="w-8 h-8 rounded-full bg-gold-accent/10 border border-gold-accent/30 flex items-center justify-center">
+                        <svg class="w-4 h-4 text-gold-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
+                    </div>
+                    <span class="text-gold-accent/60 text-xs uppercase tracking-[0.2em] font-semibold">${escapeHTML(mem.name)} · ${escapeHTML(mem.role)}</span>
+                </div>
+                <button class="react-btn" onclick="reactToMemory(this)" aria-label="React to this memory">💛 <span class="react-count">0</span></button>
+            `;
+            
+            if (dynamicMemoriesContainer) {
+                dynamicMemoriesContainer.appendChild(card);
+                if (animate) {
+                    setTimeout(() => {
+                        card.classList.remove('opacity-0', 'scale-95');
+                    }, 50);
+                }
+            }
+        }
+
+        function escapeHTML(str) {
+            return str.replace(/[&<>'"]/g, 
+                tag => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;' }[tag] || tag)
+            );
+        }
+
+        function submitMemory(event) {
+            event.preventDefault();
+            const nameEl = document.getElementById('mem-name');
+            const roleEl = document.getElementById('mem-role');
+            const quoteEl = document.getElementById('mem-quote');
+            
+            const newMem = {
+                name: nameEl.value.trim(),
+                role: roleEl.value,
+                quote: quoteEl.value.trim(),
+                id: Date.now()
+            };
+            
+            if (!newMem.name || !newMem.role || !newMem.quote) return;
+            
+            const saved = JSON.parse(localStorage.getItem('smriti-memories') || '[]');
+            saved.push(newMem);
+            localStorage.setItem('smriti-memories', JSON.stringify(saved));
+            
+            renderMemoryCard(newMem, true);
+            event.target.reset();
+            launchConfetti();
+        }
+
+        // Initialize dynamic memories
+        loadMemories();
+    </script>
 </body>
 </html>

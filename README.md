@@ -81,7 +81,11 @@ smriti-5.0/
 
 ## 📋 Changelog
 
-### v5.8 — July 2026 (Latest)
+### v5.9 — July 2026 (Latest)
+- ✍️ **Interactive Memory Wall** — Form card added to the Memories Wall grid; visitors can submit custom quotes/memories with name and batch details, persisting in `localStorage` and rendering dynamically with full reaction support
+- 🏷️ **v5.9 Version Bump** — Footer badge and meta version tag updated to v5.9
+
+### v5.8 — July 2026
 - 🎵 **Generative Ambient Soundtrack** — A procedural Web Audio API synthesizer that loops a warm, cinematic chord progression with delays and high-note sparkles, toggled by a floating audio pill button with equalizer animation
 - 🏷️ **v5.8 Version Bump** — Footer badge and meta version tag updated to v5.8
 
