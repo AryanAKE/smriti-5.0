@@ -81,7 +81,11 @@ smriti-5.0/
 
 ## 📋 Changelog
 
-### v6.0 — July 2026 (Latest)
+### v6.1 — July 2026 (Latest)
+- 🖼️ **Bento Photo Lightbox** — Made the static photo grid interactive; clicking any bento card (e.g. Graduation, Field Visit, Lab, Survey, Chai Breaks) opens a premium lightbox modal with high-definition Unsplash imagery and thematic engineering captions
+- 🏷️ **v6.1 Version Bump** — Footer badge and meta version tag updated to v6.1
+
+### v6.0 — July 2026
 - 📋 **RSVP Dashboard & Modal** — Replaced the standard email mailto RSVP link with an interactive details-entry modal (Name, Role, Food preference, and Message), updating a real-time guest stats dashboard and recent RSVP scrolling feed stored in `localStorage`
 - 🏷️ **v6.0 Version Bump** — Footer badge and meta version tag updated to v6.0
 

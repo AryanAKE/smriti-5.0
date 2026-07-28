@@ -27,7 +27,7 @@
     <meta name="twitter:title" content="Smriti 5.0 | Civil Engineering Farewell">
     <meta name="twitter:description" content="Lights dim. Cameras roll. Memories play. Join us on 14th May, 2026 at 3:30 PM.">
     <meta name="robots" content="index, follow">
-    <meta name="version" content="6.0">
+    <meta name="version" content="6.1">
     <link rel="canonical" href="https://aryanake.github.io/smriti-5.0/">
 
     <!-- Tailwind CSS -->
@@ -1311,50 +1311,56 @@ where every goodbye feels like a blockbuster climax.
                 <p class="text-gray-500 text-sm font-light mt-4 max-w-lg mx-auto">A mosaic of moments — four years of laughter, sweat, and memories framed forever.</p>
             </div>
             <div class="grid grid-cols-2 md:grid-cols-4 gap-3 auto-rows-[140px] md:auto-rows-[160px]">
-                <div class="col-span-2 row-span-2 glass-panel rounded-sm relative overflow-hidden group border border-gold-accent/20 hover:border-gold-accent/50 transition-all duration-500 hover:shadow-[0_0_30px_rgba(212,175,55,0.15)] cursor-pointer">
+                <!-- Item 1: Graduation Day -->
+                <div onclick="openLightbox('graduation')" class="col-span-2 row-span-2 glass-panel rounded-sm relative overflow-hidden group border border-gold-accent/20 hover:border-gold-accent/50 transition-all duration-500 hover:shadow-[0_0_30px_rgba(212,175,55,0.15)] cursor-pointer hover:scale-[1.01]">
                     <div class="absolute inset-0 bg-gradient-to-br from-gold-accent/8 via-transparent to-black/60"></div>
                     <div class="absolute inset-0 flex flex-col items-center justify-center gap-3 opacity-60 group-hover:opacity-100 transition-opacity duration-300">
-                        <span class="text-5xl">🎓</span>
+                        <span class="text-5xl transform group-hover:scale-110 duration-300">🎓</span>
                         <p class="text-gold-accent/70 text-xs uppercase tracking-[0.25em] font-semibold">Graduation Day</p>
                     </div>
                     <div class="absolute bottom-3 left-3">
                         <span class="inline-flex items-center gap-1.5 px-2 py-1 rounded-full bg-black/60 border border-gold-accent/20 text-gold-accent/60 text-[9px] font-semibold uppercase tracking-widest backdrop-blur-sm">
-                            <span class="w-1.5 h-1.5 rounded-full bg-gold-accent/50 animate-pulse inline-block"></span> Coming Soon
+                            <span class="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse inline-block"></span> Click to View
                         </span>
                     </div>
                 </div>
-                <div class="col-span-1 glass-panel rounded-sm relative overflow-hidden group border border-gold-accent/20 hover:border-gold-accent/50 transition-all duration-500 cursor-pointer">
+                <!-- Item 2: Field Visit -->
+                <div onclick="openLightbox('field')" class="col-span-1 glass-panel rounded-sm relative overflow-hidden group border border-gold-accent/20 hover:border-gold-accent/50 transition-all duration-500 cursor-pointer hover:scale-[1.02]">
                     <div class="absolute inset-0 bg-gradient-to-br from-gold-accent/5 to-black/40"></div>
                     <div class="absolute inset-0 flex flex-col items-center justify-center gap-2 opacity-60 group-hover:opacity-100 transition-opacity duration-300">
-                        <span class="text-3xl">🏗️</span>
+                        <span class="text-3xl transform group-hover:scale-110 duration-300">🏗️</span>
                         <p class="text-gold-accent/60 text-[9px] uppercase tracking-widest font-semibold">Field Visit</p>
                     </div>
                 </div>
-                <div class="col-span-1 glass-panel rounded-sm relative overflow-hidden group border border-gold-accent/20 hover:border-gold-accent/50 transition-all duration-500 cursor-pointer">
+                <!-- Item 3: Lab Sessions -->
+                <div onclick="openLightbox('lab')" class="col-span-1 glass-panel rounded-sm relative overflow-hidden group border border-gold-accent/20 hover:border-gold-accent/50 transition-all duration-500 cursor-pointer hover:scale-[1.02]">
                     <div class="absolute inset-0 bg-gradient-to-br from-gold-accent/5 to-black/40"></div>
                     <div class="absolute inset-0 flex flex-col items-center justify-center gap-2 opacity-60 group-hover:opacity-100 transition-opacity duration-300">
-                        <span class="text-3xl">📐</span>
+                        <span class="text-3xl transform group-hover:scale-110 duration-300">📐</span>
                         <p class="text-gold-accent/60 text-[9px] uppercase tracking-widest font-semibold">Lab Sessions</p>
                     </div>
                 </div>
-                <div class="col-span-2 glass-panel rounded-sm relative overflow-hidden group border border-gold-accent/20 hover:border-gold-accent/50 transition-all duration-500 cursor-pointer">
+                <!-- Item 4: Cultural Events -->
+                <div onclick="openLightbox('cultural')" class="col-span-2 glass-panel rounded-sm relative overflow-hidden group border border-gold-accent/20 hover:border-gold-accent/50 transition-all duration-500 cursor-pointer hover:scale-[1.01]">
                     <div class="absolute inset-0 bg-gradient-to-r from-gold-accent/8 via-transparent to-gold-accent/5"></div>
                     <div class="absolute inset-0 flex flex-col items-center justify-center gap-2 opacity-60 group-hover:opacity-100 transition-opacity duration-300">
-                        <span class="text-3xl">🎭</span>
+                        <span class="text-3xl transform group-hover:scale-110 duration-300">🎭</span>
                         <p class="text-gold-accent/60 text-[9px] uppercase tracking-widest font-semibold">Cultural Events</p>
                     </div>
                 </div>
-                <div class="col-span-1 glass-panel rounded-sm relative overflow-hidden group border border-gold-accent/20 hover:border-gold-accent/50 transition-all duration-500 cursor-pointer">
+                <!-- Item 5: Chai Breaks -->
+                <div onclick="openLightbox('chai')" class="col-span-1 glass-panel rounded-sm relative overflow-hidden group border border-gold-accent/20 hover:border-gold-accent/50 transition-all duration-500 cursor-pointer hover:scale-[1.02]">
                     <div class="absolute inset-0 bg-gradient-to-br from-gold-accent/5 to-black/40"></div>
                     <div class="absolute inset-0 flex flex-col items-center justify-center gap-2 opacity-60 group-hover:opacity-100 transition-opacity duration-300">
-                        <span class="text-3xl">☕</span>
+                        <span class="text-3xl transform group-hover:scale-110 duration-300">☕</span>
                         <p class="text-gold-accent/60 text-[9px] uppercase tracking-widest font-semibold">Chai Breaks</p>
                     </div>
                 </div>
-                <div class="col-span-1 glass-panel rounded-sm relative overflow-hidden group border border-gold-accent/20 hover:border-gold-accent/50 transition-all duration-500 cursor-pointer">
+                <!-- Item 6: Survey Trips -->
+                <div onclick="openLightbox('survey')" class="col-span-1 glass-panel rounded-sm relative overflow-hidden group border border-gold-accent/20 hover:border-gold-accent/50 transition-all duration-500 cursor-pointer hover:scale-[1.02]">
                     <div class="absolute inset-0 bg-gradient-to-br from-gold-accent/5 to-black/40"></div>
                     <div class="absolute inset-0 flex flex-col items-center justify-center gap-2 opacity-60 group-hover:opacity-100 transition-opacity duration-300">
-                        <span class="text-3xl">🌉</span>
+                        <span class="text-3xl transform group-hover:scale-110 duration-300">🌉</span>
                         <p class="text-gold-accent/60 text-[9px] uppercase tracking-widest font-semibold">Survey Trips</p>
                     </div>
                 </div>
@@ -1471,7 +1477,7 @@ where every goodbye feels like a blockbuster climax.
                 <p class="text-gray-700 text-xs tracking-widest uppercase">
                     Made with <span class="text-red-500">♥</span> for the Class of 2026
                 </p>
-                <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-gold-accent/10 border border-gold-accent/20 text-gold-accent/50 text-[10px] font-mono tracking-widest">v6.0</span>
+                <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-gold-accent/10 border border-gold-accent/20 text-gold-accent/50 text-[10px] font-mono tracking-widest">v6.1</span>
             </div>
             <p class="text-gray-700 text-xs tracking-[0.2em] uppercase">
                 Designed &amp; Developed by <span class="text-gold-accent/70">Rudrangshu Sonowal</span>
@@ -2203,6 +2209,75 @@ where every goodbye feels like a blockbuster climax.
 
         // Initialize RSVP list
         loadRSVPs();
+
+        // Bento Lightbox logic
+        const lightboxModal = document.getElementById('lightbox-modal');
+        const lightboxImg = document.getElementById('lightbox-img');
+        const lightboxTitle = document.getElementById('lightbox-title');
+        const lightboxDesc = document.getElementById('lightbox-desc');
+
+        const galleryData = {
+            graduation: {
+                img: 'https://images.unsplash.com/photo-1523050854058-8df90110c9f1?q=80&w=1200',
+                title: 'Graduation Day',
+                desc: 'Celebrating the culmination of 4 years of hard work, late nights, and bonds that will last a lifetime.'
+            },
+            field: {
+                img: 'https://images.unsplash.com/photo-1541888946425-d81bb19240f5?q=80&w=1200',
+                title: 'Field Visit',
+                desc: 'Inspecting reinforcement detailing and concrete casting at the major bridge project site.'
+            },
+            lab: {
+                img: 'https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?q=80&w=1200',
+                title: 'Lab Sessions',
+                desc: 'From concrete slump tests to universal testing machine trials - engineering in action.'
+            },
+            cultural: {
+                img: 'https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?q=80&w=1200',
+                title: 'Cultural Events',
+                desc: 'When engineering notebooks were replaced by guitars, dance steps, and dramatic scripts.'
+            },
+            chai: {
+                img: 'https://images.unsplash.com/photo-1576092768241-dec231879fc3?q=80&w=1200',
+                title: 'Chai Breaks',
+                desc: 'The real brainstorming sessions happened over hot tea and samosas outside the campus gate.'
+            },
+            survey: {
+                img: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=1200',
+                title: 'Survey Trips',
+                desc: 'Levelling surveys, contour mapping, and holding the prism pole under the hot sun.'
+            }
+        };
+
+        function openLightbox(theme) {
+            const data = galleryData[theme];
+            if (!data || !lightboxModal) return;
+            
+            lightboxImg.src = data.img;
+            lightboxImg.alt = data.title;
+            lightboxTitle.textContent = data.title;
+            lightboxDesc.textContent = data.desc;
+            
+            lightboxModal.classList.remove('pointer-events-none');
+            lightboxModal.classList.remove('opacity-0');
+            document.body.style.overflow = 'hidden';
+            
+            document.addEventListener('keydown', handleLightboxEsc);
+        }
+
+        function closeLightbox() {
+            if (!lightboxModal) return;
+            lightboxModal.classList.add('pointer-events-none');
+            lightboxModal.classList.add('opacity-0');
+            document.body.style.overflow = '';
+            document.removeEventListener('keydown', handleLightboxEsc);
+            // Clear src after fadeout to prevent flash
+            setTimeout(() => { lightboxImg.src = ''; }, 300);
+        }
+
+        function handleLightboxEsc(e) {
+            if (e.key === 'Escape') closeLightbox();
+        }
     </script>
 
     <!-- RSVP Modal -->
@@ -2245,6 +2320,20 @@ where every goodbye feels like a blockbuster climax.
                     Submit RSVP
                 </button>
             </form>
+        </div>
+    </div>
+
+    <!-- Lightbox Modal -->
+    <div id="lightbox-modal" class="fixed inset-0 z-[10000] flex flex-col items-center justify-center bg-black/95 opacity-0 pointer-events-none transition-opacity duration-300" role="dialog" aria-modal="true">
+        <button onclick="closeLightbox()" class="absolute top-6 right-6 text-gray-500 hover:text-gold-accent text-2xl focus:outline-none" aria-label="Close lightbox">✕</button>
+        <div class="max-w-4xl w-full px-4 flex flex-col items-center">
+            <div class="glass-panel p-2 rounded-sm border border-gold-accent/20 bg-black/60 shadow-[0_0_50px_rgba(0,0,0,0.8)] relative max-w-2xl w-full aspect-[16/10] overflow-hidden">
+                <img id="lightbox-img" src="" alt="" class="w-full h-full object-cover rounded-sm">
+            </div>
+            <div class="mt-6 text-center max-w-2xl">
+                <h3 id="lightbox-title" class="text-2xl font-serif text-gold-gradient italic font-bold mb-2"></h3>
+                <p id="lightbox-desc" class="text-gray-400 text-sm font-light leading-relaxed"></p>
+            </div>
         </div>
     </div>
 </body>
