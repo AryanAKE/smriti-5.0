@@ -81,7 +81,11 @@ smriti-5.0/
 
 ## 📋 Changelog
 
-### v6.1 — July 2026 (Latest)
+### v6.2 — July 2026 (Latest)
+- 🎨 **Digital Gold Signature Wall** — Added a HTML5 Canvas-based signature guestbook with a glowing gold ink brush stroke; users can sign or sketch on the canvas, clear and publish their signature, rendering dynamically on a "Wall of Legends" saved in `localStorage`
+- 🏷️ **v6.2 Version Bump** — Footer badge and meta version tag updated to v6.2
+
+### v6.1 — July 2026
 - 🖼️ **Bento Photo Lightbox** — Made the static photo grid interactive; clicking any bento card (e.g. Graduation, Field Visit, Lab, Survey, Chai Breaks) opens a premium lightbox modal with high-definition Unsplash imagery and thematic engineering captions
 - 🏷️ **v6.1 Version Bump** — Footer badge and meta version tag updated to v6.1
 

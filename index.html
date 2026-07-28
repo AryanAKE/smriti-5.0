@@ -27,7 +27,7 @@
     <meta name="twitter:title" content="Smriti 5.0 | Civil Engineering Farewell">
     <meta name="twitter:description" content="Lights dim. Cameras roll. Memories play. Join us on 14th May, 2026 at 3:30 PM.">
     <meta name="robots" content="index, follow">
-    <meta name="version" content="6.1">
+    <meta name="version" content="6.2">
     <link rel="canonical" href="https://aryanake.github.io/smriti-5.0/">
 
     <!-- Tailwind CSS -->
@@ -1057,6 +1057,39 @@ where every goodbye feels like a blockbuster climax.
         </div>
     </section>
 
+    <!-- Digital Signature Guestbook Section -->
+    <section id="guestbook-section" class="py-20 px-4 relative z-10 border-t border-white/5 bg-black/10">
+        <div class="max-w-2xl mx-auto text-center space-y-8">
+            <div class="text-center">
+                <p class="text-xs uppercase tracking-[0.3em] text-gold-accent font-semibold mb-3 opacity-80">Wall of Legends</p>
+                <h2 class="text-3xl md:text-5xl font-serif text-white">Sign the <span class="text-gold-gradient italic font-bold">Guestbook</span></h2>
+                <p class="text-gray-400 text-sm font-light mt-3 max-w-md mx-auto">Leave your mark on the Class of 2026 digital wall. Sign or draw in gold ink below.</p>
+            </div>
+            
+            <div class="glass-panel p-6 rounded-sm border border-gold-accent/25 max-w-lg mx-auto flex flex-col items-center gap-4">
+                <div class="relative w-full aspect-[2/1] bg-slate-deep/80 border border-gold-accent/15 rounded-sm overflow-hidden">
+                    <canvas id="signature-canvas" class="w-full h-full cursor-crosshair touch-none"></canvas>
+                </div>
+                <div class="flex gap-4 w-full justify-between">
+                    <button onclick="clearCanvas()" class="px-5 py-2.5 border border-white/10 hover:border-white/20 text-gray-400 hover:text-white text-xs font-bold uppercase tracking-wider rounded-sm transition-colors duration-200">
+                        Clear Canvas
+                    </button>
+                    <button onclick="publishSignature()" class="px-6 py-2.5 bg-gold-accent hover:bg-gold-light text-slate-deep text-xs font-bold uppercase tracking-wider rounded-sm hover:shadow-[0_0_20px_rgba(212,175,55,0.4)] transition-all duration-300">
+                        Publish Signature
+                    </button>
+                </div>
+            </div>
+
+            <!-- Published Signatures Grid -->
+            <div id="signatures-grid-container" class="max-w-xl mx-auto space-y-4 text-left hidden">
+                <h3 class="text-gold-accent font-serif text-xs uppercase tracking-[0.2em] font-semibold">Legendary Signatures</h3>
+                <div id="signatures-grid" class="grid grid-cols-2 sm:grid-cols-3 gap-4">
+                    <!-- Base64 signatures rendered here -->
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Programme Schedule / Evening Timeline -->
     <section id="schedule-section" class="py-24 px-4 relative z-10 border-t border-white/5">
         <div class="max-w-3xl mx-auto">
@@ -1477,7 +1510,7 @@ where every goodbye feels like a blockbuster climax.
                 <p class="text-gray-700 text-xs tracking-widest uppercase">
                     Made with <span class="text-red-500">♥</span> for the Class of 2026
                 </p>
-                <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-gold-accent/10 border border-gold-accent/20 text-gold-accent/50 text-[10px] font-mono tracking-widest">v6.1</span>
+                <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-gold-accent/10 border border-gold-accent/20 text-gold-accent/50 text-[10px] font-mono tracking-widest">v6.2</span>
             </div>
             <p class="text-gray-700 text-xs tracking-[0.2em] uppercase">
                 Designed &amp; Developed by <span class="text-gold-accent/70">Rudrangshu Sonowal</span>
@@ -2278,6 +2311,135 @@ where every goodbye feels like a blockbuster climax.
         function handleLightboxEsc(e) {
             if (e.key === 'Escape') closeLightbox();
         }
+
+        // Canvas Guestbook Signature logic
+        const sigCanvas = document.getElementById('signature-canvas');
+        let sigCtx = null;
+        let isSigDrawing = false;
+        
+        if (sigCanvas) {
+            sigCtx = sigCanvas.getContext('2d');
+            
+            function resizeSigCanvas() {
+                const rect = sigCanvas.getBoundingClientRect();
+                sigCanvas.width = rect.width;
+                sigCanvas.height = rect.height;
+                
+                sigCtx.strokeStyle = '#d4af37';
+                sigCtx.lineWidth = 2.5;
+                sigCtx.lineCap = 'round';
+                sigCtx.lineJoin = 'round';
+                
+                sigCtx.shadowColor = 'rgba(212, 175, 55, 0.8)';
+                sigCtx.shadowBlur = 6;
+            }
+            
+            setTimeout(resizeSigCanvas, 500);
+            window.addEventListener('resize', resizeSigCanvas);
+            
+            sigCanvas.addEventListener('mousedown', (e) => {
+                isSigDrawing = true;
+                const { x, y } = getSigCanvasCoords(e);
+                sigCtx.beginPath();
+                sigCtx.moveTo(x, y);
+            });
+            
+            sigCanvas.addEventListener('mousemove', (e) => {
+                if (!isSigDrawing) return;
+                const { x, y } = getSigCanvasCoords(e);
+                sigCtx.lineTo(x, y);
+                sigCtx.stroke();
+            });
+            
+            window.addEventListener('mouseup', () => { isSigDrawing = false; });
+            
+            sigCanvas.addEventListener('touchstart', (e) => {
+                isSigDrawing = true;
+                const { x, y } = getSigCanvasCoords(e.touches[0]);
+                sigCtx.beginPath();
+                sigCtx.moveTo(x, y);
+                e.preventDefault();
+            }, { passive: false });
+            
+            sigCanvas.addEventListener('touchmove', (e) => {
+                if (!isSigDrawing) return;
+                const { x, y } = getSigCanvasCoords(e.touches[0]);
+                sigCtx.lineTo(x, y);
+                sigCtx.stroke();
+                e.preventDefault();
+            }, { passive: false });
+            
+            sigCanvas.addEventListener('touchend', (e) => {
+                isSigDrawing = false;
+                e.preventDefault();
+            }, { passive: false });
+        }
+        
+        function getSigCanvasCoords(e) {
+            const rect = sigCanvas.getBoundingClientRect();
+            return {
+                x: e.clientX - rect.left,
+                y: e.clientY - rect.top
+            };
+        }
+        
+        function clearCanvas() {
+            if (!sigCtx) return;
+            sigCtx.clearRect(0, 0, sigCanvas.width, sigCanvas.height);
+        }
+        
+        function publishSignature() {
+            if (!sigCanvas || !sigCtx) return;
+            
+            const pixelBuffer = new Uint32Array(sigCtx.getImageData(0, 0, sigCanvas.width, sigCanvas.height).data.buffer);
+            const hasDrawings = pixelBuffer.some(color => color !== 0);
+            
+            if (!hasDrawings) {
+                alert('Please sign on the canvas before publishing!');
+                return;
+            }
+            
+            const dataUrl = sigCanvas.toDataURL();
+            const saved = JSON.parse(localStorage.getItem('smriti-signatures') || '[]');
+            saved.push(dataUrl);
+            localStorage.setItem('smriti-signatures', JSON.stringify(saved));
+            
+            clearCanvas();
+            loadSignatures();
+            launchConfetti();
+            
+            const toast = document.getElementById('toast-notification');
+            if (toast) {
+                toast.querySelector('span').innerHTML = 'Signature Published — You are now on the <span class="text-gold-accent">Wall of Legends!</span>';
+                toast.classList.add('show');
+                setTimeout(() => { toast.classList.remove('show'); }, 3500);
+            }
+        }
+        
+        function loadSignatures() {
+            const saved = JSON.parse(localStorage.getItem('smriti-signatures') || '[]');
+            const container = document.getElementById('signatures-grid-container');
+            const grid = document.getElementById('signatures-grid');
+            
+            if (saved.length === 0) {
+                if (container) container.classList.add('hidden');
+                return;
+            }
+            
+            if (container) container.classList.remove('hidden');
+            if (grid) {
+                grid.innerHTML = '';
+                saved.slice(-9).reverse().forEach(sig => {
+                    const block = document.createElement('div');
+                    block.className = 'glass-panel p-1 rounded-sm border border-gold-accent/15 bg-black/40 flex justify-center items-center aspect-[2/1] overflow-hidden';
+                    block.innerHTML = `<img src="${sig}" alt="Signature" class="max-h-[90%] max-w-[90%] object-contain select-none pointer-events-none filter brightness-110">`;
+                    grid.appendChild(block);
+                });
+            }
+        }
+
+        // Initialize signatures
+        loadSignatures();
     </script>
 
     <!-- RSVP Modal -->
