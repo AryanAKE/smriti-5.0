@@ -81,7 +81,11 @@ smriti-5.0/
 
 ## 📋 Changelog
 
-### v5.9 — July 2026 (Latest)
+### v6.0 — July 2026 (Latest)
+- 📋 **RSVP Dashboard & Modal** — Replaced the standard email mailto RSVP link with an interactive details-entry modal (Name, Role, Food preference, and Message), updating a real-time guest stats dashboard and recent RSVP scrolling feed stored in `localStorage`
+- 🏷️ **v6.0 Version Bump** — Footer badge and meta version tag updated to v6.0
+
+### v5.9 — July 2026
 - ✍️ **Interactive Memory Wall** — Form card added to the Memories Wall grid; visitors can submit custom quotes/memories with name and batch details, persisting in `localStorage` and rendering dynamically with full reaction support
 - 🏷️ **v5.9 Version Bump** — Footer badge and meta version tag updated to v5.9
 

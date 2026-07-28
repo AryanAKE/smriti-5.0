@@ -9,6 +9,17 @@
     <meta name="author" content="Civil 2nd Years — Designed by Rudrangshu Sonowal">
     <!-- Open Graph / WhatsApp / Social Sharing -->
     <meta property="og:type" content="website">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smriti 5.0 | Civil Engineering Farewell — Mistree Furwell</title>
+    <meta name="description" content="You're invited to Smriti 5.0 — the official farewell of the Department of Civil Engineering. A cinematic evening of lights, memories, and goodbyes. 14th May, 2026.">
+    <meta name="keywords" content="Smriti 5.0, Civil Engineering, Farewell, Invitation, 2026, Mistree Furwell">
+    <meta name="author" content="Civil 2nd Years — Designed by Rudrangshu Sonowal">
+    <!-- Open Graph / WhatsApp / Social Sharing -->
+    <meta property="og:type" content="website">
     <meta property="og:title" content="Smriti 5.0 | Civil Engineering Farewell">
     <meta property="og:description" content="Lights dim. Cameras roll. Memories play. You're invited to the farewell where every goodbye feels like a blockbuster climax. 14th May, 2026 | 3:30 PM | Seminar Hall">
     <meta name="twitter:card" content="summary_large_image">
@@ -16,7 +27,7 @@
     <meta name="twitter:title" content="Smriti 5.0 | Civil Engineering Farewell">
     <meta name="twitter:description" content="Lights dim. Cameras roll. Memories play. Join us on 14th May, 2026 at 3:30 PM.">
     <meta name="robots" content="index, follow">
-    <meta name="version" content="5.9">
+    <meta name="version" content="6.0">
     <link rel="canonical" href="https://aryanake.github.io/smriti-5.0/">
 
     <!-- Tailwind CSS -->
@@ -979,13 +990,12 @@ where every goodbye feels like a blockbuster climax.
             </p>
             <div class="glass-panel rounded-sm p-8 md:p-12 space-y-6 border border-gold-accent/20">
                 <div class="flex flex-col md:flex-row gap-4 items-center justify-center">
-                    <!-- Yes Button -->
-                    <a href="mailto:civil2ndyear@example.com?subject=RSVP%3A%20Yes%2C%20I%27ll%20be%20at%20Smriti%205.0&body=Hey%20Team%2C%0A%0ACount%20me%20in%20for%20Smriti%205.0%20on%2014th%20May%202026%20at%203%3A30%20PM.%20See%20you%20there%21%0A%0A%E2%80%94%20Excited%20Guest"
-                       onclick="showRSVPToast()"
+                    <!-- Yes Button (Opens Modal) -->
+                    <button onclick="openRSVPModal()"
                        class="inline-flex items-center gap-2 px-8 py-4 bg-gold-accent text-slate-deep font-bold text-sm uppercase tracking-[0.15em] rounded-sm hover:bg-gold-light hover:shadow-[0_0_30px_rgba(212,175,55,0.4)] hover:scale-105 transition-all duration-300">
                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
                         Yes, I'll Be There
-                    </a>
+                    </button>
                     <!-- Calendar Button -->
                     <a href="data:text/calendar;charset=utf8,BEGIN:VCALENDAR%0AVERSION:2.0%0ABEGIN:VEVENT%0ADTSTART:20260514T100000Z%0ADTEND:20260514T150000Z%0ASUMMARY:Smriti%205.0%20-%20Civil%20Engineering%20Farewell%0ADESCRIPTION:Mistree%20Furwell%20-%20Civil%20Engineering%20Farewell%202026%0ALOCATION:Seminar%20Hall%0AEND:VEVENT%0AEND:VCALENDAR"
                        download="smriti-5.0.ics"
@@ -995,6 +1005,32 @@ where every goodbye feels like a blockbuster climax.
                     </a>
                 </div>
                 <p class="text-gray-600 text-xs tracking-widest uppercase">14th May, 2026 · 3:30 PM · Seminar Hall</p>
+            </div>
+
+            <!-- RSVP Dashboard -->
+            <div id="rsvp-dashboard" class="mt-12 glass-panel rounded-sm p-6 text-left border border-gold-accent/15 max-w-xl mx-auto hidden">
+                <h3 class="text-gold-accent font-serif text-lg font-bold mb-4 flex items-center justify-between border-b border-gold-accent/10 pb-2">
+                    <span>🎬 Attendee Dashboard</span>
+                    <span id="rsvp-count" class="text-xs px-2 py-0.5 rounded bg-gold-accent/10 border border-gold-accent/30 font-mono">0 Attending</span>
+                </h3>
+                <div class="grid grid-cols-3 gap-4 mb-4 text-center border-b border-white/5 pb-4">
+                    <div>
+                        <span id="stat-seniors" class="text-white font-bold text-xl block">0</span>
+                        <span class="text-gray-500 text-[9px] uppercase tracking-wider">Seniors</span>
+                    </div>
+                    <div>
+                        <span id="stat-juniors" class="text-white font-bold text-xl block">0</span>
+                        <span class="text-gray-500 text-[9px] uppercase tracking-wider">Juniors</span>
+                    </div>
+                    <div>
+                        <span id="stat-other" class="text-white font-bold text-xl block">0</span>
+                        <span class="text-gray-500 text-[9px] uppercase tracking-wider">Faculty/Alumni</span>
+                    </div>
+                </div>
+                <h4 class="text-gray-400 text-[10px] uppercase tracking-wider font-semibold mb-2">Recent RSVPs</h4>
+                <div id="rsvp-list" class="max-h-[120px] overflow-y-auto space-y-2 pr-1 font-sans text-xs">
+                    <!-- Guest list items injected here -->
+                </div>
             </div>
         </div>
     </section>
@@ -1435,7 +1471,7 @@ where every goodbye feels like a blockbuster climax.
                 <p class="text-gray-700 text-xs tracking-widest uppercase">
                     Made with <span class="text-red-500">♥</span> for the Class of 2026
                 </p>
-                <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-gold-accent/10 border border-gold-accent/20 text-gold-accent/50 text-[10px] font-mono tracking-widest">v5.9</span>
+                <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-gold-accent/10 border border-gold-accent/20 text-gold-accent/50 text-[10px] font-mono tracking-widest">v6.0</span>
             </div>
             <p class="text-gray-700 text-xs tracking-[0.2em] uppercase">
                 Designed &amp; Developed by <span class="text-gold-accent/70">Rudrangshu Sonowal</span>
@@ -2069,6 +2105,147 @@ where every goodbye feels like a blockbuster climax.
 
         // Initialize dynamic memories
         loadMemories();
+
+        // RSVP Modal & Dashboard logic
+        const rsvpModal = document.getElementById('rsvp-modal');
+        
+        function openRSVPModal() {
+            if (!rsvpModal) return;
+            rsvpModal.classList.remove('pointer-events-none');
+            rsvpModal.classList.remove('opacity-0');
+            rsvpModal.querySelector('.glass-panel').classList.remove('scale-95');
+            document.body.style.overflow = 'hidden';
+            
+            // Listen for ESC to close
+            document.addEventListener('keydown', handleRSVPEsc);
+        }
+
+        function closeRSVPModal() {
+            if (!rsvpModal) return;
+            rsvpModal.classList.add('pointer-events-none');
+            rsvpModal.classList.add('opacity-0');
+            rsvpModal.querySelector('.glass-panel').classList.add('scale-95');
+            document.body.style.overflow = '';
+            document.removeEventListener('keydown', handleRSVPEsc);
+        }
+
+        function handleRSVPEsc(e) {
+            if (e.key === 'Escape') closeRSVPModal();
+        }
+
+        function loadRSVPs() {
+            const saved = JSON.parse(localStorage.getItem('smriti-rsvps') || '[]');
+            const dashboard = document.getElementById('rsvp-dashboard');
+            const countEl = document.getElementById('rsvp-count');
+            const listEl = document.getElementById('rsvp-list');
+            
+            if (saved.length === 0) {
+                if (dashboard) dashboard.classList.add('hidden');
+                return;
+            }
+            
+            if (dashboard) dashboard.classList.remove('hidden');
+            if (countEl) countEl.textContent = `${saved.length} Attending`;
+            
+            // Statistics
+            let seniors = 0, juniors = 0, other = 0;
+            if (listEl) listEl.innerHTML = '';
+            
+            saved.forEach(rsvp => {
+                if (rsvp.role.includes('Senior')) seniors++;
+                else if (rsvp.role.includes('Junior')) juniors++;
+                else other++;
+                
+                if (listEl) {
+                    const row = document.createElement('div');
+                    row.className = 'flex items-center justify-between border-b border-white/5 py-1.5 hover:bg-gold-accent/5 px-2 transition-colors';
+                    row.innerHTML = `
+                        <div>
+                            <span class="text-white font-medium">${escapeHTML(rsvp.name)}</span>
+                            <span class="text-gray-500 text-[9px] uppercase tracking-wider ml-2">(${rsvp.food})</span>
+                        </div>
+                        <span class="text-gold-accent/70 text-[10px] uppercase font-semibold tracking-wider">${escapeHTML(rsvp.role)}</span>
+                    `;
+                    listEl.appendChild(row);
+                }
+            });
+            
+            document.getElementById('stat-seniors').textContent = seniors;
+            document.getElementById('stat-juniors').textContent = juniors;
+            document.getElementById('stat-other').textContent = other;
+        }
+
+        function submitRSVP(event) {
+            event.preventDefault();
+            const name = document.getElementById('rsvp-name').value.trim();
+            const role = document.getElementById('rsvp-role').value;
+            const food = document.querySelector('input[name="rsvp-food"]:checked').value;
+            const msg = document.getElementById('rsvp-msg').value.trim();
+            
+            const newRSVP = { name, role, food, msg, id: Date.now() };
+            
+            const saved = JSON.parse(localStorage.getItem('smriti-rsvps') || '[]');
+            saved.push(newRSVP);
+            localStorage.setItem('smriti-rsvps', JSON.stringify(saved));
+            
+            closeRSVPModal();
+            loadRSVPs();
+            showRSVPToast();
+            event.target.reset();
+            
+            // Open a pre-filled compose mail window (optional fallback feedback)
+            setTimeout(() => {
+                const subject = encodeURIComponent(`RSVP Confirmation: ${name} to Smriti 5.0`);
+                const body = encodeURIComponent(`Hi Smriti 5.0 Team,\n\nI have submitted my RSVP:\n\nName: ${name}\nRole: ${role}\nFood: ${food}\nMessage: ${msg}\n\nLooking forward to the event!\n\nBest,\n${name}`);
+                window.location.href = `mailto:civil2ndyear@example.com?subject=${subject}&body=${body}`;
+            }, 3000);
+        }
+
+        // Initialize RSVP list
+        loadRSVPs();
     </script>
+
+    <!-- RSVP Modal -->
+    <div id="rsvp-modal" class="fixed inset-0 z-[10000] flex items-center justify-center bg-black/85 opacity-0 pointer-events-none transition-opacity duration-300" role="dialog" aria-modal="true" aria-labelledby="rsvp-modal-title">
+        <div class="glass-panel w-full max-w-md p-8 rounded-sm border border-gold-accent/35 shadow-[0_15px_50px_rgba(0,0,0,0.8)] relative transform scale-95 transition-transform duration-300 mx-4">
+            <button onclick="closeRSVPModal()" class="absolute top-4 right-4 text-gray-500 hover:text-gold-accent text-lg focus:outline-none" aria-label="Close modal">✕</button>
+            <h3 id="rsvp-modal-title" class="text-2xl font-serif text-gold-gradient italic font-bold mb-4">Confirm Attendance</h3>
+            <p class="text-xs text-gray-400 mb-6">Enter details to confirm your seat at the Smriti 5.0 premiere.</p>
+            <form onsubmit="submitRSVP(event)" class="space-y-4 text-left">
+                <div>
+                    <label class="block text-gray-400 text-[10px] uppercase tracking-wider font-bold mb-1.5" for="rsvp-name">Full Name</label>
+                    <input type="text" id="rsvp-name" required class="w-full bg-slate-deep border border-gold-accent/25 rounded-sm px-3.5 py-2 text-sm text-white placeholder-gray-600 focus:outline-none focus:border-gold-accent/70 transition-colors">
+                </div>
+                <div>
+                    <label class="block text-gray-400 text-[10px] uppercase tracking-wider font-bold mb-1.5" for="rsvp-role">Your Role</label>
+                    <select id="rsvp-role" required class="w-full bg-slate-deep border border-gold-accent/25 rounded-sm px-3.5 py-2 text-sm text-gray-300 focus:outline-none focus:border-gold-accent/70 transition-colors">
+                        <option value="" disabled selected>Select option</option>
+                        <option value="Senior (Batch 2022)">Senior (Batch 2022)</option>
+                        <option value="Junior (Batch 2023)">Junior (Batch 2023)</option>
+                        <option value="Faculty">Faculty Member</option>
+                        <option value="Alumni / Guest">Alumni / Guest</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block text-gray-400 text-[10px] uppercase tracking-wider font-bold mb-1.5">Food Preference</label>
+                    <div class="flex gap-4">
+                        <label class="flex items-center gap-2 text-xs text-gray-300 cursor-pointer">
+                            <input type="radio" name="rsvp-food" value="Veg" checked class="accent-gold-accent"> Veg
+                        </label>
+                        <label class="flex items-center gap-2 text-xs text-gray-300 cursor-pointer">
+                            <input type="radio" name="rsvp-food" value="Non-Veg" class="accent-gold-accent"> Non-Veg
+                        </label>
+                    </div>
+                </div>
+                <div>
+                    <label class="block text-gray-400 text-[10px] uppercase tracking-wider font-bold mb-1.5" for="rsvp-msg">Farewell Message (Optional)</label>
+                    <textarea id="rsvp-msg" placeholder="Write a brief wish or memory for the graduating batch..." rows="2" class="w-full bg-slate-deep border border-gold-accent/25 rounded-sm px-3.5 py-2 text-sm text-white placeholder-gray-600 focus:outline-none focus:border-gold-accent/70 transition-colors resize-none"></textarea>
+                </div>
+                <button type="submit" class="w-full mt-4 py-3 bg-gold-accent text-slate-deep font-bold text-sm uppercase tracking-[0.15em] rounded-sm hover:bg-gold-light hover:shadow-[0_0_20px_rgba(212,175,55,0.4)] transition-all duration-300">
+                    Submit RSVP
+                </button>
+            </form>
+        </div>
+    </div>
 </body>
 </html>
