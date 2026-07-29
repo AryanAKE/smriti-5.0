@@ -27,7 +27,7 @@
     <meta name="twitter:title" content="Smriti 5.0 | Civil Engineering Farewell">
     <meta name="twitter:description" content="Lights dim. Cameras roll. Memories play. Join us on 14th May, 2026 at 3:30 PM.">
     <meta name="robots" content="index, follow">
-    <meta name="version" content="6.2">
+    <meta name="version" content="6.3">
     <link rel="canonical" href="https://aryanake.github.io/smriti-5.0/">
 
     <!-- Tailwind CSS -->
@@ -1402,6 +1402,80 @@ where every goodbye feels like a blockbuster climax.
         </div>
     </section>
 
+    <!-- Virtual Polaroid Booth & Collage Wall -->
+    <section id="polaroid-section" class="py-24 px-4 relative z-10 border-t border-white/5">
+        <div class="max-w-6xl mx-auto space-y-12">
+            <div class="text-center">
+                <p class="text-xs uppercase tracking-[0.3em] text-gold-accent font-semibold mb-3 opacity-80">Photo Booth</p>
+                <h2 class="text-4xl md:text-5xl font-serif text-white">Virtual <span class="text-gold-gradient italic font-bold">Polaroid</span> Creator</h2>
+                <p class="text-gray-500 text-sm font-light mt-4 max-w-lg mx-auto">Create your custom retro film card with graduation emojis, write your name & best wishes, and pin it to our memory board.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+                <!-- Creator Controls -->
+                <div class="lg:col-span-5 glass-panel p-8 rounded-sm border border-gold-accent/20 space-y-5">
+                    <h3 class="text-white font-serif text-lg font-bold border-b border-gold-accent/10 pb-2">Customize Card</h3>
+                    
+                    <div class="space-y-4 text-left">
+                        <div>
+                            <label class="block text-gray-400 text-[10px] uppercase tracking-wider font-bold mb-1.5" for="pol-name">Your Name</label>
+                            <input type="text" id="pol-name" placeholder="E.g., Arjun Sharma" max-length="20" class="w-full bg-slate-deep/80 border border-gold-accent/25 rounded-sm px-3.5 py-2 text-sm text-white focus:outline-none focus:border-gold-accent/70 transition-colors" oninput="updatePolaroidPreview()">
+                        </div>
+                        <div>
+                            <label class="block text-gray-400 text-[10px] uppercase tracking-wider font-bold mb-1.5" for="pol-caption">Custom Caption</label>
+                            <input type="text" id="pol-caption" placeholder="E.g., Batch of 2026 - We built it!" max-length="35" class="w-full bg-slate-deep/80 border border-gold-accent/25 rounded-sm px-3.5 py-2 text-sm text-white focus:outline-none focus:border-gold-accent/70 transition-colors" oninput="updatePolaroidPreview()">
+                        </div>
+                        <div>
+                            <label class="block text-gray-400 text-[10px] uppercase tracking-wider font-bold mb-1.5">Select Badge Icon</label>
+                            <div class="grid grid-cols-5 gap-2 text-center">
+                                <button type="button" class="pol-icon-btn p-2 border border-gold-accent/20 bg-slate-deep/60 rounded text-xl hover:border-gold-accent active:bg-gold-accent/10 focus:outline-none transition-colors" onclick="selectPolIcon('🎓', this)">🎓</button>
+                                <button type="button" class="pol-icon-btn p-2 border border-gold-accent/20 bg-slate-deep/60 rounded text-xl hover:border-gold-accent active:bg-gold-accent/10 focus:outline-none transition-colors" onclick="selectPolIcon('🏗️', this)">🏗️</button>
+                                <button type="button" class="pol-icon-btn p-2 border border-gold-accent/20 bg-slate-deep/60 rounded text-xl hover:border-gold-accent active:bg-gold-accent/10 focus:outline-none transition-colors" onclick="selectPolIcon('📐', this)">📐</button>
+                                <button type="button" class="pol-icon-btn p-2 border border-gold-accent/20 bg-slate-deep/60 rounded text-xl hover:border-gold-accent active:bg-gold-accent/10 focus:outline-none transition-colors" onclick="selectPolIcon('☕', this)">☕</button>
+                                <button type="button" class="pol-icon-btn p-2 border border-gold-accent/20 bg-slate-deep/60 rounded text-xl hover:border-gold-accent active:bg-gold-accent/10 focus:outline-none transition-colors" onclick="selectPolIcon('❤️', this)">❤️</button>
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-gray-400 text-[10px] uppercase tracking-wider font-bold mb-1.5">Select Frame Theme</label>
+                            <div class="grid grid-cols-3 gap-2">
+                                <button type="button" class="pol-theme-btn py-1.5 border border-gold-accent/20 bg-slate-deep/60 rounded text-xs text-gray-300 hover:border-gold-accent transition-colors" onclick="selectPolTheme('white', this)">Classic White</button>
+                                <button type="button" class="pol-theme-btn py-1.5 border border-gold-accent/20 bg-slate-deep/60 rounded text-xs text-gray-300 hover:border-gold-accent transition-colors" onclick="selectPolTheme('gold', this)">Glitter Gold</button>
+                                <button type="button" class="pol-theme-btn py-1.5 border border-gold-accent/20 bg-slate-deep/60 rounded text-xs text-gray-300 hover:border-gold-accent transition-colors" onclick="selectPolTheme('blueprint', this)">Blueprint Blue</button>
+                            </div>
+                        </div>
+                        <button type="button" onclick="pinPolaroid()" class="w-full mt-4 py-3 bg-gold-accent text-slate-deep font-bold text-sm uppercase tracking-[0.15em] rounded-sm hover:bg-gold-light hover:shadow-[0_0_20px_rgba(212,175,55,0.4)] transition-all duration-300">
+                            Pin to Board
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Live Preview -->
+                <div class="lg:col-span-7 flex flex-col items-center gap-6">
+                    <canvas id="polaroid-canvas" class="hidden" width="300" height="380"></canvas>
+                    
+                    <h3 class="text-gray-400 text-[10px] uppercase tracking-[0.2em] font-semibold">Live Preview</h3>
+                    <div id="polaroid-preview-card" class="w-[200px] h-[253px] bg-white text-black p-3.5 pb-6 shadow-[0_10px_30px_rgba(0,0,0,0.8)] border border-gray-200 flex flex-col justify-between items-center transition-all duration-300">
+                        <div id="preview-photo-area" class="w-full aspect-square bg-[#1a1208] flex items-center justify-center border border-black/10 relative">
+                            <span id="preview-icon" class="text-6xl select-none">🎓</span>
+                        </div>
+                        <div class="w-full text-center space-y-1 mt-2">
+                            <p id="preview-name" class="font-serif font-bold text-sm leading-tight truncate">Your Name</p>
+                            <p id="preview-caption" class="font-sans text-[9px] text-gray-600 truncate">Your Caption</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- The Collage Board -->
+            <div class="mt-16 space-y-4">
+                <h3 class="text-gold-accent font-serif text-xs uppercase tracking-[0.2em] font-semibold text-center">Cinematic Collage Wall</h3>
+                <div id="collage-board" class="relative w-full min-h-[350px] glass-panel border border-gold-accent/15 rounded-sm p-8 bg-black/40 overflow-hidden flex flex-wrap gap-6 items-center justify-center">
+                    <p id="collage-placeholder" class="text-gray-600 text-sm font-light select-none text-center w-full">No Polaroids pinned yet. Be the first to pin yours!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Closing Cinematic Quote Banner -->
     <div class="relative z-10 w-full py-20 px-4 overflow-hidden bg-black/60 border-t border-gold-accent/20">
         <!-- Ambient glow -->
@@ -1510,7 +1584,7 @@ where every goodbye feels like a blockbuster climax.
                 <p class="text-gray-700 text-xs tracking-widest uppercase">
                     Made with <span class="text-red-500">♥</span> for the Class of 2026
                 </p>
-                <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-gold-accent/10 border border-gold-accent/20 text-gold-accent/50 text-[10px] font-mono tracking-widest">v6.2</span>
+                <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-gold-accent/10 border border-gold-accent/20 text-gold-accent/50 text-[10px] font-mono tracking-widest">v6.3</span>
             </div>
             <p class="text-gray-700 text-xs tracking-[0.2em] uppercase">
                 Designed &amp; Developed by <span class="text-gold-accent/70">Rudrangshu Sonowal</span>
@@ -2440,6 +2514,252 @@ where every goodbye feels like a blockbuster climax.
 
         // Initialize signatures
         loadSignatures();
+
+        // Polaroid Creator logic
+        let selectedPolIconVal = '🎓';
+        let selectedPolThemeVal = 'white';
+
+        function selectPolIcon(icon, btn) {
+            selectedPolIconVal = icon;
+            const previewIcon = document.getElementById('preview-icon');
+            if (previewIcon) previewIcon.textContent = icon;
+            
+            document.querySelectorAll('.pol-icon-btn').forEach(b => {
+                b.classList.remove('border-gold-accent', 'bg-gold-accent/10');
+            });
+            if (btn) btn.classList.add('border-gold-accent', 'bg-gold-accent/10');
+            updatePolaroidPreview();
+        }
+        
+        function selectPolTheme(theme, btn) {
+            selectedPolThemeVal = theme;
+            const previewCard = document.getElementById('polaroid-preview-card');
+            const photoArea = document.getElementById('preview-photo-area');
+            const nameText = document.getElementById('preview-name');
+            const capText = document.getElementById('preview-caption');
+            
+            if (previewCard && photoArea && nameText && capText) {
+                previewCard.className = "w-[200px] h-[253px] p-3.5 pb-6 shadow-[0_10px_30px_rgba(0,0,0,0.8)] border flex flex-col justify-between items-center transition-all duration-300";
+                photoArea.className = "w-full aspect-square flex items-center justify-center border relative";
+                nameText.className = "font-serif font-bold text-sm leading-tight truncate";
+                capText.className = "font-sans text-[9px] truncate";
+                
+                if (theme === 'white') {
+                    previewCard.classList.add('bg-white', 'text-black', 'border-gray-200');
+                    photoArea.classList.add('bg-[#1a1208]', 'border-black/10');
+                    nameText.classList.add('text-black');
+                    capText.classList.add('text-gray-600');
+                } else if (theme === 'gold') {
+                    previewCard.classList.add('bg-gradient-to-br', 'from-[#ffd700]', 'via-[#d4af37]', 'to-[#b5952f]', 'text-black', 'border-gold-accent/40');
+                    photoArea.classList.add('bg-[#0f172a]', 'border-gold-accent/30');
+                    nameText.classList.add('text-slate-900');
+                    capText.classList.add('text-slate-800');
+                } else if (theme === 'blueprint') {
+                    previewCard.classList.add('bg-[#0b1b3d]', 'text-white', 'border-blue-500/30');
+                    photoArea.classList.add('bg-[#0b172a]', 'border-blue-500/20');
+                    nameText.classList.add('text-gold-light');
+                    capText.classList.add('text-blue-300');
+                }
+            }
+            
+            document.querySelectorAll('.pol-theme-btn').forEach(b => {
+                b.classList.remove('border-gold-accent', 'bg-gold-accent/10');
+            });
+            if (btn) btn.classList.add('border-gold-accent', 'bg-gold-accent/10');
+            updatePolaroidPreview();
+        }
+        
+        function updatePolaroidPreview() {
+            const nameInput = document.getElementById('pol-name');
+            const capInput = document.getElementById('pol-caption');
+            const previewName = document.getElementById('preview-name');
+            const previewCap = document.getElementById('preview-caption');
+            
+            const nameVal = nameInput ? nameInput.value.trim() || 'Your Name' : 'Your Name';
+            const capVal = capInput ? capInput.value.trim() || 'Your Caption' : 'Your Caption';
+            
+            if (previewName) previewName.textContent = nameVal;
+            if (previewCap) previewCap.textContent = capVal;
+            
+            drawPolaroidCanvas(nameVal, capVal);
+        }
+        
+        function drawPolaroidCanvas(name, caption) {
+            const cv = document.getElementById('polaroid-canvas');
+            if (!cv) return;
+            const cx = cv.getContext('2d');
+            
+            cx.clearRect(0, 0, cv.width, cv.height);
+            
+            if (selectedPolThemeVal === 'white') {
+                cx.fillStyle = '#ffffff';
+                cx.fillRect(0, 0, cv.width, cv.height);
+                cx.strokeStyle = '#e5e7eb';
+                cx.lineWidth = 1;
+                cx.strokeRect(0, 0, cv.width, cv.height);
+            } else if (selectedPolThemeVal === 'gold') {
+                const grad = cx.createLinearGradient(0, 0, cv.width, cv.height);
+                grad.addColorStop(0, '#ffd700');
+                grad.addColorStop(0.5, '#d4af37');
+                grad.addColorStop(1, '#b5952f');
+                cx.fillStyle = grad;
+                cx.fillRect(0, 0, cv.width, cv.height);
+                cx.strokeStyle = '#b5952f';
+                cx.lineWidth = 2;
+                cx.strokeRect(0, 0, cv.width, cv.height);
+            } else if (selectedPolThemeVal === 'blueprint') {
+                cx.fillStyle = '#0b1b3d';
+                cx.fillRect(0, 0, cv.width, cv.height);
+                
+                cx.strokeStyle = 'rgba(59, 130, 246, 0.15)';
+                cx.lineWidth = 1;
+                const gridSize = 15;
+                for (let x = 0; x < cv.width; x += gridSize) {
+                    cx.beginPath(); cx.moveTo(x, 0); cx.lineTo(x, cv.height); cx.stroke();
+                }
+                for (let y = 0; y < cv.height; y += gridSize) {
+                    cx.beginPath(); cx.moveTo(0, y); cx.lineTo(cv.width, y); cx.stroke();
+                }
+                
+                cx.strokeStyle = 'rgba(59, 130, 246, 0.3)';
+                cx.lineWidth = 1;
+                cx.strokeRect(0, 0, cv.width, cv.height);
+            }
+            
+            const photoX = 20;
+            const photoY = 20;
+            const photoW = cv.width - 40;
+            const photoH = photoW;
+            
+            if (selectedPolThemeVal === 'white') {
+                cx.fillStyle = '#1a1208';
+                cx.fillRect(photoX, photoY, photoW, photoH);
+            } else if (selectedPolThemeVal === 'gold') {
+                cx.fillStyle = '#0f172a';
+                cx.fillRect(photoX, photoY, photoW, photoH);
+                cx.strokeStyle = 'rgba(212, 175, 55, 0.3)';
+                cx.lineWidth = 1;
+                cx.strokeRect(photoX, photoY, photoW, photoH);
+            } else if (selectedPolThemeVal === 'blueprint') {
+                cx.fillStyle = '#0b172a';
+                cx.fillRect(photoX, photoY, photoW, photoH);
+                cx.strokeStyle = 'rgba(59, 130, 246, 0.2)';
+                cx.lineWidth = 1;
+                cx.strokeRect(photoX, photoY, photoW, photoH);
+            }
+            
+            cx.font = '72px serif';
+            cx.textAlign = 'center';
+            cx.textBaseline = 'middle';
+            cx.fillText(selectedPolIconVal, photoX + photoW / 2, photoY + photoH / 2);
+            
+            cx.textAlign = 'center';
+            cx.textBaseline = 'alphabetic';
+            
+            cx.font = 'bold 18px Playfair Display, serif';
+            if (selectedPolThemeVal === 'white') cx.fillStyle = '#000000';
+            else if (selectedPolThemeVal === 'gold') cx.fillStyle = '#0f172a';
+            else if (selectedPolThemeVal === 'blueprint') cx.fillStyle = '#f3e5ab';
+            cx.fillText(name, cv.width / 2, photoY + photoH + 35);
+            
+            cx.font = '12px Inter, sans-serif';
+            if (selectedPolThemeVal === 'white') cx.fillStyle = '#4b5563';
+            else if (selectedPolThemeVal === 'gold') cx.fillStyle = '#1e293b';
+            else if (selectedPolThemeVal === 'blueprint') cx.fillStyle = '#93c5fd';
+            cx.fillText(caption, cv.width / 2, photoY + photoH + 58);
+        }
+        
+        function pinPolaroid() {
+            const nameInput = document.getElementById('pol-name');
+            const capInput = document.getElementById('pol-caption');
+            if (!nameInput || !capInput) return;
+            
+            const nameVal = nameInput.value.trim();
+            const capVal = capInput.value.trim();
+            
+            if (!nameVal || !capVal) {
+                alert('Please fill out both Name and Caption!');
+                return;
+            }
+            
+            const cv = document.getElementById('polaroid-canvas');
+            if (!cv) return;
+            
+            drawPolaroidCanvas(nameVal, capVal);
+            
+            const dataUrl = cv.toDataURL('image/png');
+            const saved = JSON.parse(localStorage.getItem('smriti-polaroids') || '[]');
+            if (saved.length >= 12) saved.shift();
+            saved.push(dataUrl);
+            localStorage.setItem('smriti-polaroids', JSON.stringify(saved));
+            
+            nameInput.value = '';
+            capInput.value = '';
+            updatePolaroidPreview();
+            renderPolaroidsOnWall();
+            launchConfetti();
+            
+            const toast = document.getElementById('toast-notification');
+            if (toast) {
+                toast.querySelector('span').innerHTML = 'Polaroid Pinned successfully to the <span class="text-gold-accent">Memory Collage Wall!</span>';
+                toast.classList.add('show');
+                setTimeout(() => { toast.classList.remove('show'); }, 3500);
+            }
+        }
+        
+        function renderPolaroidsOnWall() {
+            const saved = JSON.parse(localStorage.getItem('smriti-polaroids') || '[]');
+            const board = document.getElementById('collage-board');
+            const placeholder = document.getElementById('collage-placeholder');
+            
+            if (!board) return;
+            
+            const priorCards = board.querySelectorAll('.board-polaroid');
+            priorCards.forEach(c => c.remove());
+            
+            if (saved.length === 0) {
+                if (placeholder) placeholder.classList.remove('hidden');
+                return;
+            }
+            
+            if (placeholder) placeholder.classList.add('hidden');
+            
+            saved.forEach((sig, idx) => {
+                const img = document.createElement('img');
+                img.src = sig;
+                img.alt = 'Memory Polaroid';
+                img.className = 'board-polaroid w-[110px] sm:w-[130px] h-auto object-contain cursor-zoom-in shadow-2xl border border-white/5 transition-all duration-300 hover:scale-110 hover:z-50 hover:shadow-[0_15px_40px_rgba(212,175,55,0.3)]';
+                
+                const rot = ((idx * 7) % 14) - 7;
+                img.style.transform = `rotate(${rot}deg)`;
+                
+                img.onclick = () => {
+                    const lightboxModal = document.getElementById('lightbox-modal');
+                    const lightboxImg = document.getElementById('lightbox-img');
+                    const lightboxTitle = document.getElementById('lightbox-title');
+                    const lightboxDesc = document.getElementById('lightbox-desc');
+                    
+                    if (lightboxModal && lightboxImg) {
+                        lightboxImg.src = sig;
+                        lightboxImg.alt = 'Custom Memory Card';
+                        lightboxTitle.textContent = 'Custom Memory Polaroid';
+                        lightboxDesc.textContent = 'Made by a legendary guest at Smriti 5.0.';
+                        
+                        lightboxModal.classList.remove('pointer-events-none');
+                        lightboxModal.classList.remove('opacity-0');
+                        document.body.style.overflow = 'hidden';
+                        
+                        document.addEventListener('keydown', handleLightboxEsc);
+                    }
+                };
+                
+                board.appendChild(img);
+            });
+        }
+
+        // Initialize polaroid wall
+        renderPolaroidsOnWall();
+        updatePolaroidPreview();
     </script>
 
     <!-- RSVP Modal -->

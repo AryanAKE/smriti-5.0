@@ -81,7 +81,11 @@ smriti-5.0/
 
 ## 📋 Changelog
 
-### v6.2 — July 2026 (Latest)
+### v6.3 — July 2026 (Latest)
+- 📸 **Virtual Polaroid Memory Booth** — Created a canvas-based retro Polaroid frame generator with custom styles (Classic White, Glitter Gold, Blueprint Blue) and interactive emoji badges. Pinned cards are displayed on a slightly rotated, physical-style overlay Collage Wall backed by `localStorage`
+- 🏷️ **v6.3 Version Bump** — Footer badge and meta version tag updated to v6.3
+
+### v6.2 — July 2026
 - 🎨 **Digital Gold Signature Wall** — Added a HTML5 Canvas-based signature guestbook with a glowing gold ink brush stroke; users can sign or sketch on the canvas, clear and publish their signature, rendering dynamically on a "Wall of Legends" saved in `localStorage`
 - 🏷️ **v6.2 Version Bump** — Footer badge and meta version tag updated to v6.2
 
