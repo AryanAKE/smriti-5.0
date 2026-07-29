@@ -27,7 +27,7 @@
     <meta name="twitter:title" content="Smriti 5.0 | Civil Engineering Farewell">
     <meta name="twitter:description" content="Lights dim. Cameras roll. Memories play. Join us on 14th May, 2026 at 3:30 PM.">
     <meta name="robots" content="index, follow">
-    <meta name="version" content="6.3">
+    <meta name="version" content="6.4">
     <link rel="canonical" href="https://aryanake.github.io/smriti-5.0/">
 
     <!-- Tailwind CSS -->
@@ -971,14 +971,121 @@ where every goodbye feels like a blockbuster climax.
         </div>
     </section>
 
-    <!-- Ornamental Divider -->
-    <div class="relative z-10 py-4">
-        <div class="gold-divider">
-            <span class="gold-divider-icon">✦</span>
-            <span class="gold-divider-icon" style="font-size:0.6rem;">◆</span>
-            <span class="gold-divider-icon">✦</span>
         </div>
     </div>
+
+    <!-- Seating Blueprint Section -->
+    <section id="seating-section" class="py-24 px-4 relative z-10 border-t border-white/5 bg-[#08152e]">
+        <!-- Cyanotype grid style -->
+        <div class="absolute inset-0 pointer-events-none opacity-20" style="background-image: linear-gradient(rgba(59,130,246,0.15) 1px, transparent 1px), linear-gradient(90deg, rgba(59,130,246,0.15) 1px, transparent 1px); background-size: 20px 20px;"></div>
+        
+        <div class="max-w-5xl mx-auto space-y-12 relative">
+            <div class="text-center">
+                <p class="text-xs uppercase tracking-[0.3em] text-blue-400 font-semibold mb-3">Architectural Plan</p>
+                <h2 class="text-3xl md:text-5xl font-serif text-white">Interactive <span class="text-gold-gradient italic font-bold">Seating Blueprint</span></h2>
+                <p class="text-gray-400 text-sm font-light mt-4 max-w-lg mx-auto">Select a themed discipline table on the blueprints floorplan to reserve your seat or inspect guest placement.</p>
+            </div>
+
+            <!-- Floorplan Container -->
+            <div class="glass-panel p-6 rounded-sm border border-blue-500/25 bg-black/60 shadow-[0_0_50px_rgba(0,0,0,0.8)] relative max-w-4xl mx-auto overflow-x-auto">
+                <div class="min-w-[650px] aspect-[1.8/1] relative border-2 border-dashed border-blue-500/30 p-8 flex flex-col justify-between font-mono text-[10px] text-blue-400">
+                    
+                    <!-- Floorplan Labels (Blueprint styling) -->
+                    <div class="absolute top-3 left-4 border-b border-blue-500/30 pb-0.5">DWG: SMRITI_5.0_SEATING_LAYOUT</div>
+                    <div class="absolute top-3 right-4 border-b border-blue-500/30 pb-0.5">SCALE: 1:50</div>
+                    <div class="absolute bottom-3 left-4 border-t border-blue-500/30 pt-0.5">REF: CLASS_OF_2026</div>
+                    <div class="absolute bottom-3 right-4 border-t border-blue-500/30 pt-0.5">DRAWN BY: ARYANAKE</div>
+
+                    <!-- Room Abstractions -->
+                    <div class="absolute top-8 left-1/2 -translate-x-1/2 border border-blue-500/30 px-6 py-1 bg-blue-900/20 text-center uppercase tracking-widest text-[9px]">
+                        STAGE / SCREEN AREA
+                    </div>
+                    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 border border-blue-500/30 px-6 py-1 bg-blue-900/20 text-center uppercase tracking-widest text-[9px]">
+                        MAIN ENTRANCE
+                    </div>
+                    <div class="absolute top-1/2 left-4 -translate-y-1/2 rotate-90 origin-left border-b border-blue-500/30 pb-0.5 tracking-widest text-[8px]">
+                        WINDOW WALL
+                    </div>
+                    <div class="absolute top-1/2 right-4 -translate-y-1/2 -rotate-90 origin-right border-b border-blue-500/30 pb-0.5 tracking-widest text-[8px]">
+                        CATERING / BAR AREA
+                    </div>
+
+                    <!-- Column symbols -->
+                    <div class="absolute top-[35%] left-[25%] border border-blue-500/30 w-5 h-5 flex items-center justify-center bg-blue-950 text-[8px]">C1</div>
+                    <div class="absolute top-[35%] right-[25%] border border-blue-500/30 w-5 h-5 flex items-center justify-center bg-blue-950 text-[8px]">C2</div>
+
+                    <!-- Tables Grid Layout -->
+                    <div class="flex items-center justify-around w-full h-full py-10 px-8">
+                        <!-- Table 1 -->
+                        <div onclick="openSeatingModal('structural')" class="flex flex-col items-center gap-2 cursor-pointer group">
+                            <div class="relative w-24 h-24 rounded-full border-2 border-blue-500/40 bg-blue-950/40 flex items-center justify-center group-hover:border-gold-accent group-hover:shadow-[0_0_20px_rgba(212,175,55,0.2)] transition-all duration-300">
+                                <span class="text-[9px] uppercase tracking-wider text-center font-bold text-blue-300 group-hover:text-gold-accent">T-1<br>Structural</span>
+                                <!-- Seat dots around table -->
+                                <div id="seat-structural-1" class="absolute -top-1.5 left-1/2 -translate-x-1/2 w-3.5 h-3.5 rounded-full border border-blue-500/40 bg-slate-deep"></div>
+                                <div id="seat-structural-2" class="absolute top-[20%] -right-1.5 w-3.5 h-3.5 rounded-full border border-blue-500/40 bg-slate-deep"></div>
+                                <div id="seat-structural-3" class="absolute bottom-[20%] -right-1.5 w-3.5 h-3.5 rounded-full border border-blue-500/40 bg-slate-deep"></div>
+                                <div id="seat-structural-4" class="absolute -bottom-1.5 left-1/2 -translate-x-1/2 w-3.5 h-3.5 rounded-full border border-blue-500/40 bg-slate-deep"></div>
+                                <div id="seat-structural-5" class="absolute bottom-[20%] -left-1.5 w-3.5 h-3.5 rounded-full border border-blue-500/40 bg-slate-deep"></div>
+                                <div id="seat-structural-6" class="absolute top-[20%] -left-1.5 w-3.5 h-3.5 rounded-full border border-blue-500/40 bg-slate-deep"></div>
+                            </div>
+                        </div>
+
+                        <!-- Table 2 -->
+                        <div onclick="openSeatingModal('hydraulics')" class="flex flex-col items-center gap-2 cursor-pointer group font-mono">
+                            <div class="relative w-24 h-24 rounded-full border-2 border-blue-500/40 bg-blue-950/40 flex items-center justify-center group-hover:border-gold-accent group-hover:shadow-[0_0_20px_rgba(212,175,55,0.2)] transition-all duration-300">
+                                <span class="text-[9px] uppercase tracking-wider text-center font-bold text-blue-300 group-hover:text-gold-accent">T-2<br>Hydraulics</span>
+                                <div id="seat-hydraulics-1" class="absolute -top-1.5 left-1/2 -translate-x-1/2 w-3.5 h-3.5 rounded-full border border-blue-500/40 bg-slate-deep"></div>
+                                <div id="seat-hydraulics-2" class="absolute top-[20%] -right-1.5 w-3.5 h-3.5 rounded-full border border-blue-500/40 bg-slate-deep"></div>
+                                <div id="seat-hydraulics-3" class="absolute bottom-[20%] -right-1.5 w-3.5 h-3.5 rounded-full border border-blue-500/40 bg-slate-deep"></div>
+                                <div id="seat-hydraulics-4" class="absolute -bottom-1.5 left-1/2 -translate-x-1/2 w-3.5 h-3.5 rounded-full border border-blue-500/40 bg-slate-deep"></div>
+                                <div id="seat-hydraulics-5" class="absolute bottom-[20%] -left-1.5 w-3.5 h-3.5 rounded-full border border-blue-500/40 bg-slate-deep"></div>
+                                <div id="seat-hydraulics-6" class="absolute top-[20%] -left-1.5 w-3.5 h-3.5 rounded-full border border-blue-500/40 bg-slate-deep"></div>
+                            </div>
+                        </div>
+
+                        <!-- Table 3 -->
+                        <div onclick="openSeatingModal('geotech')" class="flex flex-col items-center gap-2 cursor-pointer group">
+                            <div class="relative w-24 h-24 rounded-full border-2 border-blue-500/40 bg-blue-950/40 flex items-center justify-center group-hover:border-gold-accent group-hover:shadow-[0_0_20px_rgba(212,175,55,0.2)] transition-all duration-300">
+                                <span class="text-[9px] uppercase tracking-wider text-center font-bold text-blue-300 group-hover:text-gold-accent">T-3<br>Geotech</span>
+                                <div id="seat-geotech-1" class="absolute -top-1.5 left-1/2 -translate-x-1/2 w-3.5 h-3.5 rounded-full border border-blue-500/40 bg-slate-deep"></div>
+                                <div id="seat-geotech-2" class="absolute top-[20%] -right-1.5 w-3.5 h-3.5 rounded-full border border-blue-500/40 bg-slate-deep"></div>
+                                <div id="seat-geotech-3" class="absolute bottom-[20%] -right-1.5 w-3.5 h-3.5 rounded-full border border-blue-500/40 bg-slate-deep"></div>
+                                <div id="seat-geotech-4" class="absolute -bottom-1.5 left-1/2 -translate-x-1/2 w-3.5 h-3.5 rounded-full border border-blue-500/40 bg-slate-deep"></div>
+                                <div id="seat-geotech-5" class="absolute bottom-[20%] -left-1.5 w-3.5 h-3.5 rounded-full border border-blue-500/40 bg-slate-deep"></div>
+                                <div id="seat-geotech-6" class="absolute top-[20%] -left-1.5 w-3.5 h-3.5 rounded-full border border-blue-500/40 bg-slate-deep"></div>
+                            </div>
+                        </div>
+
+                        <!-- Table 4 -->
+                        <div onclick="openSeatingModal('survey')" class="flex flex-col items-center gap-2 cursor-pointer group font-mono">
+                            <div class="relative w-24 h-24 rounded-full border-2 border-blue-500/40 bg-blue-950/40 flex items-center justify-center group-hover:border-gold-accent group-hover:shadow-[0_0_20px_rgba(212,175,55,0.2)] transition-all duration-300">
+                                <span class="text-[9px] uppercase tracking-wider text-center font-bold text-blue-300 group-hover:text-gold-accent">T-4<br>Survey</span>
+                                <div id="seat-survey-1" class="absolute -top-1.5 left-1/2 -translate-x-1/2 w-3.5 h-3.5 rounded-full border border-blue-500/40 bg-slate-deep"></div>
+                                <div id="seat-survey-2" class="absolute top-[20%] -right-1.5 w-3.5 h-3.5 rounded-full border border-blue-500/40 bg-slate-deep"></div>
+                                <div id="seat-survey-3" class="absolute bottom-[20%] -right-1.5 w-3.5 h-3.5 rounded-full border border-blue-500/40 bg-slate-deep"></div>
+                                <div id="seat-survey-4" class="absolute -bottom-1.5 left-1/2 -translate-x-1/2 w-3.5 h-3.5 rounded-full border border-blue-500/40 bg-slate-deep"></div>
+                                <div id="seat-survey-5" class="absolute bottom-[20%] -left-1.5 w-3.5 h-3.5 rounded-full border border-blue-500/40 bg-slate-deep"></div>
+                                <div id="seat-survey-6" class="absolute top-[20%] -left-1.5 w-3.5 h-3.5 rounded-full border border-blue-500/40 bg-slate-deep"></div>
+                            </div>
+                        </div>
+
+                        <!-- Table 5 -->
+                        <div onclick="openSeatingModal('highway')" class="flex flex-col items-center gap-2 cursor-pointer group">
+                            <div class="relative w-24 h-24 rounded-full border-2 border-blue-500/40 bg-blue-950/40 flex items-center justify-center group-hover:border-gold-accent group-hover:shadow-[0_0_20px_rgba(212,175,55,0.2)] transition-all duration-300">
+                                <span class="text-[9px] uppercase tracking-wider text-center font-bold text-blue-300 group-hover:text-gold-accent">T-5<br>Highway</span>
+                                <div id="seat-highway-1" class="absolute -top-1.5 left-1/2 -translate-x-1/2 w-3.5 h-3.5 rounded-full border border-blue-500/40 bg-slate-deep"></div>
+                                <div id="seat-highway-2" class="absolute top-[20%] -right-1.5 w-3.5 h-3.5 rounded-full border border-blue-500/40 bg-slate-deep"></div>
+                                <div id="seat-highway-3" class="absolute bottom-[20%] -right-1.5 w-3.5 h-3.5 rounded-full border border-blue-500/40 bg-slate-deep"></div>
+                                <div id="seat-highway-4" class="absolute -bottom-1.5 left-1/2 -translate-x-1/2 w-3.5 h-3.5 rounded-full border border-blue-500/40 bg-slate-deep"></div>
+                                <div id="seat-highway-5" class="absolute bottom-[20%] -left-1.5 w-3.5 h-3.5 rounded-full border border-blue-500/40 bg-slate-deep"></div>
+                                <div id="seat-highway-6" class="absolute top-[20%] -left-1.5 w-3.5 h-3.5 rounded-full border border-blue-500/40 bg-slate-deep"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <!-- RSVP Section -->
     <section id="rsvp-section" class="py-20 px-4 relative z-10 border-t border-white/5">
@@ -1584,7 +1691,7 @@ where every goodbye feels like a blockbuster climax.
                 <p class="text-gray-700 text-xs tracking-widest uppercase">
                     Made with <span class="text-red-500">♥</span> for the Class of 2026
                 </p>
-                <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-gold-accent/10 border border-gold-accent/20 text-gold-accent/50 text-[10px] font-mono tracking-widest">v6.3</span>
+                <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-gold-accent/10 border border-gold-accent/20 text-gold-accent/50 text-[10px] font-mono tracking-widest">v6.4</span>
             </div>
             <p class="text-gray-700 text-xs tracking-[0.2em] uppercase">
                 Designed &amp; Developed by <span class="text-gold-accent/70">Rudrangshu Sonowal</span>
@@ -2760,6 +2867,128 @@ where every goodbye feels like a blockbuster climax.
         // Initialize polaroid wall
         renderPolaroidsOnWall();
         updatePolaroidPreview();
+
+        // Seating Blueprint logic
+        let currentTableId = '';
+        const tableNames = {
+            structural: 'Table 1: Structural Bridge',
+            hydraulics: 'Table 2: Hydraulics Dam',
+            geotech: 'Table 3: Geotech Foundation',
+            survey: 'Table 4: Survey Transit',
+            highway: 'Table 5: Highway Runway'
+        };
+
+        function openSeatingModal(tableId) {
+            currentTableId = tableId;
+            const modal = document.getElementById('seating-modal');
+            const title = document.getElementById('seating-modal-title');
+            const desc = document.getElementById('seating-modal-desc');
+            const listContainer = document.getElementById('seating-occupants-list');
+            const selectDropdown = document.getElementById('seat-select-num');
+            
+            if (!modal || !title || !desc || !listContainer || !selectDropdown) return;
+            
+            title.textContent = tableNames[tableId];
+            desc.textContent = `blueprint dwg: ${tableId.toUpperCase()}_SECTION_B`;
+            
+            const reserved = JSON.parse(localStorage.getItem('smriti-seating') || '{}');
+            const tableSeats = reserved[tableId] || {};
+            
+            listContainer.innerHTML = '';
+            for (let i = 1; i <= 6; i++) {
+                const occupant = tableSeats[i];
+                const div = document.createElement('div');
+                div.className = 'flex items-center justify-between border-b border-blue-500/5 py-1';
+                div.innerHTML = `
+                    <span class="text-blue-400">Seat ${i}:</span>
+                    <span class="${occupant ? 'text-gold-accent font-bold' : 'text-gray-600 italic'}">${occupant ? escapeHTML(occupant) : 'EMPTY_NODE'}</span>
+                `;
+                listContainer.appendChild(div);
+            }
+            
+            selectDropdown.innerHTML = '<option value="" disabled selected>Choose Seat</option>';
+            for (let i = 1; i <= 6; i++) {
+                if (!tableSeats[i]) {
+                    const opt = document.createElement('option');
+                    opt.value = i;
+                    opt.textContent = `Seat ${i} (Vacant)`;
+                    selectDropdown.appendChild(opt);
+                }
+            }
+            
+            modal.classList.remove('pointer-events-none');
+            modal.classList.remove('opacity-0');
+            modal.querySelector('div').classList.remove('scale-95');
+            modal.querySelector('div').classList.add('scale-100');
+            document.body.style.overflow = 'hidden';
+            
+            document.addEventListener('keydown', handleSeatingEsc);
+        }
+
+        function closeSeatingModal() {
+            const modal = document.getElementById('seating-modal');
+            if (!modal) return;
+            modal.classList.add('pointer-events-none');
+            modal.classList.add('opacity-0');
+            modal.querySelector('div').classList.remove('scale-100');
+            modal.querySelector('div').classList.add('scale-95');
+            document.body.style.overflow = '';
+            document.removeEventListener('keydown', handleSeatingEsc);
+        }
+
+        function handleSeatingEsc(e) {
+            if (e.key === 'Escape') closeSeatingModal();
+        }
+
+        function submitSeatReservation(e) {
+            e.preventDefault();
+            const guestName = document.getElementById('seat-guest-name').value.trim();
+            const seatNum = document.getElementById('seat-select-num').value;
+            
+            if (!guestName || !seatNum || !currentTableId) return;
+            
+            const reserved = JSON.parse(localStorage.getItem('smriti-seating') || '{}');
+            if (!reserved[currentTableId]) reserved[currentTableId] = {};
+            
+            reserved[currentTableId][seatNum] = guestName;
+            localStorage.setItem('smriti-seating', JSON.stringify(reserved));
+            
+            document.getElementById('seat-guest-name').value = '';
+            closeSeatingModal();
+            loadSeatingLayout();
+            launchConfetti();
+            
+            const toast = document.getElementById('toast-notification');
+            if (toast) {
+                toast.querySelector('span').innerHTML = `Seat ${seatNum} reserved at <span class="text-gold-accent">${tableNames[currentTableId]}!</span>`;
+                toast.classList.add('show');
+                setTimeout(() => { toast.classList.remove('show'); }, 3500);
+            }
+        }
+
+        function loadSeatingLayout() {
+            const reserved = JSON.parse(localStorage.getItem('smriti-seating') || '{}');
+            const tables = ['structural', 'hydraulics', 'geotech', 'survey', 'highway'];
+            
+            tables.forEach(tableId => {
+                const tableSeats = reserved[tableId] || {};
+                for (let i = 1; i <= 6; i++) {
+                    const node = document.getElementById(`seat-${tableId}-${i}`);
+                    if (node) {
+                        if (tableSeats[i]) {
+                            node.classList.remove('border-blue-500/40', 'bg-slate-deep');
+                            node.classList.add('border-gold-accent', 'bg-gold-accent', 'shadow-[0_0_10px_rgba(212,175,55,0.8)]', 'animate-pulse');
+                        } else {
+                            node.classList.add('border-blue-500/40', 'bg-slate-deep');
+                            node.classList.remove('border-gold-accent', 'bg-gold-accent', 'shadow-[0_0_10px_rgba(212,175,55,0.8)]', 'animate-pulse');
+                        }
+                    }
+                }
+            });
+        }
+
+        // Initialize Seating blueprint
+        loadSeatingLayout();
     </script>
 
     <!-- RSVP Modal -->
@@ -2815,6 +3044,46 @@ where every goodbye feels like a blockbuster climax.
             <div class="mt-6 text-center max-w-2xl">
                 <h3 id="lightbox-title" class="text-2xl font-serif text-gold-gradient italic font-bold mb-2"></h3>
                 <p id="lightbox-desc" class="text-gray-400 text-sm font-light leading-relaxed"></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Seating Reservation Modal -->
+    <div id="seating-modal" class="fixed inset-0 z-[10000] flex items-center justify-center bg-black/85 opacity-0 pointer-events-none transition-opacity duration-300" role="dialog" aria-modal="true" aria-labelledby="seating-modal-title">
+        <div class="glass-panel w-full max-w-md p-8 rounded-sm border border-blue-500/30 shadow-[0_15px_50px_rgba(0,0,0,0.8)] relative transform scale-95 transition-transform duration-300 mx-4 bg-[#0a1426]">
+            <button onclick="closeSeatingModal()" class="absolute top-4 right-4 text-gray-500 hover:text-gold-accent text-lg focus:outline-none" aria-label="Close modal">✕</button>
+            <h3 id="seating-modal-title" class="text-2xl font-serif text-gold-gradient italic font-bold mb-1"></h3>
+            <p id="seating-modal-desc" class="text-xs text-blue-300 mb-6 font-mono uppercase tracking-wide"></p>
+            
+            <div class="space-y-6">
+                <div class="space-y-2 border-b border-blue-500/10 pb-4 max-h-[160px] overflow-y-auto pr-1">
+                    <h4 class="text-gray-400 text-[10px] uppercase tracking-wider font-bold mb-2">Current Occupants</h4>
+                    <div id="seating-occupants-list" class="space-y-1.5 font-mono text-xs"></div>
+                </div>
+                
+                <form onsubmit="submitSeatReservation(event)" class="space-y-4 text-left">
+                    <div class="grid grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-gray-400 text-[10px] uppercase tracking-wider font-bold mb-1.5" for="seat-select-num">Select Seat</label>
+                            <select id="seat-select-num" required class="w-full bg-slate-deep border border-blue-500/20 rounded-sm px-3 py-2 text-sm text-gray-300 focus:outline-none focus:border-gold-accent transition-colors">
+                                <option value="" disabled selected>Choose Seat</option>
+                                <option value="1">Seat 1</option>
+                                <option value="2">Seat 2</option>
+                                <option value="3">Seat 3</option>
+                                <option value="4">Seat 4</option>
+                                <option value="5">Seat 5</option>
+                                <option value="6">Seat 6</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-gray-400 text-[10px] uppercase tracking-wider font-bold mb-1.5" for="seat-guest-name">Your Name</label>
+                            <input type="text" id="seat-guest-name" required class="w-full bg-slate-deep border border-blue-500/20 rounded-sm px-3 py-2 text-sm text-white focus:outline-none focus:border-gold-accent transition-colors">
+                        </div>
+                    </div>
+                    <button type="submit" class="w-full mt-4 py-3 bg-gold-accent text-slate-deep font-bold text-sm uppercase tracking-[0.15em] rounded-sm hover:bg-gold-light hover:shadow-[0_0_20px_rgba(212,175,55,0.4)] transition-all duration-300">
+                        Reserve Blueprint Seat
+                    </button>
+                </form>
             </div>
         </div>
     </div>

@@ -81,7 +81,11 @@ smriti-5.0/
 
 ## 📋 Changelog
 
-### v6.3 — July 2026 (Latest)
+### v6.4 — July 2026 (Latest)
+- 📐 **Interactive Seating Blueprint** — Designed a cyanotype-themed architectural seating plan containing 5 circles/tables named after Civil disciplines. Guests can interact with table seating nodes and register seats dynamically via modal forms synced to `localStorage`
+- 🏷️ **v6.4 Version Bump** — Footer badge and meta version tag updated to v6.4
+
+### v6.3 — July 2026
 - 📸 **Virtual Polaroid Memory Booth** — Created a canvas-based retro Polaroid frame generator with custom styles (Classic White, Glitter Gold, Blueprint Blue) and interactive emoji badges. Pinned cards are displayed on a slightly rotated, physical-style overlay Collage Wall backed by `localStorage`
 - 🏷️ **v6.3 Version Bump** — Footer badge and meta version tag updated to v6.3
 
