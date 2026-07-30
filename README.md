@@ -81,7 +81,11 @@ smriti-5.0/
 
 ## 📋 Changelog
 
-### v7.0 — July 2026 (Latest)
+### v7.1 — July 2026 (Latest)
+- 🗳️ **Batch Superlatives Voting Board** — Added a superlative voting module featuring funny categories (e.g., Leaning Tower builder, Autodesk lover, survey snack supplier). Includes an interactive, real-time leaderboard rendering vote percentages onto horizontal gold bar charts, backed by `localStorage`.
+- 🏷️ **v7.1 Version Bump** — Footer badge and meta version tag updated to v7.1
+
+### v7.0 — July 2026
 - 🔒 **Virtual Time Capsule** — Developed a digital time capsule vault where guests can lock messages, predictions, or letters to the batch. Messages are persisted to `localStorage` and visually represented as locked envelopes inside a cryptographic-style layout sealed until May 2031.
 - 🏷️ **v7.0 Version Bump** — Footer badge and meta version tag updated to v7.0
 

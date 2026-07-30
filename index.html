@@ -16,7 +16,7 @@
     <meta name="twitter:title" content="Smriti 5.0 | Civil Engineering Farewell">
     <meta name="twitter:description" content="Lights dim. Cameras roll. Memories play. Join us on 14th May, 2026 at 3:30 PM.">
     <meta name="robots" content="index, follow">
-    <meta name="version" content="7.0">
+    <meta name="version" content="7.1">
     <link rel="canonical" href="https://aryanake.github.io/smriti-5.0/">
 
     <!-- Tailwind CSS -->
@@ -1877,6 +1877,54 @@ where every goodbye feels like a blockbuster climax.
         </div>
     </section>
 
+    <!-- Batch Superlatives Section (v7.1) -->
+    <section id="superlatives-section" class="py-24 px-4 relative z-10 border-t border-white/5 bg-slate-deep/60">
+        <div class="max-w-4xl mx-auto space-y-12">
+            <div class="text-center">
+                <p class="text-xs uppercase tracking-[0.3em] text-gold-accent font-semibold mb-3 opacity-80">Fun Attributions</p>
+                <h2 class="text-3xl md:text-5xl font-serif text-white">Batch <span class="text-gold-gradient italic font-bold">Superlatives</span></h2>
+                <p class="text-gray-400 text-sm font-light mt-3 max-w-md mx-auto">Vote for your classmates for funny civil batch attributions. Who will take home the title?</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
+                <!-- Vote Box -->
+                <div class="glass-panel p-6 rounded-sm border border-gold-accent/25 space-y-4 text-left">
+                    <h3 class="text-white font-serif text-lg font-bold mb-2 flex items-center gap-2">
+                        <span>🗳️ Cast Your Vote</span>
+                    </h3>
+                    <form onsubmit="castSuperlativeVote(event)" class="space-y-4">
+                        <div>
+                            <label class="block text-gray-400 text-[10px] uppercase tracking-wider font-bold mb-1.5" for="sup-category">Superlative Category</label>
+                            <select id="sup-category" required class="w-full bg-slate-deep border border-gold-accent/25 rounded-sm px-3.5 py-2 text-xs text-gray-300 focus:outline-none focus:border-gold-accent/70 transition-colors" onchange="loadSuperlativeResults()">
+                                <option value="leaning-tower">Most Likely to Build a Leaning Tower</option>
+                                <option value="autodesk-lover">Autodesk's Favorite Customer</option>
+                                <option value="snack-supplier">Best Survey Partner (Snack Supplier)</option>
+                                <option value="lab-sleeper">Class Sleepwalker (Lab Sleeper)</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-gray-400 text-[10px] uppercase tracking-wider font-bold mb-1.5" for="sup-nominee">Nominate Classmate (Name)</label>
+                            <input type="text" id="sup-nominee" placeholder="E.g., Rudrangshu" required class="w-full bg-slate-deep border border-gold-accent/25 rounded-sm px-3.5 py-2 text-xs text-white placeholder-gray-600 focus:outline-none focus:border-gold-accent/70 transition-colors">
+                        </div>
+                        <button type="submit" class="w-full py-2.5 bg-gold-accent hover:bg-gold-light text-slate-deep text-xs font-bold uppercase tracking-wider rounded-sm hover:shadow-[0_0_20px_rgba(212,175,55,0.4)] transition-all duration-300">
+                            Submit Superlative Vote
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Results Display -->
+                <div class="glass-panel p-6 rounded-sm border border-gold-accent/15 space-y-4 text-left bg-black/40 min-h-[300px]">
+                    <h3 class="text-gold-accent font-serif text-sm uppercase tracking-wider font-semibold border-b border-gold-accent/10 pb-2 mb-4">
+                        🏆 Real-Time Leaderboard
+                    </h3>
+                    <div id="sup-results-container" class="space-y-4">
+                        <!-- Horizontal Progress Bars loaded dynamically -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Virtual Polaroid Booth & Collage Wall -->
     <section id="polaroid-section" class="py-24 px-4 relative z-10 border-t border-white/5">
         <div class="max-w-6xl mx-auto space-y-12">
@@ -2059,7 +2107,7 @@ where every goodbye feels like a blockbuster climax.
                 <p class="text-gray-700 text-xs tracking-widest uppercase">
                     Made with <span class="text-red-500">♥</span> for the Class of 2026
                 </p>
-                <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-gold-accent/10 border border-gold-accent/20 text-gold-accent/50 text-[10px] font-mono tracking-widest">v7.0</span>
+                <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-gold-accent/10 border border-gold-accent/20 text-gold-accent/50 text-[10px] font-mono tracking-widest">v7.1</span>
             </div>
             <p class="text-gray-700 text-xs tracking-[0.2em] uppercase">
                 Designed &amp; Developed by <span class="text-gold-accent/70">Rudrangshu Sonowal</span>
@@ -3935,6 +3983,69 @@ where every goodbye feels like a blockbuster climax.
         }
 
         loadCapsules();
+        
+        // Superlatives Logic (v7.1)
+        function castSuperlativeVote(event) {
+            event.preventDefault();
+            const category = document.getElementById('sup-category').value;
+            const nominee = document.getElementById('sup-nominee').value.trim();
+            
+            if (!nominee) return;
+            
+            let votes = JSON.parse(localStorage.getItem('smriti-superlatives') || '{}');
+            if (!votes[category]) votes[category] = [];
+            
+            const existing = votes[category].find(n => n.name.toLowerCase() === nominee.toLowerCase());
+            if (existing) {
+                existing.votes++;
+            } else {
+                votes[category].push({ name: nominee, votes: 1 });
+            }
+            
+            localStorage.setItem('smriti-superlatives', JSON.stringify(votes));
+            document.getElementById('sup-nominee').value = '';
+            
+            loadSuperlativeResults();
+            launchConfetti();
+        }
+        
+        function loadSuperlativeResults() {
+            const category = document.getElementById('sup-category').value;
+            const votes = JSON.parse(localStorage.getItem('smriti-superlatives') || '{}');
+            const resultsContainer = document.getElementById('sup-results-container');
+            
+            if (!resultsContainer) return;
+            
+            resultsContainer.innerHTML = '';
+            const catVotes = votes[category] || [];
+            
+            catVotes.sort((a, b) => b.votes - a.votes);
+            
+            const totalVotes = catVotes.reduce((sum, item) => sum + item.votes, 0);
+            
+            if (catVotes.length === 0) {
+                resultsContainer.innerHTML = '<p class="text-gray-600 text-xs italic py-8 text-center">No votes submitted for this category yet. Be the first to vote!</p>';
+                return;
+            }
+            
+            catVotes.forEach(item => {
+                const pct = totalVotes > 0 ? Math.round((item.votes / totalVotes) * 100) : 0;
+                const row = document.createElement('div');
+                row.className = "space-y-1";
+                row.innerHTML = `
+                    <div class="flex justify-between text-xs">
+                        <span class="text-white font-medium">${item.name}</span>
+                        <span class="text-gold-accent font-mono">${item.votes} votes (${pct}%)</span>
+                    </div>
+                    <div class="w-full bg-slate-900 h-1.5 rounded-full overflow-hidden border border-white/5">
+                        <div class="bg-gradient-to-r from-gold-accent to-gold-light h-full rounded-full transition-all duration-500" style="width: ${pct}%"></div>
+                    </div>
+                `;
+                resultsContainer.appendChild(row);
+            });
+        }
+
+        loadSuperlativeResults();
     </script>
 
     <!-- RSVP Modal -->
