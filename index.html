@@ -27,7 +27,7 @@
     <meta name="twitter:title" content="Smriti 5.0 | Civil Engineering Farewell">
     <meta name="twitter:description" content="Lights dim. Cameras roll. Memories play. Join us on 14th May, 2026 at 3:30 PM.">
     <meta name="robots" content="index, follow">
-    <meta name="version" content="6.4">
+    <meta name="version" content="6.5">
     <link rel="canonical" href="https://aryanake.github.io/smriti-5.0/">
 
     <!-- Tailwind CSS -->
@@ -1142,6 +1142,106 @@ where every goodbye feels like a blockbuster climax.
         </div>
     </section>
 
+    <!-- Ticket Generator Section (v6.5) -->
+    <section id="ticket-section" class="py-24 px-4 relative z-10 border-t border-white/5 bg-slate-deep/40">
+        <div class="max-w-2xl mx-auto text-center space-y-8">
+            <div class="text-center">
+                <p class="text-xs uppercase tracking-[0.3em] text-gold-accent font-semibold mb-3 opacity-80">Box Office Premiere</p>
+                <h2 class="text-2xl md:text-4xl font-serif text-white">Generate Your <span class="text-gold-gradient italic font-bold">Cinema Ticket</span></h2>
+                <p class="text-gray-400 text-sm font-light mt-3 max-w-md mx-auto">Get your personalized collector's ticket stub for the Smriti 5.0 cinematic farewell premiere.</p>
+            </div>
+
+            <div class="glass-panel p-6 rounded-sm border border-gold-accent/25 max-w-lg mx-auto flex flex-col md:flex-row gap-6 items-center">
+                <div class="w-full md:w-1/2 space-y-4 text-left">
+                    <div>
+                        <label class="block text-gray-400 text-[10px] uppercase tracking-wider font-bold mb-1.5" for="ticket-name">Guest Name</label>
+                        <input type="text" id="ticket-name" placeholder="E.g., Rudrangshu Sonowal" class="w-full bg-slate-deep border border-gold-accent/25 rounded-sm px-3 py-2 text-xs text-white placeholder-gray-600 focus:outline-none focus:border-gold-accent/70 transition-colors" oninput="updateTicketPreview()">
+                    </div>
+                    <div>
+                        <label class="block text-gray-400 text-[10px] uppercase tracking-wider font-bold mb-1.5" for="ticket-theme">Ticket Theme</label>
+                        <select id="ticket-theme" class="w-full bg-slate-deep border border-gold-accent/25 rounded-sm px-3 py-2 text-xs text-gray-300 focus:outline-none focus:border-gold-accent/70 transition-colors" onchange="updateTicketPreview()">
+                            <option value="classic">Classic Slate</option>
+                            <option value="gold">Gold Premiere</option>
+                            <option value="blueprint">Cyanotype Blueprint</option>
+                        </select>
+                    </div>
+                    <button onclick="downloadTicket()" class="w-full py-2.5 bg-gold-accent hover:bg-gold-light text-slate-deep text-xs font-bold uppercase tracking-wider rounded-sm hover:shadow-[0_0_20px_rgba(212,175,55,0.4)] transition-all duration-300">
+                        Download Ticket PNG
+                    </button>
+                </div>
+
+                <!-- Ticket Preview Card -->
+                <div class="w-full md:w-1/2 flex justify-center">
+                    <div id="ticket-preview-container" class="relative w-[260px] h-[130px] rounded-sm shadow-[0_10px_30px_rgba(0,0,0,0.6)] overflow-hidden transition-all duration-300 flex border border-gold-accent/25 bg-slate-deep">
+                        <!-- Left Side: Main Pass Info -->
+                        <div id="ticket-left" class="flex-1 p-3 flex flex-col justify-between border-r border-dashed border-gold-accent/40 relative">
+                            <!-- Filmstrip holes on left edge -->
+                            <div class="absolute left-1 top-0 bottom-0 w-1 flex flex-col justify-between py-1 opacity-40">
+                                <span class="w-1 h-1 bg-white rounded-full"></span>
+                                <span class="w-1 h-1 bg-white rounded-full"></span>
+                                <span class="w-1 h-1 bg-white rounded-full"></span>
+                                <span class="w-1 h-1 bg-white rounded-full"></span>
+                                <span class="w-1 h-1 bg-white rounded-full"></span>
+                            </div>
+                            
+                            <div class="pl-2">
+                                <div class="flex justify-between items-center">
+                                    <span class="text-[7px] tracking-[0.2em] text-gold-accent font-bold uppercase">SMRITI 5.0</span>
+                                    <span id="ticket-tag" class="text-[6px] px-1 py-0.5 rounded bg-gold-accent/10 border border-gold-accent/20 text-gold-accent font-bold tracking-widest font-mono">PREMIERE</span>
+                                </div>
+                                <h4 id="ticket-display-name" class="text-xs text-white font-serif font-black tracking-wide mt-1 truncate">Your Name</h4>
+                                <p class="text-[6px] text-gray-400 mt-0.5 font-light uppercase tracking-wider font-sans">Civil Engineering Farewell</p>
+                            </div>
+                            
+                            <div class="pl-2 flex justify-between items-end border-t border-white/5 pt-1.5 mt-1.5">
+                                <div>
+                                    <p class="text-[5px] text-gray-500 uppercase tracking-wider font-semibold">Venue</p>
+                                    <p class="text-[6px] text-white font-mono">Seminar Hall</p>
+                                </div>
+                                <div class="text-right">
+                                    <p class="text-[5px] text-gray-500 uppercase tracking-wider font-semibold">Date & Time</p>
+                                    <p class="text-[6px] text-gold-accent font-mono">14.05.2026 · 3:30 PM</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Right Side: Stub / Barcode -->
+                        <div id="ticket-right" class="w-[80px] p-2 flex flex-col justify-between items-center bg-black/30 relative">
+                            <!-- Filmstrip holes on right edge -->
+                            <div class="absolute right-1 top-0 bottom-0 w-1 flex flex-col justify-between py-1 opacity-40">
+                                <span class="w-1 h-1 bg-white rounded-full"></span>
+                                <span class="w-1 h-1 bg-white rounded-full"></span>
+                                <span class="w-1 h-1 bg-white rounded-full"></span>
+                                <span class="w-1 h-1 bg-white rounded-full"></span>
+                                <span class="w-1 h-1 bg-white rounded-full"></span>
+                            </div>
+
+                            <span class="text-[6px] text-gray-400 uppercase tracking-widest font-mono">ADMIT ONE</span>
+                            
+                            <!-- Barcode -->
+                            <div class="w-[55px] h-[32px] flex items-center justify-center gap-[1.5px] opacity-70 my-1 bg-white p-1 rounded-sm">
+                                <span class="w-[1px] h-full bg-black"></span>
+                                <span class="w-[2px] h-full bg-black"></span>
+                                <span class="w-[1px] h-full bg-black"></span>
+                                <span class="w-[3px] h-full bg-black"></span>
+                                <span class="w-[1px] h-full bg-black"></span>
+                                <span class="w-[2px] h-full bg-black"></span>
+                                <span class="w-[1px] h-full bg-black"></span>
+                                <span class="w-[2px] h-full bg-black"></span>
+                                <span class="w-[1px] h-full bg-black"></span>
+                            </div>
+                            
+                            <span id="ticket-number-display" class="text-[5px] text-gold-accent/80 font-mono tracking-widest">NO. 00000</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Hidden Canvas for export -->
+            <canvas id="ticket-canvas" width="520" height="260" class="hidden"></canvas>
+        </div>
+    </section>
+
     <!-- Share the Invitation Section -->
     <section id="share-section" class="py-16 px-4 relative z-10 border-t border-white/5">
         <div class="max-w-xl mx-auto text-center space-y-6">
@@ -1691,7 +1791,7 @@ where every goodbye feels like a blockbuster climax.
                 <p class="text-gray-700 text-xs tracking-widest uppercase">
                     Made with <span class="text-red-500">♥</span> for the Class of 2026
                 </p>
-                <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-gold-accent/10 border border-gold-accent/20 text-gold-accent/50 text-[10px] font-mono tracking-widest">v6.4</span>
+                <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-gold-accent/10 border border-gold-accent/20 text-gold-accent/50 text-[10px] font-mono tracking-widest">v6.5</span>
             </div>
             <p class="text-gray-700 text-xs tracking-[0.2em] uppercase">
                 Designed &amp; Developed by <span class="text-gold-accent/70">Rudrangshu Sonowal</span>
@@ -2989,6 +3089,211 @@ where every goodbye feels like a blockbuster climax.
 
         // Initialize Seating blueprint
         loadSeatingLayout();
+
+        // Ticket Generator Functions (v6.5)
+        function updateTicketPreview() {
+            const nameInput = document.getElementById('ticket-name').value.trim();
+            const theme = document.getElementById('ticket-theme').value;
+            const displayName = nameInput || "Your Name";
+            
+            let nameSum = 0;
+            for (let i = 0; i < displayName.length; i++) {
+                nameSum += displayName.charCodeAt(i);
+            }
+            const ticketNumber = "NO. " + String(10000 + (nameSum * 17) % 90000);
+            
+            document.getElementById('ticket-display-name').innerText = displayName;
+            document.getElementById('ticket-number-display').innerText = ticketNumber;
+            
+            const previewContainer = document.getElementById('ticket-preview-container');
+            const ticketLeft = document.getElementById('ticket-left');
+            const ticketRight = document.getElementById('ticket-right');
+            const ticketTag = document.getElementById('ticket-tag');
+            const nameDisplay = document.getElementById('ticket-display-name');
+            
+            // Reset classes
+            previewContainer.className = "relative w-[260px] h-[130px] rounded-sm shadow-[0_10px_30px_rgba(0,0,0,0.6)] overflow-hidden transition-all duration-300 flex border";
+            ticketLeft.className = "flex-1 p-3 flex flex-col justify-between border-r border-dashed relative";
+            ticketRight.className = "w-[80px] p-2 flex flex-col justify-between items-center relative";
+            nameDisplay.className = "text-xs font-serif font-black tracking-wide mt-1 truncate";
+            
+            if (theme === 'classic') {
+                previewContainer.classList.add('border-gold-accent/25', 'bg-slate-deep');
+                ticketLeft.classList.add('border-gold-accent/40');
+                ticketRight.classList.add('bg-black/30');
+                nameDisplay.classList.add('text-white');
+                ticketTag.className = "text-[6px] px-1 py-0.5 rounded bg-gold-accent/10 border border-gold-accent/20 text-gold-accent font-bold tracking-widest font-mono";
+            } else if (theme === 'gold') {
+                previewContainer.classList.add('border-gold-accent', 'bg-gradient-to-br', 'from-gold-light', 'via-gold-accent', 'to-gold-accent');
+                ticketLeft.classList.add('border-slate-deep/40');
+                ticketRight.classList.add('bg-slate-deep/10');
+                nameDisplay.classList.add('text-slate-deep');
+                ticketTag.className = "text-[6px] px-1 py-0.5 rounded bg-slate-deep/15 border border-slate-deep/35 text-slate-deep font-bold tracking-widest font-mono";
+            } else if (theme === 'blueprint') {
+                previewContainer.classList.add('border-blue-500/40', 'bg-[#002244]', 'draft-grid');
+                ticketLeft.classList.add('border-blue-300/40');
+                ticketRight.classList.add('bg-blue-900/40');
+                nameDisplay.classList.add('text-white');
+                ticketTag.className = "text-[6px] px-1 py-0.5 rounded bg-blue-300/10 border border-blue-300/30 text-blue-300 font-bold tracking-widest font-mono";
+            }
+        }
+        
+        function downloadTicket() {
+            const nameInput = document.getElementById('ticket-name').value.trim();
+            const theme = document.getElementById('ticket-theme').value;
+            const displayName = nameInput || "Your Name";
+            
+            let nameSum = 0;
+            for (let i = 0; i < displayName.length; i++) {
+                nameSum += displayName.charCodeAt(i);
+            }
+            const ticketNum = String(10000 + (nameSum * 17) % 90000);
+            
+            const canvas = document.getElementById('ticket-canvas');
+            const ctx = canvas.getContext('2d');
+            
+            ctx.clearRect(0, 0, 520, 260);
+            
+            if (theme === 'classic') {
+                ctx.fillStyle = '#0f172a';
+                ctx.fillRect(0, 0, 520, 260);
+                ctx.strokeStyle = '#d4af37';
+                ctx.lineWidth = 2;
+                ctx.strokeRect(4, 4, 512, 252);
+            } else if (theme === 'gold') {
+                let grad = ctx.createLinearGradient(0, 0, 520, 260);
+                grad.addColorStop(0, '#f3e5ab');
+                grad.addColorStop(0.5, '#d4af37');
+                grad.addColorStop(1, '#b5952f');
+                ctx.fillStyle = grad;
+                ctx.fillRect(0, 0, 520, 260);
+                ctx.strokeStyle = '#0f172a';
+                ctx.lineWidth = 4;
+                ctx.strokeRect(4, 4, 512, 252);
+            } else if (theme === 'blueprint') {
+                ctx.fillStyle = '#002244';
+                ctx.fillRect(0, 0, 520, 260);
+                
+                // Draw blueprint grid lines
+                ctx.strokeStyle = 'rgba(135, 206, 250, 0.08)';
+                ctx.lineWidth = 1;
+                for (let x = 0; x < 520; x += 25) {
+                    ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, 260); ctx.stroke();
+                }
+                for (let y = 0; y < 260; y += 25) {
+                    ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(520, y); ctx.stroke();
+                }
+                
+                ctx.strokeStyle = '#3b82f6';
+                ctx.lineWidth = 2;
+                ctx.strokeRect(4, 4, 512, 252);
+            }
+            
+            // Draw Dashed Tear-off line
+            ctx.beginPath();
+            ctx.setLineDash([8, 8]);
+            if (theme === 'gold') {
+                ctx.strokeStyle = 'rgba(15, 23, 42, 0.4)';
+            } else if (theme === 'blueprint') {
+                ctx.strokeStyle = 'rgba(147, 197, 253, 0.4)';
+            } else {
+                ctx.strokeStyle = 'rgba(212, 175, 55, 0.4)';
+            }
+            ctx.lineWidth = 2;
+            ctx.moveTo(360, 4);
+            ctx.lineTo(360, 256);
+            ctx.stroke();
+            ctx.setLineDash([]);
+            
+            // Left Side film holes
+            ctx.fillStyle = theme === 'gold' ? '#0f172a' : '#ffffff';
+            ctx.globalAlpha = 0.4;
+            for (let y = 15; y < 260; y += 45) {
+                ctx.beginPath(); ctx.arc(15, y, 4, 0, Math.PI * 2); ctx.fill();
+                ctx.beginPath(); ctx.arc(505, y, 4, 0, Math.PI * 2); ctx.fill();
+            }
+            ctx.globalAlpha = 1.0;
+            
+            // Text branding
+            ctx.font = 'bold 12px monospace';
+            ctx.fillStyle = theme === 'gold' ? '#0f172a' : '#d4af37';
+            ctx.fillText('SMRITI 5.0', 40, 45);
+            
+            // Badge background
+            ctx.fillStyle = theme === 'gold' ? 'rgba(15,23,42,0.1)' : 'rgba(212,175,55,0.1)';
+            ctx.strokeStyle = theme === 'gold' ? 'rgba(15,23,42,0.3)' : 'rgba(212,175,55,0.3)';
+            ctx.lineWidth = 1;
+            ctx.fillRect(265, 30, 75, 20);
+            ctx.strokeRect(265, 30, 75, 20);
+            
+            // Badge text
+            ctx.font = 'bold 8px sans-serif';
+            ctx.fillStyle = theme === 'gold' ? '#0f172a' : '#d4af37';
+            ctx.fillText('PREMIERE', 277, 43);
+            
+            // Guest Name
+            ctx.font = 'bold 24px serif';
+            ctx.fillStyle = theme === 'gold' ? '#0f172a' : '#ffffff';
+            ctx.fillText(displayName, 40, 110);
+            
+            // Event type
+            ctx.font = '11px sans-serif';
+            ctx.fillStyle = theme === 'gold' ? '#334155' : '#9ca3af';
+            ctx.fillText('CIVIL ENGINEERING FAREWELL', 40, 135);
+            
+            // Separator line
+            ctx.strokeStyle = theme === 'gold' ? 'rgba(15,23,42,0.1)' : 'rgba(255,255,255,0.1)';
+            ctx.lineWidth = 1;
+            ctx.beginPath(); ctx.moveTo(40, 170); ctx.lineTo(320, 170); ctx.stroke();
+            
+            // Details
+            ctx.font = 'bold 9px sans-serif';
+            ctx.fillStyle = theme === 'gold' ? '#475569' : '#6b7280';
+            ctx.fillText('VENUE', 40, 195);
+            ctx.fillText('DATE & TIME', 180, 195);
+            
+            ctx.font = 'bold 11px monospace';
+            ctx.fillStyle = theme === 'gold' ? '#0f172a' : '#ffffff';
+            ctx.fillText('SEMINAR HALL', 40, 215);
+            
+            ctx.fillStyle = theme === 'gold' ? '#0f172a' : '#d4af37';
+            ctx.fillText('14.05.2026 · 3:30 PM', 180, 215);
+            
+            // Right Side: ADMIT ONE
+            ctx.font = 'bold 10px monospace';
+            ctx.fillStyle = theme === 'gold' ? '#475569' : '#9ca3af';
+            ctx.save();
+            ctx.translate(415, 60);
+            ctx.fillText('ADMIT ONE', 0, 0);
+            ctx.restore();
+            
+            // Draw Barcode on Right Side
+            ctx.fillStyle = '#ffffff';
+            ctx.fillRect(385, 95, 110, 75);
+            
+            ctx.fillStyle = '#000000';
+            let barX = 395;
+            const barPattern = [2, 1, 3, 2, 1, 4, 1, 2, 3, 1, 2, 1, 4, 2, 1, 2];
+            barPattern.forEach((w, idx) => {
+                if (idx % 2 === 0) {
+                    ctx.fillRect(barX, 102, w * 2, 50);
+                }
+                barX += w * 3;
+            });
+            
+            // Ticket Number
+            ctx.font = 'bold 10px monospace';
+            ctx.fillStyle = theme === 'gold' ? '#0f172a' : '#d4af37';
+            ctx.fillText('NO. ' + ticketNum, 400, 215);
+            
+            const link = document.createElement('a');
+            link.download = `smriti5_ticket_${displayName.replace(/\s+/g, '_').toLowerCase()}.png`;
+            link.href = canvas.toDataURL();
+            link.click();
+        }
+        
+        // Initial ticket draw
+        updateTicketPreview();
     </script>
 
     <!-- RSVP Modal -->

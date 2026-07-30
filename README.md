@@ -81,7 +81,11 @@ smriti-5.0/
 
 ## 📋 Changelog
 
-### v6.4 — July 2026 (Latest)
+### v6.5 — July 2026 (Latest)
+- 🎟️ **Cinema Ticket Stub Generator** — Developed a virtual box office where guests enter their name, select a design theme (Classic Slate, Gold Premiere, Cyanotype Blueprint), and generate a cinematic collectible ticket stub. Features programmatically generated barcodes and canvas-based PNG download functionality.
+- 🏷️ **v6.5 Version Bump** — Footer badge and meta version tag updated to v6.5
+
+### v6.4 — July 2026
 - 📐 **Interactive Seating Blueprint** — Designed a cyanotype-themed architectural seating plan containing 5 circles/tables named after Civil disciplines. Guests can interact with table seating nodes and register seats dynamically via modal forms synced to `localStorage`
 - 🏷️ **v6.4 Version Bump** — Footer badge and meta version tag updated to v6.4
 
