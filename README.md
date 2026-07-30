@@ -81,7 +81,11 @@ smriti-5.0/
 
 ## 📋 Changelog
 
-### v6.5 — July 2026 (Latest)
+### v6.6 — July 2026 (Latest)
+- 🎹 **Cinematic Synthesizer Controls** — Upgraded the procedural soundtrack synthesizer into an interactive audio control panel. Added 3 select-able ambient soundscapes, Tempo (BPM) control, Volume control, and a real-time FFT frequency spectrum analyzer visualizer.
+- 🏷️ **v6.6 Version Bump** — Footer badge and meta version tag updated to v6.6
+
+### v6.5 — July 2026
 - 🎟️ **Cinema Ticket Stub Generator** — Developed a virtual box office where guests enter their name, select a design theme (Classic Slate, Gold Premiere, Cyanotype Blueprint), and generate a cinematic collectible ticket stub. Features programmatically generated barcodes and canvas-based PNG download functionality.
 - 🏷️ **v6.5 Version Bump** — Footer badge and meta version tag updated to v6.5
 

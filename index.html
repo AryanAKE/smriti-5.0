@@ -27,7 +27,7 @@
     <meta name="twitter:title" content="Smriti 5.0 | Civil Engineering Farewell">
     <meta name="twitter:description" content="Lights dim. Cameras roll. Memories play. Join us on 14th May, 2026 at 3:30 PM.">
     <meta name="robots" content="index, follow">
-    <meta name="version" content="6.5">
+    <meta name="version" content="6.6">
     <link rel="canonical" href="https://aryanake.github.io/smriti-5.0/">
 
     <!-- Tailwind CSS -->
@@ -580,6 +580,29 @@
             width: 2px;
             background: #d4af37;
         }
+        #music-settings-panel {
+            position: fixed;
+            bottom: 5.5rem;
+            left: 5rem;
+            width: 240px;
+            background: rgba(15, 23, 42, 0.9);
+            border: 1px solid rgba(212, 175, 55, 0.35);
+            border-radius: 4px;
+            padding: 12px;
+            z-index: 998;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            transform: translateY(10px);
+            opacity: 0;
+            pointer-events: none;
+        }
+        #music-settings-panel.active {
+            transform: translateY(0);
+            opacity: 1;
+            pointer-events: auto;
+        }
 
         /* Typewriter effect for hero subtitle */
         #hero-subtitle-text {
@@ -734,7 +757,7 @@
     <button id="theme-toggle" title="Toggle Cinematic Warm Mode" aria-label="Toggle theme" onclick="toggleTheme()">🌙</button>
 
     <!-- Cinematic Audio Controller -->
-    <button id="music-toggle" title="Toggle Background Music" aria-label="Toggle background music" onclick="toggleMusic()">
+    <button id="music-toggle" title="Toggle Background Music Settings" aria-label="Toggle background music settings" onclick="toggleMusicPanel()">
         <span id="music-icon">🎵</span>
         <span id="music-eq" class="hidden flex items-end gap-[2px] h-[12px] w-[14px]">
             <span class="music-eq-bar w-[2px] rounded-full animate-music-eq" style="height:4px; animation-duration:0.6s;"></span>
@@ -742,6 +765,47 @@
             <span class="music-eq-bar w-[2px] rounded-full animate-music-eq" style="height:6px; animation-duration:0.7s; animation-delay:0.2s;"></span>
         </span>
     </button>
+
+    <!-- Music Settings Panel -->
+    <div id="music-settings-panel" class="font-sans">
+        <div class="flex justify-between items-center border-b border-gold-accent/15 pb-1.5 mb-2.5">
+            <span class="text-[9px] uppercase tracking-[0.2em] text-gold-accent font-bold">🎹 Audio Synthesizer</span>
+            <button onclick="toggleMusicPanel()" class="text-gray-500 hover:text-white text-xs">✕</button>
+        </div>
+        <div class="space-y-3 text-left">
+            <div>
+                <label class="block text-[8px] text-gray-400 uppercase tracking-wider font-bold mb-1">Select Track</label>
+                <div class="grid grid-cols-3 gap-1">
+                    <button id="track-btn-0" onclick="switchTrack(0)" class="text-[8px] uppercase tracking-wider py-1 bg-gold-accent/20 border border-gold-accent text-gold-accent rounded-sm font-semibold text-center transition-all">Sentimental</button>
+                    <button id="track-btn-1" onclick="switchTrack(1)" class="text-[8px] uppercase tracking-wider py-1 bg-slate-800 border border-white/5 text-gray-400 rounded-sm font-semibold text-center hover:bg-slate-700 transition-all">Midnight</button>
+                    <button id="track-btn-2" onclick="switchTrack(2)" class="text-[8px] uppercase tracking-wider py-1 bg-slate-800 border border-white/5 text-gray-400 rounded-sm font-semibold text-center hover:bg-slate-700 transition-all">Sparkles</button>
+                </div>
+            </div>
+            <div>
+                <div class="flex justify-between text-[8px] text-gray-400 font-bold uppercase tracking-wider mb-1">
+                    <span>Volume</span>
+                    <span id="vol-lbl">100%</span>
+                </div>
+                <input type="range" id="audio-vol-slider" min="0" max="1" step="0.05" value="1" class="w-full accent-gold-accent bg-slate-800 rounded-lg appearance-none h-1 cursor-pointer" oninput="adjustVolume(this.value)">
+            </div>
+            <div>
+                <div class="flex justify-between text-[8px] text-gray-400 font-bold uppercase tracking-wider mb-1">
+                    <span>Tempo (BPM)</span>
+                    <span id="bpm-lbl">50</span>
+                </div>
+                <input type="range" id="audio-tempo-slider" min="30" max="80" step="5" value="50" class="w-full accent-gold-accent bg-slate-800 rounded-lg appearance-none h-1 cursor-pointer" oninput="adjustTempo(this.value)">
+            </div>
+            <!-- Visualizer Canvas -->
+            <div>
+                <label class="block text-[8px] text-gray-400 uppercase tracking-wider font-bold mb-1">Synthesizer Stream</label>
+                <canvas id="audio-visualizer-canvas" class="w-full h-[36px] bg-black/40 border border-gold-accent/15 rounded-sm"></canvas>
+            </div>
+            <!-- Master Control -->
+            <button id="master-audio-btn" onclick="toggleMusic()" class="w-full py-1.5 bg-gold-accent hover:bg-gold-light text-slate-deep text-[9px] font-bold uppercase tracking-wider rounded-sm hover:shadow-[0_0_10px_rgba(212,175,55,0.3)] transition-all duration-300">
+                PLAY SYNTH
+            </button>
+        </div>
+    </div>
 
     <!-- Particle Canvas -->
     <canvas id="particle-canvas"></canvas>
@@ -1791,7 +1855,7 @@ where every goodbye feels like a blockbuster climax.
                 <p class="text-gray-700 text-xs tracking-widest uppercase">
                     Made with <span class="text-red-500">♥</span> for the Class of 2026
                 </p>
-                <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-gold-accent/10 border border-gold-accent/20 text-gold-accent/50 text-[10px] font-mono tracking-widest">v6.5</span>
+                <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-gold-accent/10 border border-gold-accent/20 text-gold-accent/50 text-[10px] font-mono tracking-widest">v6.6</span>
             </div>
             <p class="text-gray-700 text-xs tracking-[0.2em] uppercase">
                 Designed &amp; Developed by <span class="text-gold-accent/70">Rudrangshu Sonowal</span>
@@ -1854,11 +1918,15 @@ where every goodbye feels like a blockbuster climax.
         let isMusicPlaying = false;
         let mainGain = null;
         let synthInterval = null;
+        let analyser = null;
+        let currentTrackIndex = 0;
+        let currentVolume = 1.0;
+        let currentBPM = 50;
 
         function initAudio() {
             audioCtx = new (window.AudioContext || window.webkitAudioContext)();
             mainGain = audioCtx.createGain();
-            mainGain.gain.setValueAtTime(0.04, audioCtx.currentTime); // keep it soft and background
+            mainGain.gain.setValueAtTime(0.04 * currentVolume, audioCtx.currentTime);
             
             // Simple delay effect for cinematic depth
             const delay = audioCtx.createDelay();
@@ -1866,17 +1934,40 @@ where every goodbye feels like a blockbuster climax.
             const delayGain = audioCtx.createGain();
             delayGain.gain.value = 0.25;
             
-            mainGain.connect(audioCtx.destination);
+            analyser = audioCtx.createAnalyser();
+            analyser.fftSize = 64;
+            
+            mainGain.connect(analyser);
             mainGain.connect(delay);
             delay.connect(delayGain);
-            delayGain.connect(audioCtx.destination);
+            delayGain.connect(analyser);
+            analyser.connect(audioCtx.destination);
+            
+            drawVisualizer();
         }
 
-        const chords = [
-            [220.00, 261.63, 329.63, 440.00], // Am
-            [174.61, 220.00, 261.63, 349.23], // F
-            [130.81, 196.00, 261.63, 329.63], // C
-            [196.00, 246.94, 293.66, 392.00]  // G
+        const trackChords = [
+            // Track 0: Sentimental Chords
+            [
+                [220.00, 261.63, 329.63, 440.00], // Am
+                [174.61, 220.00, 261.63, 349.23], // F
+                [130.81, 196.00, 261.63, 329.63], // C
+                [196.00, 246.94, 293.66, 392.00]  // G
+            ],
+            // Track 1: Midnight Blueprint
+            [
+                [164.81, 196.00, 246.94, 329.63], // Em
+                [130.81, 164.81, 196.00, 246.94], // Cmaj7
+                [110.00, 164.81, 220.00, 261.63], // Am9
+                [146.83, 185.00, 220.00, 293.66]  // D7
+            ],
+            // Track 2: Nostalgic Sparkles
+            [
+                [392.00, 493.88, 587.33, 783.99], // Gmaj
+                [261.63, 329.63, 392.00, 523.25], // Cmaj
+                [293.66, 369.99, 440.00, 587.33], // Dmaj
+                [329.63, 392.00, 493.88, 659.25]  // Em
+            ]
         ];
         let chordIndex = 0;
 
@@ -1902,6 +1993,7 @@ where every goodbye feels like a blockbuster climax.
         function playAmbientTrack() {
             if (!isMusicPlaying) return;
             const now = audioCtx.currentTime;
+            const chords = trackChords[currentTrackIndex];
             const chord = chords[chordIndex];
             
             chord.forEach((freq, i) => {
@@ -1909,13 +2001,84 @@ where every goodbye feels like a blockbuster climax.
             });
             
             if (Math.random() > 0.45) {
-                const highNotes = [523.25, 587.33, 659.25, 783.99, 880.00];
+                const highNotes = currentTrackIndex === 2 ? [783.99, 880.00, 987.77, 1046.50, 1174.66] : [523.25, 587.33, 659.25, 783.99, 880.00];
                 const highFreq = highNotes[Math.floor(Math.random() * highNotes.length)];
                 playChordNote(highFreq, now + 3 + Math.random() * 2, 4.0);
             }
             
             chordIndex = (chordIndex + 1) % chords.length;
-            synthInterval = setTimeout(playAmbientTrack, 7200);
+            const delayTime = (60000 / currentBPM) * 6;
+            synthInterval = setTimeout(playAmbientTrack, delayTime);
+        }
+
+        function toggleMusicPanel() {
+            const panel = document.getElementById('music-settings-panel');
+            panel.classList.toggle('active');
+        }
+
+        function switchTrack(idx) {
+            currentTrackIndex = idx;
+            for (let i = 0; i < 3; i++) {
+                const btn = document.getElementById(`track-btn-${i}`);
+                if (i === idx) {
+                    btn.className = "text-[8px] uppercase tracking-wider py-1 bg-gold-accent/20 border border-gold-accent text-gold-accent rounded-sm font-semibold text-center transition-all";
+                } else {
+                    btn.className = "text-[8px] uppercase tracking-wider py-1 bg-slate-800 border border-white/5 text-gray-400 rounded-sm font-semibold text-center hover:bg-slate-700 transition-all";
+                }
+            }
+            if (isMusicPlaying) {
+                clearTimeout(synthInterval);
+                playAmbientTrack();
+            }
+        }
+
+        function adjustVolume(val) {
+            currentVolume = parseFloat(val);
+            document.getElementById('vol-lbl').innerText = Math.round(currentVolume * 100) + "%";
+            if (mainGain) {
+                mainGain.gain.setValueAtTime(0.04 * currentVolume, audioCtx.currentTime);
+            }
+        }
+
+        function adjustTempo(val) {
+            currentBPM = parseInt(val);
+            document.getElementById('bpm-lbl').innerText = currentBPM;
+        }
+
+        let visualizerAnimFrame = null;
+        function drawVisualizer() {
+            if (!analyser) return;
+            visualizerAnimFrame = requestAnimationFrame(drawVisualizer);
+            const vCanvas = document.getElementById('audio-visualizer-canvas');
+            if (!vCanvas) return;
+            const vCtx = vCanvas.getContext('2d');
+            const w = vCanvas.width;
+            const h = vCanvas.height;
+            
+            if (vCanvas.width !== vCanvas.clientWidth || vCanvas.height !== vCanvas.clientHeight) {
+                vCanvas.width = vCanvas.clientWidth;
+                vCanvas.height = vCanvas.clientHeight;
+            }
+            
+            const bufferLength = analyser.frequencyBinCount;
+            const dataArray = new Uint8Array(bufferLength);
+            analyser.getByteFrequencyData(dataArray);
+            
+            vCtx.fillStyle = 'rgba(15, 23, 42, 0.4)';
+            vCtx.fillRect(0, 0, w, h);
+            
+            const barWidth = (w / bufferLength) * 1.5;
+            let barHeight;
+            let x = 0;
+            
+            for(let i = 0; i < bufferLength; i++) {
+                barHeight = (dataArray[i] / 255) * h * 0.9;
+                if (barHeight > 0) {
+                    vCtx.fillStyle = `rgba(212, 175, 55, ${0.4 + (barHeight / h) * 0.6})`;
+                    vCtx.fillRect(x, h - barHeight, barWidth - 1, barHeight);
+                }
+                x += barWidth;
+            }
         }
 
         function toggleMusic() {
@@ -1923,6 +2086,7 @@ where every goodbye feels like a blockbuster climax.
             
             const btnIcon = document.getElementById('music-icon');
             const btnEq = document.getElementById('music-eq');
+            const masterBtn = document.getElementById('master-audio-btn');
             
             if (audioCtx.state === 'suspended') {
                 audioCtx.resume();
@@ -1937,14 +2101,22 @@ where every goodbye feels like a blockbuster climax.
                 btnIcon.classList.remove('hidden');
                 btnEq.classList.add('hidden');
                 btnEq.classList.remove('flex');
+                if (masterBtn) {
+                    masterBtn.innerText = "PLAY SYNTH";
+                    masterBtn.className = "w-full py-1.5 bg-gold-accent hover:bg-gold-light text-slate-deep text-[9px] font-bold uppercase tracking-wider rounded-sm hover:shadow-[0_0_10px_rgba(212,175,55,0.3)] transition-all duration-300";
+                }
             } else {
                 isMusicPlaying = true;
                 mainGain.gain.setValueAtTime(0.0001, audioCtx.currentTime);
-                mainGain.gain.exponentialRampToValueAtTime(0.04, audioCtx.currentTime + 1.0);
+                mainGain.gain.exponentialRampToValueAtTime(0.04 * currentVolume, audioCtx.currentTime + 1.0);
                 
                 btnIcon.classList.add('hidden');
                 btnEq.classList.remove('hidden');
                 btnEq.classList.add('flex');
+                if (masterBtn) {
+                    masterBtn.innerText = "PAUSE SYNTH";
+                    masterBtn.className = "w-full py-1.5 border border-gold-accent text-gold-accent hover:bg-gold-accent/10 text-[9px] font-bold uppercase tracking-wider rounded-sm transition-all duration-300";
+                }
                 
                 playAmbientTrack();
             }
