@@ -16,7 +16,7 @@
     <meta name="twitter:title" content="Smriti 5.0 | Civil Engineering Farewell">
     <meta name="twitter:description" content="Lights dim. Cameras roll. Memories play. Join us on 14th May, 2026 at 3:30 PM.">
     <meta name="robots" content="index, follow">
-    <meta name="version" content="6.9">
+    <meta name="version" content="7.0">
     <link rel="canonical" href="https://aryanake.github.io/smriti-5.0/">
 
     <!-- Tailwind CSS -->
@@ -1821,6 +1821,62 @@ where every goodbye feels like a blockbuster climax.
         </div>
     </section>
 
+    <!-- Virtual Time Capsule Section (v7.0) -->
+    <section id="capsule-section" class="py-24 px-4 relative z-10 border-t border-white/5 bg-black/20">
+        <div class="max-w-4xl mx-auto space-y-12">
+            <div class="text-center">
+                <p class="text-xs uppercase tracking-[0.3em] text-gold-accent font-semibold mb-3 opacity-80">Message for the Future</p>
+                <h2 class="text-3xl md:text-5xl font-serif text-white">Virtual <span class="text-gold-gradient italic font-bold">Time Capsule</span></h2>
+                <p class="text-gray-400 text-sm font-light mt-3 max-w-md mx-auto">Lock your letters, predictions, or farewell messages into our Class of 2026 digital time capsule. All messages are sealed until <span class="text-gold-accent font-semibold">May 2031</span>.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
+                <!-- Capsule locking form -->
+                <div class="glass-panel p-6 rounded-sm border border-gold-accent/25 space-y-4 text-left">
+                    <h3 class="text-white font-serif text-lg font-bold mb-2 flex items-center gap-2">
+                        <span>🔒 Seal an Envelope</span>
+                    </h3>
+                    <form onsubmit="sealCapsule(event)" class="space-y-4">
+                        <div>
+                            <label class="block text-gray-400 text-[10px] uppercase tracking-wider font-bold mb-1.5" for="capsule-name">Your Name</label>
+                            <input type="text" id="capsule-name" placeholder="E.g., Arjun Roy" required class="w-full bg-slate-deep border border-gold-accent/25 rounded-sm px-3.5 py-2 text-xs text-white placeholder-gray-600 focus:outline-none focus:border-gold-accent/70 transition-colors">
+                        </div>
+                        <div>
+                            <label class="block text-gray-400 text-[10px] uppercase tracking-wider font-bold mb-1.5" for="capsule-group">Your Role / Batch</label>
+                            <select id="capsule-group" required class="w-full bg-slate-deep border border-gold-accent/25 rounded-sm px-3.5 py-2 text-xs text-gray-300 focus:outline-none focus:border-gold-accent/70 transition-colors">
+                                <option value="Senior (Batch 2022)">Senior (Batch 2022)</option>
+                                <option value="Junior (Batch 2023)">Junior (Batch 2023)</option>
+                                <option value="Faculty">Faculty</option>
+                                <option value="Alumni / Guest">Alumni / Guest</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-gray-400 text-[10px] uppercase tracking-wider font-bold mb-1.5" for="capsule-text">Message / Prediction (to be opened in 2031)</label>
+                            <textarea id="capsule-text" placeholder="Where will you be in 5 years? What is your dream for the batch?" required rows="4" class="w-full bg-slate-deep border border-gold-accent/25 rounded-sm px-3.5 py-2 text-xs text-white placeholder-gray-600 focus:outline-none focus:border-gold-accent/70 transition-colors resize-none"></textarea>
+                        </div>
+                        <button type="submit" class="w-full py-2.5 bg-gold-accent hover:bg-gold-light text-slate-deep text-xs font-bold uppercase tracking-wider rounded-sm hover:shadow-[0_0_20px_rgba(212,175,55,0.4)] transition-all duration-300">
+                            Seal message in Vault
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Vault grid -->
+                <div class="glass-panel p-6 rounded-sm border border-gold-accent/15 space-y-4 text-left bg-black/40 min-h-[380px] flex flex-col justify-between">
+                    <div>
+                        <h3 class="text-gold-accent font-serif text-sm uppercase tracking-wider font-semibold border-b border-gold-accent/10 pb-2 mb-4 flex justify-between items-center">
+                            <span>🏛️ Sealed Envelopes Vault</span>
+                            <span id="capsule-vault-count" class="text-xs px-2 py-0.5 rounded bg-gold-accent/10 border border-gold-accent/30 font-mono">0 Sealed</span>
+                        </h3>
+                        <div id="capsule-vault-grid" class="grid grid-cols-2 gap-3 max-h-[260px] overflow-y-auto pr-1">
+                            <!-- Sealed envelopes -->
+                        </div>
+                    </div>
+                    <p class="text-gray-500 text-[9px] uppercase tracking-[0.2em] font-semibold text-center border-t border-white/5 pt-3">Vault is cryptographically locked until 14th May 2031</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Virtual Polaroid Booth & Collage Wall -->
     <section id="polaroid-section" class="py-24 px-4 relative z-10 border-t border-white/5">
         <div class="max-w-6xl mx-auto space-y-12">
@@ -2003,7 +2059,7 @@ where every goodbye feels like a blockbuster climax.
                 <p class="text-gray-700 text-xs tracking-widest uppercase">
                     Made with <span class="text-red-500">♥</span> for the Class of 2026
                 </p>
-                <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-gold-accent/10 border border-gold-accent/20 text-gold-accent/50 text-[10px] font-mono tracking-widest">v6.9</span>
+                <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-gold-accent/10 border border-gold-accent/20 text-gold-accent/50 text-[10px] font-mono tracking-widest">v7.0</span>
             </div>
             <p class="text-gray-700 text-xs tracking-[0.2em] uppercase">
                 Designed &amp; Developed by <span class="text-gold-accent/70">Rudrangshu Sonowal</span>
@@ -3822,6 +3878,63 @@ where every goodbye feels like a blockbuster climax.
         
         // Initialize Nominations
         loadNominations();
+        
+        // Time Capsule Logic (v7.0)
+        function sealCapsule(event) {
+            event.preventDefault();
+            const name = document.getElementById('capsule-name').value.trim();
+            const role = document.getElementById('capsule-group').value;
+            const text = document.getElementById('capsule-text').value.trim();
+            
+            if (!name || !text) return;
+            
+            let capsules = JSON.parse(localStorage.getItem('smriti-capsules') || '[]');
+            capsules.push({ name: name, role: role, text: text, date: new Date().toLocaleDateString() });
+            localStorage.setItem('smriti-capsules', JSON.stringify(capsules));
+            
+            document.getElementById('capsule-name').value = '';
+            document.getElementById('capsule-text').value = '';
+            
+            loadCapsules();
+            launchConfetti();
+        }
+        
+        function loadCapsules() {
+            const capsules = JSON.parse(localStorage.getItem('smriti-capsules') || '[]');
+            const vaultGrid = document.getElementById('capsule-vault-grid');
+            const vaultCount = document.getElementById('capsule-vault-count');
+            
+            if (!vaultGrid) return;
+            
+            vaultCount.innerText = `${capsules.length} Sealed`;
+            vaultGrid.innerHTML = '';
+            
+            if (capsules.length === 0) {
+                vaultGrid.innerHTML = '<p class="text-gray-600 text-xs italic col-span-2 text-center py-8">The vault is empty. Seal the first envelope!</p>';
+                return;
+            }
+            
+            capsules.forEach(cap => {
+                const env = document.createElement('div');
+                env.className = "glass-panel p-3 border border-gold-accent/10 rounded-sm bg-slate-deep/80 flex items-center gap-2 group hover:border-gold-accent/40 cursor-pointer relative overflow-hidden transition-all duration-300";
+                env.title = "Sealed Envelope - Hover to inspect lock";
+                env.innerHTML = `
+                    <div class="w-8 h-8 rounded-full bg-gold-accent/5 border border-gold-accent/20 flex items-center justify-center text-xs shrink-0 group-hover:scale-105 transition-transform">
+                        🔒
+                    </div>
+                    <div class="min-w-0">
+                        <h4 class="text-white text-[10px] font-bold truncate">${cap.name}</h4>
+                        <p class="text-gray-500 text-[8px] truncate">${cap.role}</p>
+                    </div>
+                    <div class="absolute inset-0 bg-gold-accent/5 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center backdrop-blur-[2px]">
+                        <span class="text-[8px] text-gold-accent font-mono uppercase tracking-widest font-bold">SEALED (2031)</span>
+                    </div>
+                `;
+                vaultGrid.appendChild(env);
+            });
+        }
+
+        loadCapsules();
     </script>
 
     <!-- RSVP Modal -->

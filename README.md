@@ -81,7 +81,11 @@ smriti-5.0/
 
 ## 📋 Changelog
 
-### v6.9 — July 2026 (Latest)
+### v7.0 — July 2026 (Latest)
+- 🔒 **Virtual Time Capsule** — Developed a digital time capsule vault where guests can lock messages, predictions, or letters to the batch. Messages are persisted to `localStorage` and visually represented as locked envelopes inside a cryptographic-style layout sealed until May 2031.
+- 🏷️ **v7.0 Version Bump** — Footer badge and meta version tag updated to v7.0
+
+### v6.9 — July 2026
 - 🧹 **Clean Header Refactor** — Cleaned up the top portion of `index.html` by removing a block of duplicate HTML header elements. Bumps version meta tag and footer badge.
 - 🏷️ **v6.9 Version Bump** — Footer badge and meta version tag updated to v6.9
 
