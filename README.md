@@ -81,7 +81,11 @@ smriti-5.0/
 
 ## 📋 Changelog
 
-### v7.2 — July 2026 (Latest)
+### v7.3 — July 2026 (Latest)
+- 🔍 **Memory Wall Filters & Search** — Implemented a real-time search bar and filter tags ("All", "Labs", "Exams", "Field Trips", "General") for the Memories Wall. Enables users to dynamically search messages and filter them by category with fade transition effects. Updates memory submission to support category tagging.
+- 🏷️ **v7.3 Version Bump** — Footer badge and meta version tag updated to v7.3
+
+### v7.2 — July 2026
 - 🎟️ **Seat-to-Ticket Integration** — Connected the interactive seating layout with the Cinema Ticket Stub Generator. Generating or previewing a ticket now performs an active lookup in the reserved seating tables; matching guests dynamically receive their table discipline and seat code (e.g. "SEAT 03 · HYDRAULICS") directly on their collector's pass download.
 - 🏷️ **v7.2 Version Bump** — Footer badge and meta version tag updated to v7.2
 

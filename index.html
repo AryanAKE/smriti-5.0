@@ -16,7 +16,7 @@
     <meta name="twitter:title" content="Smriti 5.0 | Civil Engineering Farewell">
     <meta name="twitter:description" content="Lights dim. Cameras roll. Memories play. Join us on 14th May, 2026 at 3:30 PM.">
     <meta name="robots" content="index, follow">
-    <meta name="version" content="7.2">
+    <meta name="version" content="7.3">
     <link rel="canonical" href="https://aryanake.github.io/smriti-5.0/">
 
     <!-- Tailwind CSS -->
@@ -1531,9 +1531,25 @@ where every goodbye feels like a blockbuster climax.
                 <p class="text-xs uppercase tracking-[0.3em] text-gold-accent font-semibold mb-3 opacity-80">Four Years, A Thousand Frames</p>
                 <h2 class="text-4xl md:text-5xl font-serif text-white">The <span class="text-gold-accent italic font-bold">Memories</span> Wall</h2>
             </div>
+
+            <!-- Search & Filters (v7.3) -->
+            <div class="mb-8 max-w-xl mx-auto flex flex-col sm:flex-row gap-3 items-center">
+                <div class="relative w-full sm:flex-1">
+                    <span class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-gray-500 text-xs">🔍</span>
+                    <input type="text" id="memory-search-input" placeholder="Search memories by name or keyword..." class="w-full bg-slate-deep/80 border border-gold-accent/25 rounded px-8 py-2 text-xs text-white placeholder-gray-500 focus:outline-none focus:border-gold-accent/60 transition-colors" onkeyup="filterMemories()">
+                </div>
+                <div class="flex flex-wrap gap-1.5 justify-center">
+                    <button onclick="filterCategory('all', this)" class="mem-tag-btn px-3 py-1 bg-gold-accent/20 border border-gold-accent text-gold-accent text-[9px] uppercase tracking-wider rounded-full transition-all">All</button>
+                    <button onclick="filterCategory('labs', this)" class="mem-tag-btn px-3 py-1 bg-slate-900 border border-white/5 text-gray-500 text-[9px] uppercase tracking-wider rounded-full hover:bg-slate-800 transition-all">Labs</button>
+                    <button onclick="filterCategory('exams', this)" class="mem-tag-btn px-3 py-1 bg-slate-900 border border-white/5 text-gray-500 text-[9px] uppercase tracking-wider rounded-full hover:bg-slate-800 transition-all">Exams</button>
+                    <button onclick="filterCategory('field-trips', this)" class="mem-tag-btn px-3 py-1 bg-slate-900 border border-white/5 text-gray-500 text-[9px] uppercase tracking-wider rounded-full hover:bg-slate-800 transition-all">Field Trips</button>
+                    <button onclick="filterCategory('general', this)" class="mem-tag-btn px-3 py-1 bg-slate-900 border border-white/5 text-gray-500 text-[9px] uppercase tracking-wider rounded-full hover:bg-slate-800 transition-all">General</button>
+                </div>
+            </div>
+
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
                 <!-- Memory Card 1 -->
-                <div class="glass-panel shimmer-card rounded-sm p-7 transform transition-all duration-500 hover:-translate-y-3 hover:border-gold-accent/60 hover:shadow-[0_15px_40px_rgba(212,175,55,0.12)] group relative">
+                <div class="glass-panel shimmer-card memory-card rounded-sm p-7 transform transition-all duration-500 hover:-translate-y-3 hover:border-gold-accent/60 hover:shadow-[0_15px_40px_rgba(212,175,55,0.12)] group relative" data-category="labs">
                     <div class="absolute top-0 right-0 w-20 h-20 bg-gold-accent/5 rounded-bl-full pointer-events-none"></div>
                     <div class="text-4xl mb-4 text-gold-accent/30 font-serif leading-none select-none">"</div>
                     <p class="text-gray-300 font-light text-sm leading-relaxed italic mb-5">Late-night lab submissions, chai-fuelled all-nighters, and the kind of laughter that only engineers share — those were the nights worth staying up for.</p>
@@ -1547,13 +1563,13 @@ where every goodbye feels like a blockbuster climax.
                 </div>
 
                 <!-- Memory Card 2 -->
-                <div class="glass-panel shimmer-card rounded-sm p-7 transform transition-all duration-500 hover:-translate-y-3 hover:border-gold-accent/60 hover:shadow-[0_15px_40px_rgba(212,175,55,0.12)] group relative">
+                <div class="glass-panel shimmer-card memory-card rounded-sm p-7 transform transition-all duration-500 hover:-translate-y-3 hover:border-gold-accent/60 hover:shadow-[0_15px_40px_rgba(212,175,55,0.12)] group relative" data-category="general">
                     <div class="absolute top-0 right-0 w-20 h-20 bg-gold-accent/5 rounded-bl-full pointer-events-none"></div>
                     <div class="text-4xl mb-4 text-gold-accent/30 font-serif leading-none select-none">"</div>
                     <p class="text-gray-300 font-light text-sm leading-relaxed italic mb-5">From the first brick of semester one to the final blueprint of year four — every crack in the concrete was us building something greater than ourselves.</p>
                     <div class="flex items-center gap-3 mt-auto">
                         <div class="w-8 h-8 rounded-full bg-gold-accent/10 border border-gold-accent/30 flex items-center justify-center">
-                            <svg class="w-4 h-4 text-gold-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 3H5a2 2 0 00-2 2v4m6-6h10a2 2 0 012 2v4M9 3v18m0 0h10a2 2 0 002-2V9M9 21H5a2 2 0 01-2-2V9m0 0h18"/></svg>
+                            <svg class="w-4 h-4 text-gold-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 3H5a2 2 0 00-2-2v4m6-6h10a2 2 0 012 2v4M9 3v18m0 0h10a2 2 0 002-2V9M9 21H5a2 2 0 01-2-2V9m0 0h18"/></svg>
                         </div>
                         <span class="text-gold-accent/60 text-xs uppercase tracking-[0.2em] font-semibold">Semester 1 · Foundation Year</span>
                     </div>
@@ -1561,7 +1577,7 @@ where every goodbye feels like a blockbuster climax.
                 </div>
 
                 <!-- Memory Card 3 -->
-                <div class="glass-panel shimmer-card rounded-sm p-7 transform transition-all duration-500 hover:-translate-y-3 hover:border-gold-accent/60 hover:shadow-[0_15px_40px_rgba(212,175,55,0.12)] group relative">
+                <div class="glass-panel shimmer-card memory-card rounded-sm p-7 transform transition-all duration-500 hover:-translate-y-3 hover:border-gold-accent/60 hover:shadow-[0_15px_40px_rgba(212,175,55,0.12)] group relative" data-category="field-trips">
                     <div class="absolute top-0 right-0 w-20 h-20 bg-gold-accent/5 rounded-bl-full pointer-events-none"></div>
                     <div class="text-4xl mb-4 text-gold-accent/30 font-serif leading-none select-none">"</div>
                     <p class="text-gray-300 font-light text-sm leading-relaxed italic mb-5">The field visits weren't just about soil surveys — they were our escape routes, our adventures, and our loudest memories. The bus rides alone deserve a sequel.</p>
@@ -1575,7 +1591,7 @@ where every goodbye feels like a blockbuster climax.
                 </div>
 
                 <!-- Memory Card 4 -->
-                <div class="glass-panel shimmer-card rounded-sm p-7 transform transition-all duration-500 hover:-translate-y-3 hover:border-gold-accent/60 hover:shadow-[0_15px_40px_rgba(212,175,55,0.12)] group relative">
+                <div class="glass-panel shimmer-card memory-card rounded-sm p-7 transform transition-all duration-500 hover:-translate-y-3 hover:border-gold-accent/60 hover:shadow-[0_15px_40px_rgba(212,175,55,0.12)] group relative" data-category="general">
                     <div class="absolute top-0 right-0 w-20 h-20 bg-gold-accent/5 rounded-bl-full pointer-events-none"></div>
                     <div class="text-4xl mb-4 text-gold-accent/30 font-serif leading-none select-none">"</div>
                     <p class="text-gray-300 font-light text-sm leading-relaxed italic mb-5">Smriti 1.0 felt like a small farewell. By Smriti 5.0, we realised we weren't just saying goodbye — we were preserving the soul of a generation that built bridges, literally and figuratively.</p>
@@ -1589,7 +1605,7 @@ where every goodbye feels like a blockbuster climax.
                 </div>
 
                 <!-- Memory Card 5 -->
-                <div class="glass-panel shimmer-card rounded-sm p-7 transform transition-all duration-500 hover:-translate-y-3 hover:border-gold-accent/60 hover:shadow-[0_15px_40px_rgba(212,175,55,0.12)] group relative">
+                <div class="glass-panel shimmer-card memory-card rounded-sm p-7 transform transition-all duration-500 hover:-translate-y-3 hover:border-gold-accent/60 hover:shadow-[0_15px_40px_rgba(212,175,55,0.12)] group relative" data-category="exams">
                     <div class="absolute top-0 right-0 w-20 h-20 bg-gold-accent/5 rounded-bl-full pointer-events-none"></div>
                     <div class="text-4xl mb-4 text-gold-accent/30 font-serif leading-none select-none">"</div>
                     <p class="text-gray-300 font-light text-sm leading-relaxed italic mb-5">Every exam season had the same script — panic, procrastination, last-minute miracles. But we showed up every time. That's civil engineering resilience, right there.</p>
@@ -1603,7 +1619,7 @@ where every goodbye feels like a blockbuster climax.
                 </div>
 
                 <!-- Memory Card 6 -->
-                <div class="glass-panel shimmer-card rounded-sm p-7 transform transition-all duration-500 hover:-translate-y-3 hover:border-gold-accent/60 hover:shadow-[0_15px_40px_rgba(212,175,55,0.12)] group relative">
+                <div class="glass-panel shimmer-card memory-card rounded-sm p-7 transform transition-all duration-500 hover:-translate-y-3 hover:border-gold-accent/60 hover:shadow-[0_15px_40px_rgba(212,175,55,0.12)] group relative" data-category="general">
                     <div class="absolute top-0 right-0 w-20 h-20 bg-gold-accent/5 rounded-bl-full pointer-events-none"></div>
                     <div class="text-4xl mb-4 text-gold-accent/30 font-serif leading-none select-none">"</div>
                     <p class="text-gray-300 font-light text-sm leading-relaxed italic mb-5">Class of 2026 — we didn't just study structures. We were the structure. The one that held up through every storm, every stress test, and every impossible deadline.</p>
@@ -1620,7 +1636,7 @@ where every goodbye feels like a blockbuster climax.
                 <div id="dynamic-memories-container" class="contents"></div>
 
                 <!-- Interactive Memory Form Card -->
-                <div class="glass-panel rounded-sm p-7 border border-gold-accent/20 hover:border-gold-accent/50 transition-all duration-300 relative flex flex-col justify-between">
+                <div class="glass-panel rounded-sm p-7 border border-gold-accent/20 hover:border-gold-accent/50 transition-all duration-300 relative flex flex-col justify-between" data-is-form="true">
                     <div class="absolute top-0 right-0 w-20 h-20 bg-gold-accent/5 rounded-bl-full pointer-events-none"></div>
                     <h3 class="text-gold-accent font-serif text-lg font-bold mb-3">Leave a Memory</h3>
                     <form id="memory-form" onsubmit="submitMemory(event)" class="space-y-3">
@@ -1634,6 +1650,14 @@ where every goodbye feels like a blockbuster climax.
                                 <option value="Batch 2023">Junior · Batch 2023</option>
                                 <option value="Faculty">Faculty Member</option>
                                 <option value="Alumni">Alumni</option>
+                            </select>
+                        </div>
+                        <div>
+                            <select id="mem-tag" required class="w-full bg-slate-deep/60 border border-gold-accent/20 rounded px-3 py-1.5 text-xs text-gray-300 focus:outline-none focus:border-gold-accent/60 transition-colors">
+                                <option value="general" selected>Category: General</option>
+                                <option value="labs">Category: Labs</option>
+                                <option value="exams">Category: Exams</option>
+                                <option value="field-trips">Category: Field Trips</option>
                             </select>
                         </div>
                         <div>
@@ -2110,7 +2134,7 @@ where every goodbye feels like a blockbuster climax.
                 <p class="text-gray-700 text-xs tracking-widest uppercase">
                     Made with <span class="text-red-500">♥</span> for the Class of 2026
                 </p>
-                <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-gold-accent/10 border border-gold-accent/20 text-gold-accent/50 text-[10px] font-mono tracking-widest">v7.2</span>
+                <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-gold-accent/10 border border-gold-accent/20 text-gold-accent/50 text-[10px] font-mono tracking-widest">v7.3</span>
             </div>
             <p class="text-gray-700 text-xs tracking-[0.2em] uppercase">
                 Designed &amp; Developed by <span class="text-gold-accent/70">Rudrangshu Sonowal</span>
@@ -2784,7 +2808,7 @@ where every goodbye feels like a blockbuster climax.
             setTimeout(() => floater.remove(), 1300);
         }
 
-        // Memories Wall dynamic persistence
+        // Memories Wall dynamic persistence (v7.3)
         const dynamicMemoriesContainer = document.getElementById('dynamic-memories-container');
         
         function loadMemories() {
@@ -2796,7 +2820,8 @@ where every goodbye feels like a blockbuster climax.
 
         function renderMemoryCard(mem, animate = true) {
             const card = document.createElement('div');
-            card.className = `glass-panel shimmer-card rounded-sm p-7 transform transition-all duration-500 hover:-translate-y-3 hover:border-gold-accent/60 hover:shadow-[0_15px_40px_rgba(212,175,55,0.12)] group relative ${animate ? 'opacity-0 scale-95' : ''}`;
+            card.className = `glass-panel shimmer-card memory-card rounded-sm p-7 transform transition-all duration-500 hover:-translate-y-3 hover:border-gold-accent/60 hover:shadow-[0_15px_40px_rgba(212,175,55,0.12)] group relative ${animate ? 'opacity-0 scale-95' : ''}`;
+            card.setAttribute('data-category', mem.tag || 'general');
             card.innerHTML = `
                 <div class="absolute top-0 right-0 w-20 h-20 bg-gold-accent/5 rounded-bl-full pointer-events-none"></div>
                 <div class="text-4xl mb-4 text-gold-accent/30 font-serif leading-none select-none">"</div>
@@ -2830,11 +2855,13 @@ where every goodbye feels like a blockbuster climax.
             event.preventDefault();
             const nameEl = document.getElementById('mem-name');
             const roleEl = document.getElementById('mem-role');
+            const tagEl = document.getElementById('mem-tag');
             const quoteEl = document.getElementById('mem-quote');
             
             const newMem = {
                 name: nameEl.value.trim(),
                 role: roleEl.value,
+                tag: tagEl.value,
                 quote: quoteEl.value.trim(),
                 id: Date.now()
             };
@@ -2848,6 +2875,46 @@ where every goodbye feels like a blockbuster climax.
             renderMemoryCard(newMem, true);
             event.target.reset();
             launchConfetti();
+        }
+
+        let currentFilterCategory = 'all';
+        
+        function filterCategory(cat, btnEl) {
+            currentFilterCategory = cat;
+            const buttons = document.querySelectorAll('.mem-tag-btn');
+            buttons.forEach(btn => {
+                btn.className = "mem-tag-btn px-3 py-1 bg-slate-900 border border-white/5 text-gray-500 text-[9px] uppercase tracking-wider rounded-full hover:bg-slate-800 transition-all";
+            });
+            btnEl.className = "mem-tag-btn px-3 py-1 bg-gold-accent/20 border border-gold-accent text-gold-accent text-[9px] uppercase tracking-wider rounded-full transition-all";
+            filterMemories();
+        }
+        
+        function filterMemories() {
+            const query = document.getElementById('memory-search-input').value.toLowerCase().trim();
+            const cards = document.querySelectorAll('.memory-card');
+            
+            cards.forEach(card => {
+                const quoteText = card.querySelector('p').innerText.toLowerCase();
+                const authorText = card.querySelector('span').innerText.toLowerCase();
+                const category = card.getAttribute('data-category') || 'general';
+                
+                const matchesSearch = quoteText.includes(query) || authorText.includes(query);
+                const matchesCategory = (currentFilterCategory === 'all') || (category === currentFilterCategory);
+                
+                if (matchesSearch && matchesCategory) {
+                    card.style.display = '';
+                    setTimeout(() => {
+                        card.style.opacity = '1';
+                        card.style.transform = 'scale(1)';
+                    }, 50);
+                } else {
+                    card.style.opacity = '0';
+                    card.style.transform = 'scale(0.95)';
+                    setTimeout(() => {
+                        card.style.display = 'none';
+                    }, 300);
+                }
+            });
         }
 
         // Initialize dynamic memories
