@@ -27,7 +27,7 @@
     <meta name="twitter:title" content="Smriti 5.0 | Civil Engineering Farewell">
     <meta name="twitter:description" content="Lights dim. Cameras roll. Memories play. Join us on 14th May, 2026 at 3:30 PM.">
     <meta name="robots" content="index, follow">
-    <meta name="version" content="6.7">
+    <meta name="version" content="6.8">
     <link rel="canonical" href="https://aryanake.github.io/smriti-5.0/">
 
     <!-- Tailwind CSS -->
@@ -602,6 +602,14 @@
             transform: translateY(0);
             opacity: 1;
             pointer-events: auto;
+        }
+
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
         }
 
         /* Typewriter effect for hero subtitle */
@@ -1716,6 +1724,114 @@ where every goodbye feels like a blockbuster climax.
         </div>
     </section>
 
+    <!-- Archetype Nomination Section (v6.8) -->
+    <section id="archetypes-section" class="py-24 px-4 relative z-10 border-t border-white/5 bg-slate-deep/50">
+        <div class="max-w-5xl mx-auto space-y-12">
+            <div class="text-center">
+                <p class="text-xs uppercase tracking-[0.3em] text-gold-accent font-semibold mb-3 opacity-80">Batch Archetypes</p>
+                <h2 class="text-3xl md:text-5xl font-serif text-white">Class of 2026 <span class="text-gold-gradient italic font-bold">Hall of Fame</span></h2>
+                <p class="text-gray-400 text-sm font-light mt-3 max-w-md mx-auto">Nominate your friends for iconic civil batch archetypes. Scroll the deck to see who's leading the votes!</p>
+            </div>
+
+            <!-- Scrollable Deck Wrapper -->
+            <div class="flex overflow-x-auto gap-6 py-6 px-4 no-scrollbar scroll-smooth snap-x snap-mandatory" id="archetype-deck">
+                
+                <!-- Card 1 -->
+                <div class="snap-center shrink-0 w-[280px] sm:w-[300px] glass-panel rounded-sm border border-gold-accent/20 p-6 flex flex-col justify-between hover:border-gold-accent/60 hover:shadow-[0_15px_40px_rgba(212,175,55,0.1)] transition-all duration-300 relative group bg-black/40">
+                    <div class="space-y-4">
+                        <div class="flex justify-between items-start">
+                            <span class="text-4xl select-none">📐</span>
+                            <span class="text-[8px] px-2 py-0.5 rounded bg-gold-accent/10 border border-gold-accent/20 text-gold-accent font-bold tracking-widest font-mono uppercase">Drafting</span>
+                        </div>
+                        <h3 class="text-white font-serif text-xl font-bold">The AutoCAD Wizard</h3>
+                        <p class="text-gray-500 text-xs font-light leading-relaxed">Makes 3D blueprints in their sleep. Has keyboard shortcuts tattooed on their forearm. Thinks in Cartesian coordinates.</p>
+                        
+                        <div class="border-t border-white/5 pt-4">
+                            <h4 class="text-[9px] uppercase tracking-wider text-gray-400 font-bold mb-1.5">Current Nominees</h4>
+                            <div id="nom-list-0" class="flex flex-wrap gap-1.5 max-h-[80px] overflow-y-auto pr-1"></div>
+                        </div>
+                    </div>
+                    <div class="border-t border-white/5 pt-4 mt-6">
+                        <form onsubmit="nominateFriend(event, 0)" class="flex gap-2">
+                            <input type="text" id="nom-input-0" placeholder="Friend's Name" required class="flex-1 bg-slate-deep border border-gold-accent/25 rounded-sm px-2.5 py-1.5 text-xs text-white placeholder-gray-600 focus:outline-none focus:border-gold-accent/60 transition-colors">
+                            <button type="submit" class="px-3 py-1.5 bg-gold-accent hover:bg-gold-light text-slate-deep text-xs font-bold uppercase tracking-wider rounded-sm hover:scale-105 transition-all">Vote</button>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="snap-center shrink-0 w-[280px] sm:w-[300px] glass-panel rounded-sm border border-gold-accent/20 p-6 flex flex-col justify-between hover:border-gold-accent/60 hover:shadow-[0_15px_40px_rgba(212,175,55,0.1)] transition-all duration-300 relative group bg-black/40">
+                    <div class="space-y-4">
+                        <div class="flex justify-between items-start">
+                            <span class="text-4xl select-none">🏗️</span>
+                            <span class="text-[8px] px-2 py-0.5 rounded bg-gold-accent/10 border border-gold-accent/20 text-gold-accent font-bold tracking-widest font-mono uppercase">Concrete</span>
+                        </div>
+                        <h3 class="text-white font-serif text-xl font-bold">The Concrete Whisperer</h3>
+                        <p class="text-gray-500 text-xs font-light leading-relaxed">Can tell cement-to-water ratios by tasting the mix. Slump tests are their love language. Strongly believes concrete has feelings.</p>
+                        
+                        <div class="border-t border-white/5 pt-4">
+                            <h4 class="text-[9px] uppercase tracking-wider text-gray-400 font-bold mb-1.5">Current Nominees</h4>
+                            <div id="nom-list-1" class="flex flex-wrap gap-1.5 max-h-[80px] overflow-y-auto pr-1"></div>
+                        </div>
+                    </div>
+                    <div class="border-t border-white/5 pt-4 mt-6">
+                        <form onsubmit="nominateFriend(event, 1)" class="flex gap-2">
+                            <input type="text" id="nom-input-1" placeholder="Friend's Name" required class="flex-1 bg-slate-deep border border-gold-accent/25 rounded-sm px-2.5 py-1.5 text-xs text-white placeholder-gray-600 focus:outline-none focus:border-gold-accent/60 transition-colors">
+                            <button type="submit" class="px-3 py-1.5 bg-gold-accent hover:bg-gold-light text-slate-deep text-xs font-bold uppercase tracking-wider rounded-sm hover:scale-105 transition-all">Vote</button>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="snap-center shrink-0 w-[280px] sm:w-[300px] glass-panel rounded-sm border border-gold-accent/20 p-6 flex flex-col justify-between hover:border-gold-accent/60 hover:shadow-[0_15px_40px_rgba(212,175,55,0.1)] transition-all duration-300 relative group bg-black/40">
+                    <div class="space-y-4">
+                        <div class="flex justify-between items-start">
+                            <span class="text-4xl select-none">⏰</span>
+                            <span class="text-[8px] px-2 py-0.5 rounded bg-gold-accent/10 border border-gold-accent/20 text-gold-accent font-bold tracking-widest font-mono uppercase">Survival</span>
+                        </div>
+                        <h3 class="text-white font-serif text-xl font-bold">The Last-Minute Scholar</h3>
+                        <p class="text-gray-500 text-xs font-light leading-relaxed">Starts drafting the 50-page land survey field report at 2 AM. Somehow pulls off an outstanding grade. Fueled by tea & caffeine.</p>
+                        
+                        <div class="border-t border-white/5 pt-4">
+                            <h4 class="text-[9px] uppercase tracking-wider text-gray-400 font-bold mb-1.5">Current Nominees</h4>
+                            <div id="nom-list-2" class="flex flex-wrap gap-1.5 max-h-[80px] overflow-y-auto pr-1"></div>
+                        </div>
+                    </div>
+                    <div class="border-t border-white/5 pt-4 mt-6">
+                        <form onsubmit="nominateFriend(event, 2)" class="flex gap-2">
+                            <input type="text" id="nom-input-2" placeholder="Friend's Name" required class="flex-1 bg-slate-deep border border-gold-accent/25 rounded-sm px-2.5 py-1.5 text-xs text-white placeholder-gray-600 focus:outline-none focus:border-gold-accent/60 transition-colors">
+                            <button type="submit" class="px-3 py-1.5 bg-gold-accent hover:bg-gold-light text-slate-deep text-xs font-bold uppercase tracking-wider rounded-sm hover:scale-105 transition-all">Vote</button>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="snap-center shrink-0 w-[280px] sm:w-[300px] glass-panel rounded-sm border border-gold-accent/20 p-6 flex flex-col justify-between hover:border-gold-accent/60 hover:shadow-[0_15px_40px_rgba(212,175,55,0.1)] transition-all duration-300 relative group bg-black/40">
+                    <div class="space-y-4">
+                        <div class="flex justify-between items-start">
+                            <span class="text-4xl select-none">🦺</span>
+                            <span class="text-[8px] px-2 py-0.5 rounded bg-gold-accent/10 border border-gold-accent/20 text-gold-accent font-bold tracking-widest font-mono uppercase">Leader</span>
+                        </div>
+                        <h3 class="text-white font-serif text-xl font-bold">The Site Boss</h3>
+                        <p class="text-gray-500 text-xs font-light leading-relaxed">Wears a bright safety vest to standard theory lectures. Shouts layout directions to normal campus pedestrians. Born to manage surveyors.</p>
+                        
+                        <div class="border-t border-white/5 pt-4">
+                            <h4 class="text-[9px] uppercase tracking-wider text-gray-400 font-bold mb-1.5">Current Nominees</h4>
+                            <div id="nom-list-3" class="flex flex-wrap gap-1.5 max-h-[80px] overflow-y-auto pr-1"></div>
+                        </div>
+                    </div>
+                    <div class="border-t border-white/5 pt-4 mt-6">
+                        <form onsubmit="nominateFriend(event, 3)" class="flex gap-2">
+                            <input type="text" id="nom-input-3" placeholder="Friend's Name" required class="flex-1 bg-slate-deep border border-gold-accent/25 rounded-sm px-2.5 py-1.5 text-xs text-white placeholder-gray-600 focus:outline-none focus:border-gold-accent/60 transition-colors">
+                            <button type="submit" class="px-3 py-1.5 bg-gold-accent hover:bg-gold-light text-slate-deep text-xs font-bold uppercase tracking-wider rounded-sm hover:scale-105 transition-all">Vote</button>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
     <!-- Virtual Polaroid Booth & Collage Wall -->
     <section id="polaroid-section" class="py-24 px-4 relative z-10 border-t border-white/5">
         <div class="max-w-6xl mx-auto space-y-12">
@@ -1898,7 +2014,7 @@ where every goodbye feels like a blockbuster climax.
                 <p class="text-gray-700 text-xs tracking-widest uppercase">
                     Made with <span class="text-red-500">♥</span> for the Class of 2026
                 </p>
-                <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-gold-accent/10 border border-gold-accent/20 text-gold-accent/50 text-[10px] font-mono tracking-widest">v6.7</span>
+                <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-gold-accent/10 border border-gold-accent/20 text-gold-accent/50 text-[10px] font-mono tracking-widest">v6.8</span>
             </div>
             <p class="text-gray-700 text-xs tracking-[0.2em] uppercase">
                 Designed &amp; Developed by <span class="text-gold-accent/70">Rudrangshu Sonowal</span>
@@ -3665,6 +3781,58 @@ where every goodbye feels like a blockbuster climax.
         
         // Initial ticket draw
         updateTicketPreview();
+
+        // Nominations Logic (v6.8)
+        function nominateFriend(event, cardId) {
+            event.preventDefault();
+            const input = document.getElementById(`nom-input-${cardId}`);
+            const name = input.value.trim();
+            if (!name) return;
+            
+            let nominations = JSON.parse(localStorage.getItem('smriti-nominations') || '{}');
+            if (!nominations[cardId]) nominations[cardId] = [];
+            
+            const existing = nominations[cardId].find(n => n.name.toLowerCase() === name.toLowerCase());
+            if (existing) {
+                existing.votes++;
+            } else {
+                nominations[cardId].push({ name: name, votes: 1 });
+            }
+            
+            localStorage.setItem('smriti-nominations', JSON.stringify(nominations));
+            input.value = '';
+            loadNominations();
+            launchConfetti();
+        }
+        
+        function loadNominations() {
+            const nominations = JSON.parse(localStorage.getItem('smriti-nominations') || '{}');
+            const archetypesCount = 4;
+            
+            for (let i = 0; i < archetypesCount; i++) {
+                const listDiv = document.getElementById(`nom-list-${i}`);
+                if (!listDiv) continue;
+                
+                listDiv.innerHTML = '';
+                const cardNoms = nominations[i] || [];
+                
+                cardNoms.sort((a, b) => b.votes - a.votes);
+                
+                if (cardNoms.length === 0) {
+                    listDiv.innerHTML = '<span class="text-gray-600 text-[10px] italic">No nominations yet. Vote first!</span>';
+                } else {
+                    cardNoms.forEach(nom => {
+                        const tag = document.createElement('span');
+                        tag.className = "px-2 py-0.5 bg-slate-900 border border-gold-accent/15 text-[10px] text-gold-accent rounded-full flex items-center gap-1 font-mono";
+                        tag.innerHTML = `${nom.name} <span class="text-gray-500 font-bold">x${nom.votes}</span>`;
+                        listDiv.appendChild(tag);
+                    });
+                }
+            }
+        }
+        
+        // Initialize Nominations
+        loadNominations();
     </script>
 
     <!-- RSVP Modal -->

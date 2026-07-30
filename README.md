@@ -81,7 +81,11 @@ smriti-5.0/
 
 ## 📋 Changelog
 
-### v6.7 — July 2026 (Latest)
+### v6.8 — July 2026 (Latest)
+- 🦺 **3D Archetype Card Deck & Nominations** — Added a horizontal scroll-snap card deck highlighting 4 classic civil student archetypes (The AutoCAD Wizard, The Concrete Whisperer, The Last-Minute Scholar, The Site Boss). Integrated an interactive nomination and vote counting board synced to `localStorage`.
+- 🏷️ **v6.8 Version Bump** — Footer badge and meta version tag updated to v6.8
+
+### v6.7 — July 2026
 - 🧠 **Legends of Civil Trivia Challenge** — Introduced an interactive 5-question trivia game containing humorous department memories and civil engineering trivia. Syncs with a visual progress bar, triggers custom ranked badges (e.g. Structural Legend, Concrete Mastermind), and sets off a gold confetti burst upon achieving a perfect 5/5 score.
 - 🏷️ **v6.7 Version Bump** — Footer badge and meta version tag updated to v6.7
 
