@@ -16,7 +16,7 @@
     <meta name="twitter:title" content="Smriti 5.0 | Civil Engineering Farewell">
     <meta name="twitter:description" content="Lights dim. Cameras roll. Memories play. Join us on 14th May, 2026 at 3:30 PM.">
     <meta name="robots" content="index, follow">
-    <meta name="version" content="7.1">
+    <meta name="version" content="7.2">
     <link rel="canonical" href="https://aryanake.github.io/smriti-5.0/">
 
     <!-- Tailwind CSS -->
@@ -1251,7 +1251,10 @@ where every goodbye feels like a blockbuster climax.
                                     <span id="ticket-tag" class="text-[6px] px-1 py-0.5 rounded bg-gold-accent/10 border border-gold-accent/20 text-gold-accent font-bold tracking-widest font-mono">PREMIERE</span>
                                 </div>
                                 <h4 id="ticket-display-name" class="text-xs text-white font-serif font-black tracking-wide mt-1 truncate">Your Name</h4>
-                                <p class="text-[6px] text-gray-400 mt-0.5 font-light uppercase tracking-wider font-sans">Civil Engineering Farewell</p>
+                                <div class="flex justify-between items-center mt-0.5 pr-2">
+                                    <p class="text-[6px] text-gray-400 font-light uppercase tracking-wider font-sans">Civil Engineering Farewell</p>
+                                    <span id="ticket-seat-preview" class="text-[5px] text-gold-accent font-mono tracking-wider font-bold">SEAT: UNASSIGNED</span>
+                                </div>
                             </div>
                             
                             <div class="pl-2 flex justify-between items-end border-t border-white/5 pt-1.5 mt-1.5">
@@ -2107,7 +2110,7 @@ where every goodbye feels like a blockbuster climax.
                 <p class="text-gray-700 text-xs tracking-widest uppercase">
                     Made with <span class="text-red-500">♥</span> for the Class of 2026
                 </p>
-                <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-gold-accent/10 border border-gold-accent/20 text-gold-accent/50 text-[10px] font-mono tracking-widest">v7.1</span>
+                <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-gold-accent/10 border border-gold-accent/20 text-gold-accent/50 text-[10px] font-mono tracking-widest">v7.2</span>
             </div>
             <p class="text-gray-700 text-xs tracking-[0.2em] uppercase">
                 Designed &amp; Developed by <span class="text-gold-accent/70">Rudrangshu Sonowal</span>
@@ -3670,6 +3673,28 @@ where every goodbye feels like a blockbuster climax.
         // Initialize Trivia
         loadTriviaQuestion();
 
+        // Seating Lookup (v7.2)
+        function findReservedSeat(guestName) {
+            const reserved = JSON.parse(localStorage.getItem('smriti-seating') || '{}');
+            const tableNames = {
+                structural: 'Structural',
+                hydraulics: 'Hydraulics',
+                geotech: 'Geotech',
+                survey: 'Survey',
+                highway: 'Highway'
+            };
+            
+            for (let tableId in reserved) {
+                const seats = reserved[tableId];
+                for (let seatNum in seats) {
+                    if (seats[seatNum] && seats[seatNum].toLowerCase() === guestName.toLowerCase()) {
+                        return { table: tableNames[tableId] || tableId, seat: seatNum };
+                    }
+                }
+            }
+            return null;
+        }
+
         // Ticket Generator Functions (v6.5)
         function updateTicketPreview() {
             const nameInput = document.getElementById('ticket-name').value.trim();
@@ -3684,6 +3709,16 @@ where every goodbye feels like a blockbuster climax.
             
             document.getElementById('ticket-display-name').innerText = displayName;
             document.getElementById('ticket-number-display').innerText = ticketNumber;
+            
+            const reservation = findReservedSeat(displayName);
+            const seatPreview = document.getElementById('ticket-seat-preview');
+            if (seatPreview) {
+                if (reservation) {
+                    seatPreview.innerText = `SEAT: 0${reservation.seat} (${reservation.table.substring(0,3).toUpperCase()})`;
+                } else {
+                    seatPreview.innerText = "SEAT: UNASSIGNED";
+                }
+            }
             
             const previewContainer = document.getElementById('ticket-preview-container');
             const ticketLeft = document.getElementById('ticket-left');
@@ -3821,23 +3856,37 @@ where every goodbye feels like a blockbuster climax.
             ctx.fillStyle = theme === 'gold' ? '#334155' : '#9ca3af';
             ctx.fillText('CIVIL ENGINEERING FAREWELL', 40, 135);
             
+            // Assigned seating on canvas
+            ctx.font = 'bold 8px sans-serif';
+            ctx.fillStyle = theme === 'gold' ? '#475569' : '#6b7280';
+            ctx.fillText('ASSIGNED SEATING', 40, 155);
+            
+            ctx.font = 'bold 9px monospace';
+            ctx.fillStyle = theme === 'gold' ? '#0f172a' : '#ffffff';
+            const reservation = findReservedSeat(displayName);
+            if (reservation) {
+                ctx.fillText(`SEAT 0${reservation.seat} · ${reservation.table.toUpperCase()}`, 40, 168);
+            } else {
+                ctx.fillText('UNASSIGNED · GENERAL ADMISSION', 40, 168);
+            }
+
             // Separator line
             ctx.strokeStyle = theme === 'gold' ? 'rgba(15,23,42,0.1)' : 'rgba(255,255,255,0.1)';
             ctx.lineWidth = 1;
-            ctx.beginPath(); ctx.moveTo(40, 170); ctx.lineTo(320, 170); ctx.stroke();
+            ctx.beginPath(); ctx.moveTo(40, 182); ctx.lineTo(320, 182); ctx.stroke();
             
             // Details
-            ctx.font = 'bold 9px sans-serif';
+            ctx.font = 'bold 8px sans-serif';
             ctx.fillStyle = theme === 'gold' ? '#475569' : '#6b7280';
-            ctx.fillText('VENUE', 40, 195);
-            ctx.fillText('DATE & TIME', 180, 195);
+            ctx.fillText('VENUE', 40, 202);
+            ctx.fillText('DATE & TIME', 180, 202);
             
-            ctx.font = 'bold 11px monospace';
+            ctx.font = 'bold 10px monospace';
             ctx.fillStyle = theme === 'gold' ? '#0f172a' : '#ffffff';
-            ctx.fillText('SEMINAR HALL', 40, 215);
+            ctx.fillText('SEMINAR HALL', 40, 222);
             
             ctx.fillStyle = theme === 'gold' ? '#0f172a' : '#d4af37';
-            ctx.fillText('14.05.2026 · 3:30 PM', 180, 215);
+            ctx.fillText('14.05.2026 · 3:30 PM', 180, 222);
             
             // Right Side: ADMIT ONE
             ctx.font = 'bold 10px monospace';

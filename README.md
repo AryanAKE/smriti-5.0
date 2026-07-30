@@ -81,7 +81,11 @@ smriti-5.0/
 
 ## 📋 Changelog
 
-### v7.1 — July 2026 (Latest)
+### v7.2 — July 2026 (Latest)
+- 🎟️ **Seat-to-Ticket Integration** — Connected the interactive seating layout with the Cinema Ticket Stub Generator. Generating or previewing a ticket now performs an active lookup in the reserved seating tables; matching guests dynamically receive their table discipline and seat code (e.g. "SEAT 03 · HYDRAULICS") directly on their collector's pass download.
+- 🏷️ **v7.2 Version Bump** — Footer badge and meta version tag updated to v7.2
+
+### v7.1 — July 2026
 - 🗳️ **Batch Superlatives Voting Board** — Added a superlative voting module featuring funny categories (e.g., Leaning Tower builder, Autodesk lover, survey snack supplier). Includes an interactive, real-time leaderboard rendering vote percentages onto horizontal gold bar charts, backed by `localStorage`.
 - 🏷️ **v7.1 Version Bump** — Footer badge and meta version tag updated to v7.1
 
