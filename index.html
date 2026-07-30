@@ -27,7 +27,7 @@
     <meta name="twitter:title" content="Smriti 5.0 | Civil Engineering Farewell">
     <meta name="twitter:description" content="Lights dim. Cameras roll. Memories play. Join us on 14th May, 2026 at 3:30 PM.">
     <meta name="robots" content="index, follow">
-    <meta name="version" content="6.6">
+    <meta name="version" content="6.7">
     <link rel="canonical" href="https://aryanake.github.io/smriti-5.0/">
 
     <!-- Tailwind CSS -->
@@ -1481,6 +1481,49 @@ where every goodbye feels like a blockbuster climax.
         </div>
     </section>
 
+    <!-- Trivia Challenge Section (v6.7) -->
+    <section id="trivia-section" class="py-24 px-4 relative z-10 border-t border-white/5 bg-black/10">
+        <div class="max-w-2xl mx-auto text-center space-y-8">
+            <div class="text-center">
+                <p class="text-xs uppercase tracking-[0.3em] text-gold-accent font-semibold mb-3 opacity-80">Test Your Knowledge</p>
+                <h2 class="text-3xl md:text-5xl font-serif text-white">Legends of Civil <span class="text-gold-gradient italic font-bold">Trivia</span></h2>
+                <p class="text-gray-400 text-sm font-light mt-3 max-w-md mx-auto">Are you a true Civil Engineering legend? Answer these 5 classic department questions and find out your batch rank.</p>
+            </div>
+
+            <!-- Trivia Card -->
+            <div class="glass-panel p-8 rounded-sm border border-gold-accent/25 max-w-lg mx-auto relative overflow-hidden">
+                <!-- Progress bar -->
+                <div class="w-full bg-slate-900 h-1 rounded-full mb-6 overflow-hidden">
+                    <div id="trivia-progress" class="bg-gold-accent h-full transition-all duration-300 w-0"></div>
+                </div>
+                
+                <!-- Game Board -->
+                <div id="trivia-game-board">
+                    <p id="trivia-q-num" class="text-gold-accent text-[10px] tracking-widest font-mono uppercase mb-2">Question 1 of 5</p>
+                    <h3 id="trivia-q-text" class="text-white font-serif text-lg font-bold mb-6">Loading question...</h3>
+                    <div id="trivia-options" class="space-y-3">
+                        <!-- Option buttons are dynamically injected here -->
+                    </div>
+                </div>
+
+                <!-- Score Board (Hidden by default) -->
+                <div id="trivia-score-board" class="hidden space-y-6 py-4">
+                    <div class="w-20 h-20 rounded-full border border-gold-accent/40 bg-gold-accent/10 flex items-center justify-center mx-auto text-4xl" id="trivia-badge-emoji">
+                        🏆
+                    </div>
+                    <div>
+                        <h3 class="text-white font-serif text-2xl font-bold">Your Score: <span id="trivia-final-score" class="text-gold-gradient">0/5</span></h3>
+                        <p id="trivia-rank-title" class="text-gold-accent text-xs font-semibold uppercase tracking-[0.2em] mt-1 font-mono">Structural Legend</p>
+                        <p id="trivia-rank-desc" class="text-gray-400 text-xs font-light mt-2 max-w-xs mx-auto">You built it! A true structural masterpiece of engineering knowledge. The concrete is dry and flawless.</p>
+                    </div>
+                    <button onclick="resetTrivia()" class="px-6 py-2 bg-gold-accent hover:bg-gold-light text-slate-deep text-xs font-bold uppercase tracking-wider rounded-sm hover:shadow-[0_0_20px_rgba(212,175,55,0.4)] transition-all duration-300">
+                        Try Again
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Memories Wall Section -->
     <section id="memories-section" class="py-24 px-4 relative z-10 border-t border-white/5">
         <div class="max-w-5xl mx-auto">
@@ -1855,7 +1898,7 @@ where every goodbye feels like a blockbuster climax.
                 <p class="text-gray-700 text-xs tracking-widest uppercase">
                     Made with <span class="text-red-500">♥</span> for the Class of 2026
                 </p>
-                <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-gold-accent/10 border border-gold-accent/20 text-gold-accent/50 text-[10px] font-mono tracking-widest">v6.6</span>
+                <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-gold-accent/10 border border-gold-accent/20 text-gold-accent/50 text-[10px] font-mono tracking-widest">v6.7</span>
             </div>
             <p class="text-gray-700 text-xs tracking-[0.2em] uppercase">
                 Designed &amp; Developed by <span class="text-gold-accent/70">Rudrangshu Sonowal</span>
@@ -3261,6 +3304,162 @@ where every goodbye feels like a blockbuster climax.
 
         // Initialize Seating blueprint
         loadSeatingLayout();
+
+        // Trivia Questions Data (v6.7)
+        const triviaQuestions = [
+            {
+                q: "What is the primary purpose of a Concrete Slump Test?",
+                options: [
+                    "To test concrete workability and consistency",
+                    "To measure student stress levels during exam week",
+                    "To check cement purity",
+                    "To sculpt abstract structural art"
+                ],
+                correct: 0,
+                desc: "Slump tests measure the consistency and flow of concrete before it sets!"
+            },
+            {
+                q: "Where is the absolute best spot for chai and post-lab civil gossip?",
+                options: [
+                    "Inside the computer drafting lab",
+                    "The canteen back alley",
+                    "Right in front of the HOD office",
+                    "On top of the Survey Lab balcony"
+                ],
+                correct: 1,
+                desc: "The canteen back alley remains the supreme spot for post-lab discussions!"
+            },
+            {
+                q: "In drafting, what does CAD stand for when the deadline is in 2 hours?",
+                options: [
+                    "Computer-Aided Design",
+                    "Computer-Aided Disaster",
+                    "Coffee And Tears",
+                    "Cry And Despair"
+                ],
+                correct: 0,
+                desc: "Officially Computer-Aided Design, although other interpretations are highly relatable during deadlines."
+            },
+            {
+                q: "What is the most critical survival tool for a land survey field trip?",
+                options: [
+                    "Theodolite tripod stand",
+                    "Total Station calibration manual",
+                    "Umbrellas and tea snacks",
+                    "Durable steel measuring tape"
+                ],
+                correct: 2,
+                desc: "No survey trip is complete without umbrellas, snacks, and good stories!"
+            },
+            {
+                q: "How do civil engineering students define a 'temporary structure'?",
+                options: [
+                    "Anything built with light wood or bamboo scaffolding",
+                    "Anything that stands until the external examiner leaves",
+                    "A structure designed for under 1 year of service",
+                    "The campus concrete lab roof"
+                ],
+                correct: 1,
+                desc: "If it survives the inspection, it's a structural success!"
+            }
+        ];
+
+        let triviaCurrentIndex = 0;
+        let triviaScore = 0;
+        
+        function loadTriviaQuestion() {
+            const progress = document.getElementById('trivia-progress');
+            if (!progress) return;
+            
+            progress.style.width = `${(triviaCurrentIndex / triviaQuestions.length) * 100}%`;
+            
+            const qNum = document.getElementById('trivia-q-num');
+            const qText = document.getElementById('trivia-q-text');
+            const optionsDiv = document.getElementById('trivia-options');
+            
+            qNum.innerText = `Question ${triviaCurrentIndex + 1} of ${triviaQuestions.length}`;
+            
+            const currentQ = triviaQuestions[triviaCurrentIndex];
+            qText.innerText = currentQ.q;
+            optionsDiv.innerHTML = '';
+            
+            currentQ.options.forEach((opt, idx) => {
+                const btn = document.createElement('button');
+                btn.className = "w-full text-left p-3.5 bg-slate-900/60 border border-gold-accent/15 rounded-sm hover:border-gold-accent/60 hover:bg-gold-accent/5 text-gray-300 hover:text-white text-xs font-light tracking-wide transition-all duration-200 block";
+                btn.innerText = opt;
+                btn.onclick = () => selectTriviaOption(idx);
+                optionsDiv.appendChild(btn);
+            });
+        }
+        
+        function selectTriviaOption(selectedIdx) {
+            const currentQ = triviaQuestions[triviaCurrentIndex];
+            const optionsDiv = document.getElementById('trivia-options');
+            const buttons = optionsDiv.getElementsByTagName('button');
+            
+            for (let btn of buttons) {
+                btn.disabled = true;
+                btn.onclick = null;
+            }
+            
+            if (selectedIdx === currentQ.correct) {
+                triviaScore++;
+                buttons[selectedIdx].classList.add('border-green-500', 'bg-green-500/10', 'text-green-400');
+            } else {
+                buttons[selectedIdx].classList.add('border-red-500', 'bg-red-500/10', 'text-red-400');
+                buttons[currentQ.correct].classList.add('border-green-500', 'bg-green-500/10', 'text-green-400');
+            }
+            
+            setTimeout(() => {
+                triviaCurrentIndex++;
+                if (triviaCurrentIndex < triviaQuestions.length) {
+                    loadTriviaQuestion();
+                } else {
+                    showTriviaResults();
+                }
+            }, 1800);
+        }
+        
+        function showTriviaResults() {
+            document.getElementById('trivia-progress').style.width = '100%';
+            document.getElementById('trivia-game-board').classList.add('hidden');
+            
+            const scoreboard = document.getElementById('trivia-score-board');
+            scoreboard.classList.remove('hidden');
+            
+            const scoreDisplay = document.getElementById('trivia-final-score');
+            const emojiDisplay = document.getElementById('trivia-badge-emoji');
+            const rankTitle = document.getElementById('trivia-rank-title');
+            const rankDesc = document.getElementById('trivia-rank-desc');
+            
+            scoreDisplay.innerText = `${triviaScore}/${triviaQuestions.length}`;
+            
+            if (triviaScore === 5) {
+                emojiDisplay.innerText = "🏆";
+                rankTitle.innerText = "Structural Legend";
+                rankDesc.innerText = "You built it! A true structural masterpiece of civil knowledge. The concrete is dry and absolutely flawless.";
+                launchConfetti();
+            } else if (triviaScore >= 3) {
+                emojiDisplay.innerText = "🏗️";
+                rankTitle.innerText = "Concrete Mastermind";
+                rankDesc.innerText = "Solid effort. You've got the foundation laid correctly, although a couple of calculations had tiny rounding errors.";
+            } else {
+                emojiDisplay.innerText = "📐";
+                rankTitle.innerText = "First-Year Surveyor";
+                rankDesc.innerText = "Seems your coordinates are a bit off. Grab your tripods, calibrate the prism, and try re-surveying the questions.";
+            }
+        }
+        
+        function resetTrivia() {
+            triviaCurrentIndex = 0;
+            triviaScore = 0;
+            document.getElementById('trivia-score-board').classList.add('hidden');
+            document.getElementById('trivia-game-board').classList.remove('hidden');
+            loadTriviaQuestion();
+        }
+        
+        // Initialize Trivia
+        loadTriviaQuestion();
 
         // Ticket Generator Functions (v6.5)
         function updateTicketPreview() {

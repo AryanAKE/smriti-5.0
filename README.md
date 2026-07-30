@@ -81,7 +81,11 @@ smriti-5.0/
 
 ## 📋 Changelog
 
-### v6.6 — July 2026 (Latest)
+### v6.7 — July 2026 (Latest)
+- 🧠 **Legends of Civil Trivia Challenge** — Introduced an interactive 5-question trivia game containing humorous department memories and civil engineering trivia. Syncs with a visual progress bar, triggers custom ranked badges (e.g. Structural Legend, Concrete Mastermind), and sets off a gold confetti burst upon achieving a perfect 5/5 score.
+- 🏷️ **v6.7 Version Bump** — Footer badge and meta version tag updated to v6.7
+
+### v6.6 — July 2026
 - 🎹 **Cinematic Synthesizer Controls** — Upgraded the procedural soundtrack synthesizer into an interactive audio control panel. Added 3 select-able ambient soundscapes, Tempo (BPM) control, Volume control, and a real-time FFT frequency spectrum analyzer visualizer.
 - 🏷️ **v6.6 Version Bump** — Footer badge and meta version tag updated to v6.6
 
