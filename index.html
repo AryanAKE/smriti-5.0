@@ -16,7 +16,7 @@
     <meta name="twitter:title" content="Smriti 5.0 | Civil Engineering Farewell">
     <meta name="twitter:description" content="Lights dim. Cameras roll. Memories play. Join us on 14th May, 2026 at 3:30 PM.">
     <meta name="robots" content="index, follow">
-    <meta name="version" content="7.3">
+    <meta name="version" content="7.4">
     <link rel="canonical" href="https://aryanake.github.io/smriti-5.0/">
 
     <!-- Tailwind CSS -->
@@ -739,6 +739,7 @@
         <div class="nav-dot" data-target="rsvp-section" data-label="RSVP"></div>
         <div class="nav-dot" data-target="memories-section" data-label="Memories"></div>
         <div class="nav-dot" data-target="gallery-section" data-label="Gallery"></div>
+        <div class="nav-dot" data-target="concrete-section" data-label="UTM Lab"></div>
         <div class="nav-dot" data-target="share-section" data-label="Share"></div>
     </nav>
 
@@ -2026,6 +2027,146 @@ where every goodbye feels like a blockbuster climax.
         </div>
     </section>
 
+    <!-- Concrete Crusher Section (v7.4) -->
+    <section id="concrete-section" class="py-24 px-4 relative z-10 border-t border-white/5 bg-slate-deep/50">
+        <div class="max-w-4xl mx-auto space-y-12">
+            <div class="text-center">
+                <p class="text-xs uppercase tracking-[0.3em] text-gold-accent font-semibold mb-3 opacity-80">Virtual Laboratory</p>
+                <h2 class="text-4xl md:text-5xl font-serif text-white">The <span class="text-gold-gradient italic font-bold">Concrete Crusher</span></h2>
+                <p class="text-gray-400 text-sm font-light mt-3 max-w-md mx-auto">Design your custom civil batch mix and test its compressive strength in our high-load UTM simulator.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch">
+                <!-- Mix Design Controls -->
+                <div class="glass-panel p-6 rounded-sm border border-gold-accent/25 flex flex-col justify-between">
+                    <div>
+                        <h3 class="text-white font-serif text-lg font-bold mb-4 flex items-center gap-2">
+                            <span>🧪 Concrete Mix Design</span>
+                        </h3>
+                        <div class="space-y-4">
+                            <div>
+                                <label class="block text-gray-400 text-[10px] uppercase tracking-wider font-bold mb-1.5" for="concrete-grade">Design Mix Grade</label>
+                                <select id="concrete-grade" class="w-full bg-slate-deep border border-gold-accent/25 rounded-sm px-3.5 py-2 text-xs text-gray-300 focus:outline-none focus:border-gold-accent/70 transition-colors">
+                                    <option value="M20">M20 (Standard Concrete)</option>
+                                    <option value="M25">M25 (Heavy Duty Concrete)</option>
+                                    <option value="M35">M35 (High Strength Structural)</option>
+                                    <option value="M-autocad">M-Tears-of-AutoCAD (Funny Special)</option>
+                                    <option value="M-exams">M-Exam-Sweat-Batch (Humorous Mix)</option>
+                                    <option value="M-chai">M-Chai-Samosa-Survey (Legendary Mix)</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-gray-400 text-[10px] uppercase tracking-wider font-bold mb-1.5">Additives / Admixtures</label>
+                                <div class="grid grid-cols-2 gap-2 text-xs text-gray-300">
+                                    <label class="flex items-center gap-2 cursor-pointer p-2 rounded bg-black/25 border border-white/5 hover:border-gold-accent/40 transition-colors">
+                                        <input type="checkbox" id="add-caffeine" class="accent-gold-accent">
+                                        <span>Caffeine Boost</span>
+                                    </label>
+                                    <label class="flex items-center gap-2 cursor-pointer p-2 rounded bg-black/25 border border-white/5 hover:border-gold-accent/40 transition-colors">
+                                        <input type="checkbox" id="add-luck" class="accent-gold-accent">
+                                        <span>Pure Luck</span>
+                                    </label>
+                                    <label class="flex items-center gap-2 cursor-pointer p-2 rounded bg-black/25 border border-white/5 hover:border-gold-accent/40 transition-colors">
+                                        <input type="checkbox" id="add-reference" class="accent-gold-accent">
+                                        <span>L&T Reference</span>
+                                    </label>
+                                    <label class="flex items-center gap-2 cursor-pointer p-2 rounded bg-black/25 border border-white/5 hover:border-gold-accent/40 transition-colors">
+                                        <input type="checkbox" id="add-chatgpt" class="accent-gold-accent">
+                                        <span>AI Support</span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-8 space-y-3">
+                        <button onclick="startConcreteTest()" id="crush-btn" class="w-full py-3 bg-gold-accent hover:bg-gold-light text-slate-deep font-bold text-sm uppercase tracking-[0.15em] rounded-sm hover:shadow-[0_0_20px_rgba(212,175,55,0.4)] transition-all duration-300">
+                            Crush Block 💥
+                        </button>
+                        <button onclick="resetConcreteTest()" id="reset-crush-btn" class="w-full py-2 border border-gold-accent/25 hover:border-gold-accent/60 text-gold-accent text-xs font-bold uppercase tracking-wider rounded-sm transition-colors hidden">
+                            Reset Machine
+                        </button>
+                    </div>
+                </div>
+
+                <!-- UTM Universal Testing Machine Simulator Screen -->
+                <div class="glass-panel p-6 rounded-sm border border-gold-accent/25 flex flex-col items-center justify-center min-h-[300px] relative bg-black/40 overflow-hidden">
+                    <!-- Gauge and Cylinder Display -->
+                    <div id="utm-display" class="w-full flex flex-col items-center justify-center space-y-6">
+                        <!-- Digital Gauges -->
+                        <div class="flex justify-between w-full border-b border-gold-accent/15 pb-4">
+                            <div class="text-left">
+                                <span class="block text-[8px] uppercase tracking-widest text-gray-500 font-bold">Applied Load</span>
+                                <span id="utm-load" class="text-2xl font-mono text-gold-accent font-bold">0.00 <span class="text-xs text-gray-400">kN</span></span>
+                            </div>
+                            <div class="text-right">
+                                <span class="block text-[8px] uppercase tracking-widest text-gray-500 font-bold">Machine Status</span>
+                                <span id="utm-status" class="text-xs uppercase tracking-wider text-green-500 font-bold flex items-center gap-1.5"><span class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>Ready</span>
+                            </div>
+                        </div>
+
+                        <!-- Cylinder Simulation Canvas -->
+                        <div class="relative w-40 h-44 border border-white/10 bg-slate-deep rounded-sm p-4 flex items-center justify-center overflow-hidden">
+                            <!-- Upper Platen -->
+                            <div id="utm-platen" class="absolute top-0 left-0 right-0 h-4 bg-gradient-to-b from-gray-500 to-gray-700 border-b border-black/40 transition-transform duration-100 ease-out z-10"></div>
+                            
+                            <!-- Concrete Block -->
+                            <div id="concrete-block" class="w-20 h-28 bg-gray-400 relative rounded-sm flex items-center justify-center overflow-hidden transition-all duration-300 shadow-[inset_0_0_20px_rgba(0,0,0,0.5)] border border-gray-500">
+                                <!-- Concrete texture pattern overlay -->
+                                <div class="absolute inset-0 opacity-15 bg-[radial-gradient(#000_15%,transparent_16%)] bg-[size:6px_6px]"></div>
+                                <!-- Cracks overlay -->
+                                <div id="crack-overlay-1" class="absolute inset-0 opacity-0 bg-[radial-gradient(ellipse_at_center,transparent_30%,#000_80%)] transition-opacity duration-300 pointer-events-none"></div>
+                                <svg id="crack-lines" class="absolute inset-0 w-full h-full stroke-black/80 stroke-[2] fill-none opacity-0 transition-opacity duration-200 pointer-events-none" viewBox="0 0 100 100">
+                                    <path d="M 50,0 Q 45,30 60,50 T 40,100" />
+                                    <path d="M 30,20 Q 55,40 35,70 T 70,95" />
+                                </svg>
+                                <span id="block-label" class="text-[10px] font-mono text-gray-800 font-bold tracking-widest pointer-events-none z-10">CIVIL-5.0</span>
+                            </div>
+
+                            <!-- Lower Platen -->
+                            <div class="absolute bottom-0 left-0 right-0 h-4 bg-gradient-to-t from-gray-500 to-gray-700 border-t border-black/40 z-10"></div>
+                        </div>
+                    </div>
+
+                    <!-- Lab Report Output Card -->
+                    <div id="utm-report" class="absolute inset-0 bg-slate-deep/95 p-6 flex flex-col justify-between transform translate-y-full transition-transform duration-500 ease-out z-20">
+                        <div class="space-y-4">
+                            <div class="flex justify-between items-center border-b border-gold-accent/30 pb-2">
+                                <h4 class="font-serif text-gold-accent italic font-bold text-lg">Lab Report: Compressive Test</h4>
+                                <span class="font-mono text-[9px] text-gray-500 uppercase tracking-widest">UTM-SERIAL-428</span>
+                            </div>
+                            <div class="space-y-2 text-xs">
+                                <div class="flex justify-between border-b border-white/5 py-1">
+                                    <span class="text-gray-400 font-light">Mix Designation:</span>
+                                    <span id="rep-grade" class="text-white font-bold">M20</span>
+                                </div>
+                                <div class="flex justify-between border-b border-white/5 py-1">
+                                    <span class="text-gray-400 font-light">Compressive Strength:</span>
+                                    <span id="rep-strength" class="text-gold-accent font-bold">24.52 MPa</span>
+                                </div>
+                                <div class="flex justify-between border-b border-white/5 py-1">
+                                    <span class="text-gray-400 font-light">Failure Category:</span>
+                                    <span id="rep-failure" class="text-white font-bold">Brittle Shear failure</span>
+                                </div>
+                                <div class="pt-3">
+                                    <span class="block text-[8px] uppercase tracking-wider text-gray-500 font-bold mb-1">Inspector's Comment</span>
+                                    <p id="rep-comment" class="text-gray-300 italic font-serif leading-relaxed text-left border-l-2 border-gold-accent/50 pl-3">The concrete block demonstrated adequate mechanical stability, suitable for holding memories of the Class of 2026.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex gap-2">
+                            <button onclick="downloadConcreteReport()" class="flex-1 py-2 bg-gold-accent/10 hover:bg-gold-accent/20 border border-gold-accent/30 text-gold-accent font-bold text-xs uppercase tracking-wider rounded-sm transition-all duration-300">
+                                📋 Save Report
+                            </button>
+                            <button onclick="resetConcreteTest()" class="flex-1 py-2 bg-white/5 hover:bg-white/10 text-white font-bold text-xs uppercase tracking-wider rounded-sm transition-all duration-300">
+                                Try Another Mix
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Closing Cinematic Quote Banner -->
     <div class="relative z-10 w-full py-20 px-4 overflow-hidden bg-black/60 border-t border-gold-accent/20">
         <!-- Ambient glow -->
@@ -2134,7 +2275,7 @@ where every goodbye feels like a blockbuster climax.
                 <p class="text-gray-700 text-xs tracking-widest uppercase">
                     Made with <span class="text-red-500">♥</span> for the Class of 2026
                 </p>
-                <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-gold-accent/10 border border-gold-accent/20 text-gold-accent/50 text-[10px] font-mono tracking-widest">v7.3</span>
+                <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-gold-accent/10 border border-gold-accent/20 text-gold-accent/50 text-[10px] font-mono tracking-widest">v7.4</span>
             </div>
             <p class="text-gray-700 text-xs tracking-[0.2em] uppercase">
                 Designed &amp; Developed by <span class="text-gold-accent/70">Rudrangshu Sonowal</span>
@@ -2591,7 +2732,7 @@ where every goodbye feels like a blockbuster climax.
                 if (target) target.scrollIntoView({ behavior: 'smooth' });
             });
         });
-        const spySections = ['hero','countdown-section','video-section','logistics-section','schedule-section','share-section'];
+        const spySections = ['hero','countdown-section','video-section','logistics-section','schedule-section','concrete-section','share-section'];
         window.addEventListener('scroll', () => {
             let current = 'hero';
             spySections.forEach(id => {
@@ -4159,6 +4300,243 @@ where every goodbye feels like a blockbuster climax.
                 `;
                 resultsContainer.appendChild(row);
             });
+        }
+
+        // --- Concrete Crusher Simulator (v7.4) ---
+        let concreteInterval = null;
+        function startConcreteTest() {
+            const btn = document.getElementById('crush-btn');
+            const resetBtn = document.getElementById('reset-crush-btn');
+            const grade = document.getElementById('concrete-grade').value;
+            const loadVal = document.getElementById('utm-load');
+            const statusVal = document.getElementById('utm-status');
+            const platen = document.getElementById('utm-platen');
+            const block = document.getElementById('concrete-block');
+            const cracks = document.getElementById('crack-overlay-1');
+            const crackLines = document.getElementById('crack-lines');
+            const report = document.getElementById('utm-report');
+
+            // Additives
+            const caffeine = document.getElementById('add-caffeine').checked;
+            const luck = document.getElementById('add-luck').checked;
+            const ref = document.getElementById('add-reference').checked;
+            const ai = document.getElementById('add-chatgpt').checked;
+
+            if (concreteInterval) clearInterval(concreteInterval);
+            btn.disabled = true;
+            btn.classList.add('opacity-50', 'cursor-not-allowed');
+
+            statusVal.innerHTML = `<span class="w-2 h-2 rounded-full bg-yellow-500 animate-pulse"></span>LOADING...`;
+            statusVal.className = "text-xs uppercase tracking-wider text-yellow-500 font-bold flex items-center gap-1.5";
+
+            // Determine Target strength
+            let targetStrength = 20.0;
+            let targetLoad = 140.0;
+            let reportComment = "";
+            let failureMode = "Shear Failure";
+
+            if (grade === 'M20') {
+                targetStrength = 20.0 + Math.random() * 5;
+                targetLoad = targetStrength * 7.2;
+                reportComment = "The specimen displayed a classic cone and shear failure mode, fully complying with civil code requirements.";
+            } else if (grade === 'M25') {
+                targetStrength = 25.0 + Math.random() * 5;
+                targetLoad = targetStrength * 7.2;
+                reportComment = "Excellent structural consolidation. High cohesion observed at failure.";
+            } else if (grade === 'M35') {
+                targetStrength = 35.0 + Math.random() * 7;
+                targetLoad = targetStrength * 7.2;
+                reportComment = "High performance concrete mix showing rapid load absorption and minimal volumetric shrinkage.";
+            } else if (grade === 'M-autocad') {
+                targetStrength = 1.5 + Math.random() * 1.5;
+                targetLoad = targetStrength * 7.2;
+                failureMode = "Immediate Collapse";
+                reportComment = "Severe structural failure. The concrete specimen disintegrated faster than a layout with broken external AutoCAD references under client deadline pressure.";
+            } else if (grade === 'M-exams') {
+                targetStrength = 45.0 + Math.random() * 10;
+                targetLoad = targetStrength * 7.2;
+                failureMode = "Explosive Brittle Split";
+                reportComment = "Phenomenal strength under stress. This batch, much like the students surviving endless surveying drawing exams, shows immense structural resistance.";
+            } else if (grade === 'M-chai') {
+                targetStrength = 95.0 + Math.random() * 15;
+                targetLoad = targetStrength * 7.2;
+                failureMode = "Indestructible Core";
+                reportComment = "The machine was unable to induce full shear. The specimen, bound by tapri chai and hot samosas, exhibits near-infinite load bearing capacity.";
+            }
+
+            // Apply additives
+            let additiveBonus = 0;
+            let addComments = [];
+            if (caffeine) {
+                additiveBonus += 5.2;
+                addComments.push("Accelerated hydration catalyzed by Caffeine.");
+            }
+            if (luck) {
+                additiveBonus += (Math.random() * 30 - 10);
+                addComments.push("Crystalline structures altered by Pure Luck.");
+            }
+            if (ref) {
+                additiveBonus += 15.0;
+                addComments.push("Reinforced with corporate-grade L&T networking.");
+            }
+            if (ai) {
+                additiveBonus += 8.5;
+                addComments.push("Optimized particle aggregation via AI algorithms.");
+            }
+
+            targetStrength = Math.max(1.0, targetStrength + additiveBonus);
+            targetLoad = targetStrength * 7.2;
+
+            if (addComments.length > 0) {
+                reportComment += " Admixture Note: " + addComments.join(" ");
+            }
+
+            let currentLoad = 0;
+            let frame = 0;
+            const totalFrames = 60;
+
+            // Trigger beep
+            try {
+                if (audioCtx) {
+                    let osc = audioCtx.createOscillator();
+                    let gainNode = audioCtx.createGain();
+                    osc.connect(gainNode);
+                    gainNode.connect(mainGain || audioCtx.destination);
+                    osc.frequency.setValueAtTime(300, audioCtx.currentTime);
+                    gainNode.gain.setValueAtTime(0.05, audioCtx.currentTime);
+                    gainNode.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.1);
+                    osc.start();
+                    osc.stop(audioCtx.currentTime + 0.1);
+                }
+            } catch (e) {}
+
+            concreteInterval = setInterval(() => {
+                frame++;
+                const progress = frame / totalFrames;
+                currentLoad = progress * targetLoad;
+                loadVal.innerHTML = `${currentLoad.toFixed(2)} <span class="text-xs text-gray-400">kN</span>`;
+
+                platen.style.transform = `translateY(${progress * 10}px)`;
+
+                if (progress > 0.3) {
+                    cracks.style.opacity = (progress - 0.3) * 1.2;
+                }
+                if (progress > 0.6) {
+                    crackLines.style.opacity = (progress - 0.6) * 2.5;
+                }
+
+                if (progress > 0.7) {
+                    const shake = (progress - 0.7) * 4;
+                    block.style.transform = `translate(${(Math.random() - 0.5) * shake}px, ${(Math.random() - 0.5) * shake}px)`;
+                }
+
+                if (frame >= totalFrames) {
+                    clearInterval(concreteInterval);
+                    concreteInterval = null;
+
+                    try {
+                        let context = audioCtx || new (window.AudioContext || window.webkitAudioContext)();
+                        if (context) {
+                            let osc = context.createOscillator();
+                            let gain = context.createGain();
+                            osc.type = 'sawtooth';
+                            osc.frequency.setValueAtTime(100, context.currentTime);
+                            osc.frequency.exponentialRampToValueAtTime(10, context.currentTime + 0.6);
+                            gain.gain.setValueAtTime(0.2, context.currentTime);
+                            gain.gain.exponentialRampToValueAtTime(0.001, context.currentTime + 0.6);
+                            osc.connect(gain);
+                            gain.connect(context.destination);
+                            osc.start();
+                            osc.stop(context.currentTime + 0.6);
+                        }
+                    } catch (err) {}
+
+                    block.style.transform = "scaleY(0.85) skewX(8deg)";
+                    block.classList.add('bg-gray-600');
+                    statusVal.innerHTML = `<span class="w-2 h-2 rounded-full bg-red-500"></span>CRUSHED`;
+                    statusVal.className = "text-xs uppercase tracking-wider text-red-500 font-bold flex items-center gap-1.5";
+
+                    document.getElementById('rep-grade').innerText = grade.replace('M-', '').toUpperCase();
+                    document.getElementById('rep-strength').innerText = `${targetStrength.toFixed(2)} MPa`;
+                    document.getElementById('rep-failure').innerText = failureMode;
+                    document.getElementById('rep-comment').innerText = reportComment;
+
+                    setTimeout(() => {
+                        report.classList.remove('translate-y-full');
+                        resetBtn.classList.remove('hidden');
+                    }, 500);
+                }
+            }, 50);
+        }
+
+        function resetConcreteTest() {
+            if (concreteInterval) {
+                clearInterval(concreteInterval);
+                concreteInterval = null;
+            }
+            const btn = document.getElementById('crush-btn');
+            const resetBtn = document.getElementById('reset-crush-btn');
+            const loadVal = document.getElementById('utm-load');
+            const statusVal = document.getElementById('utm-status');
+            const platen = document.getElementById('utm-platen');
+            const block = document.getElementById('concrete-block');
+            const cracks = document.getElementById('crack-overlay-1');
+            const crackLines = document.getElementById('crack-lines');
+            const report = document.getElementById('utm-report');
+
+            btn.disabled = false;
+            btn.classList.remove('opacity-50', 'cursor-not-allowed');
+            resetBtn.classList.add('hidden');
+
+            loadVal.innerHTML = `0.00 <span class="text-xs text-gray-400">kN</span>`;
+            statusVal.innerHTML = `<span class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>Ready`;
+            statusVal.className = "text-xs uppercase tracking-wider text-green-500 font-bold flex items-center gap-1.5";
+
+            platen.style.transform = "translateY(0px)";
+            block.style.transform = "none";
+            block.classList.remove('bg-gray-600');
+            cracks.style.opacity = "0";
+            crackLines.style.opacity = "0";
+            report.classList.add('translate-y-full');
+        }
+
+        function downloadConcreteReport() {
+            const grade = document.getElementById('rep-grade').innerText;
+            const strength = document.getElementById('rep-strength').innerText;
+            const failure = document.getElementById('rep-failure').innerText;
+            const comment = document.getElementById('rep-comment').innerText;
+
+            const textReport = `
+============================================================
+      SMRITI 5.0 - DEPT. OF CIVIL ENGINEERING LABS
+                COMPRESSIVE STRENGTH TEST
+============================================================
+Specimen ID: CIVIL-CLASS-OF-2026-STRENGTH
+Date Tested: ${new Date().toLocaleDateString()}
+Machine model: UTM-Hydraulic-428
+------------------------------------------------------------
+Mix Designation:     ${grade}
+Ultimate Load:       ${(parseFloat(strength) * 7.2).toFixed(2)} kN
+Compressive Strength: ${strength}
+Failure Mode:         ${failure}
+
+Inspector's Remarks:
+"${comment}"
+
+------------------------------------------------------------
+Status: APPROVED & MEMORIALIZED FOR ETERNITY
+============================================================
+            `.trim();
+
+            const blob = new Blob([textReport], { type: "text/plain;charset=utf-8" });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement("a");
+            a.href = url;
+            a.download = `Concrete_Lab_Report_${grade}.txt`;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
         }
 
         loadSuperlativeResults();

@@ -81,7 +81,11 @@ smriti-5.0/
 
 ## 📋 Changelog
 
-### v7.3 — July 2026 (Latest)
+### v7.4 — July 2026 (Latest)
+- 🧪 **The Concrete Crusher: Virtual UTM Lab** — Added an interactive Universal Testing Machine (UTM) compressor where users design a concrete mix (including funny custom mixes like tears of AutoCAD, Chai-Samosa Survey, etc.), select admixtures, apply hydraulic load, witness real-time concrete block deformation and crack propagation, and download laboratory certificates.
+- 🏷️ **v7.4 Version Bump** — Footer badge and meta version tag updated to v7.4
+
+### v7.3 — July 2026
 - 🔍 **Memory Wall Filters & Search** — Implemented a real-time search bar and filter tags ("All", "Labs", "Exams", "Field Trips", "General") for the Memories Wall. Enables users to dynamically search messages and filter them by category with fade transition effects. Updates memory submission to support category tagging.
 - 🏷️ **v7.3 Version Bump** — Footer badge and meta version tag updated to v7.3
 
