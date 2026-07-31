@@ -81,7 +81,11 @@ smriti-5.0/
 
 ## 📋 Changelog
 
-### v7.4 — July 2026 (Latest)
+### v7.5 — July 2026 (Latest)
+- 📐 **AutoCAD Command Master Speedrun** — Introduced an interactive retro terminal mini-game testing AutoCAD command shortcut knowledge (`L`, `E`, `O`, `TR`, `C`, etc.). Correct typing compiles structural ASCII-art blueprints step-by-step. Features a timer, mechanical sound synthesizer clicks, CPM speed analytics, rankings, and persistent high scores.
+- 🏷️ **v7.5 Version Bump** — Footer badge and meta version tag updated to v7.5
+
+### v7.4 — July 2026
 - 🧪 **The Concrete Crusher: Virtual UTM Lab** — Added an interactive Universal Testing Machine (UTM) compressor where users design a concrete mix (including funny custom mixes like tears of AutoCAD, Chai-Samosa Survey, etc.), select admixtures, apply hydraulic load, witness real-time concrete block deformation and crack propagation, and download laboratory certificates.
 - 🏷️ **v7.4 Version Bump** — Footer badge and meta version tag updated to v7.4
 
