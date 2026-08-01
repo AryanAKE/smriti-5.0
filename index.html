@@ -1043,6 +1043,79 @@ where every goodbye feels like a blockbuster climax.
         </div>
     </div>
 
+    <!-- Legacy Quotes Rotator Section (v7.6) -->
+    <section class="py-16 px-4 relative z-10 border-t border-white/5 overflow-hidden bg-black/40">
+        <div class="absolute inset-0" style="background: radial-gradient(ellipse 70% 100% at 50% 0%, rgba(212,175,55,0.05) 0%, transparent 70%);"></div>
+        <div class="max-w-3xl mx-auto text-center relative">
+            <p class="text-xs uppercase tracking-[0.35em] text-gold-accent/50 font-semibold mb-8 font-mono">— Words That Shaped Us —</p>
+            <div id="quote-display" class="min-h-[120px] flex flex-col items-center justify-center transition-opacity duration-700">
+                <div class="text-gold-accent/20 font-serif text-5xl leading-none mb-4 select-none">"</div>
+                <p id="quote-text" class="text-white/80 font-serif italic text-xl md:text-2xl leading-relaxed max-w-2xl font-light"></p>
+                <p id="quote-author" class="text-gold-accent/60 text-xs uppercase tracking-[0.25em] font-semibold mt-5 font-mono"></p>
+            </div>
+            <!-- Dot indicators -->
+            <div class="flex items-center justify-center gap-2 mt-8" id="quote-dots"></div>
+        </div>
+    </section>
+
+    <script>
+    (function() {
+        const quotes = [
+            { text: "The engineer has been, and is, a maker of history.", author: "— James Kip Finch" },
+            { text: "Engineering is not only study of 45 subjects but it is moral studies of intellectual life.", author: "— Prakhar Srivastav" },
+            { text: "To be an engineer is to be a creator of worlds that do not yet exist.", author: "— Unknown" },
+            { text: "Four years. A hundred deadlines. A thousand memories. One degree. One batch. Forever.", author: "— Class of 2026, Civil Engineering" },
+            { text: "The concrete sets. The steel holds. But what truly stands the test of time is the bond between us.", author: "— Smriti 5.0" },
+            { text: "We came as students. We leave as engineers. But we remain, always, as friends.", author: "— Farewell Night, 14th May 2026" },
+        ];
+        let current = 0;
+        let timer;
+
+        function renderQuote(idx, fade) {
+            const display = document.getElementById('quote-display');
+            const text = document.getElementById('quote-text');
+            const author = document.getElementById('quote-author');
+            if (!text) return;
+            if (fade) { display.style.opacity = '0'; }
+            setTimeout(() => {
+                text.textContent = quotes[idx].text;
+                author.textContent = quotes[idx].author;
+                display.style.opacity = '1';
+                // update dots
+                document.querySelectorAll('.q-dot').forEach((d, i) => {
+                    d.classList.toggle('bg-gold-accent', i === idx);
+                    d.classList.toggle('bg-gold-accent/20', i !== idx);
+                    d.classList.toggle('scale-125', i === idx);
+                });
+            }, fade ? 500 : 0);
+        }
+
+        function buildDots() {
+            const dotsEl = document.getElementById('quote-dots');
+            if (!dotsEl) return;
+            dotsEl.innerHTML = quotes.map((_, i) => `<button class="q-dot w-1.5 h-1.5 rounded-full transition-all duration-300 ${i === 0 ? 'bg-gold-accent scale-125' : 'bg-gold-accent/20'}" onclick="goQuote(${i})" aria-label="Quote ${i+1}"></button>`).join('');
+        }
+
+        window.goQuote = function(idx) {
+            current = idx;
+            clearInterval(timer);
+            renderQuote(idx, true);
+            startTimer();
+        };
+
+        function startTimer() {
+            timer = setInterval(() => {
+                current = (current + 1) % quotes.length;
+                renderQuote(current, true);
+            }, 5000);
+        }
+
+        buildDots();
+        renderQuote(0, false);
+        startTimer();
+    })();
+    </script>
+
     <!-- Seating Blueprint Section -->
     <section id="seating-section" class="py-24 px-4 relative z-10 border-t border-white/5 bg-[#08152e]">
         <!-- Cyanotype grid style -->
