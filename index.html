@@ -1857,6 +1857,133 @@ where every goodbye feels like a blockbuster climax.
         </div>
     </section>
 
+    <!-- Civil Engineering Pledge Section (v7.6) -->
+    <section id="pledge-section" class="py-24 px-4 relative z-10 border-t border-white/5 bg-black/30">
+        <!-- Subtle parchment glow -->
+        <div class="absolute inset-0 pointer-events-none" style="background: radial-gradient(ellipse 80% 60% at 50% 50%, rgba(212,175,55,0.04) 0%, transparent 70%);"></div>
+        <div class="max-w-3xl mx-auto text-center space-y-10 relative">
+            <div>
+                <p class="text-xs uppercase tracking-[0.3em] text-gold-accent font-semibold mb-3 opacity-80">Before We Go</p>
+                <h2 class="text-3xl md:text-5xl font-serif text-white">The <span class="text-gold-gradient italic font-bold">Engineer's Oath</span></h2>
+                <p class="text-gray-400 text-sm font-light mt-3 max-w-md mx-auto">As the Class of 2026 takes their final bow, let us take a sacred oath — an engineer's pledge that binds us beyond the campus gates forever.</p>
+            </div>
+
+            <!-- Pledge Parchment -->
+            <div class="glass-panel p-8 md:p-12 rounded-sm border border-gold-accent/25 text-left relative overflow-hidden">
+                <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-gold-accent/40 to-transparent"></div>
+                <div class="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-gold-accent/20 to-transparent"></div>
+
+                <!-- Ornament -->
+                <div class="flex items-center justify-center gap-4 mb-8">
+                    <div class="h-px flex-1 bg-gradient-to-r from-transparent to-gold-accent/30"></div>
+                    <span class="text-gold-accent text-2xl">⚙</span>
+                    <div class="h-px flex-1 bg-gradient-to-l from-transparent to-gold-accent/30"></div>
+                </div>
+
+                <p class="text-gold-accent/50 text-[10px] uppercase tracking-[0.3em] font-mono text-center mb-6">I, a Civil Engineer of the Class of 2026, do hereby solemnly pledge:</p>
+
+                <div class="space-y-5" id="pledge-lines">
+                    <!-- Pledge line 1 -->
+                    <label class="flex items-start gap-4 cursor-pointer group" onclick="checkPledge(this)">
+                        <div class="pledge-checkbox w-5 h-5 rounded-sm border border-gold-accent/40 bg-slate-deep flex items-center justify-center shrink-0 mt-0.5 transition-all duration-300 group-hover:border-gold-accent">
+                            <svg class="pledge-check w-3 h-3 text-gold-accent hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg>
+                        </div>
+                        <p class="text-gray-300 text-sm leading-relaxed font-light group-hover:text-white transition-colors">To build structures of <span class="text-gold-accent font-semibold">integrity, not just concrete</span> — in my career, and in every relationship I carry forward.</p>
+                    </label>
+                    <!-- Pledge line 2 -->
+                    <label class="flex items-start gap-4 cursor-pointer group" onclick="checkPledge(this)">
+                        <div class="pledge-checkbox w-5 h-5 rounded-sm border border-gold-accent/40 bg-slate-deep flex items-center justify-center shrink-0 mt-0.5 transition-all duration-300 group-hover:border-gold-accent">
+                            <svg class="pledge-check w-3 h-3 text-gold-accent hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg>
+                        </div>
+                        <p class="text-gray-300 text-sm leading-relaxed font-light group-hover:text-white transition-colors">To never forget <span class="text-gold-accent font-semibold">the late nights, the chai, the campus corridors</span>, and the friends who made engineering a joy and not just a degree.</p>
+                    </label>
+                    <!-- Pledge line 3 -->
+                    <label class="flex items-start gap-4 cursor-pointer group" onclick="checkPledge(this)">
+                        <div class="pledge-checkbox w-5 h-5 rounded-sm border border-gold-accent/40 bg-slate-deep flex items-center justify-center shrink-0 mt-0.5 transition-all duration-300 group-hover:border-gold-accent">
+                            <svg class="pledge-check w-3 h-3 text-gold-accent hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg>
+                        </div>
+                        <p class="text-gray-300 text-sm leading-relaxed font-light group-hover:text-white transition-colors">To always <span class="text-gold-accent font-semibold">carry the load factor</span> — to bear responsibility with the same grace that concrete bears compression: silently, and without failure.</p>
+                    </label>
+                    <!-- Pledge line 4 -->
+                    <label class="flex items-start gap-4 cursor-pointer group" onclick="checkPledge(this)">
+                        <div class="pledge-checkbox w-5 h-5 rounded-sm border border-gold-accent/40 bg-slate-deep flex items-center justify-center shrink-0 mt-0.5 transition-all duration-300 group-hover:border-gold-accent">
+                            <svg class="pledge-check w-3 h-3 text-gold-accent hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg>
+                        </div>
+                        <p class="text-gray-300 text-sm leading-relaxed font-light group-hover:text-white transition-colors">To <span class="text-gold-accent font-semibold">return someday</span> — to sit in these classrooms once more, not as a student, but as someone who built something worthy of the education they received here.</p>
+                    </label>
+                </div>
+
+                <div class="flex items-center justify-center gap-4 mt-8">
+                    <div class="h-px flex-1 bg-gradient-to-r from-transparent to-gold-accent/20"></div>
+                    <span class="text-gold-accent/20 text-sm">— So it is pledged —</span>
+                    <div class="h-px flex-1 bg-gradient-to-l from-transparent to-gold-accent/20"></div>
+                </div>
+            </div>
+
+            <!-- Seal Button -->
+            <div class="flex flex-col items-center gap-4">
+                <button id="pledge-seal-btn" onclick="sealPledge()" class="inline-flex items-center gap-3 px-10 py-4 bg-gold-accent text-slate-deep font-bold text-sm uppercase tracking-[0.15em] rounded-sm hover:bg-gold-light hover:shadow-[0_0_30px_rgba(212,175,55,0.5)] hover:scale-105 transition-all duration-300 opacity-40 cursor-not-allowed" disabled>
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+                    Seal My Oath
+                </button>
+                <p class="text-gray-600 text-xs uppercase tracking-wider font-semibold">Check all 4 pledges to seal your oath</p>
+                <div id="pledge-counter-wrap" class="hidden">
+                    <p class="text-gold-accent/60 font-mono text-sm"><span id="pledge-sealed-count">0</span> engineers have sealed this oath</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+    // Pledge Logic
+    (function() {
+        let pledgeCount = parseInt(localStorage.getItem('smriti_pledge_sealed') || '0');
+        let checkedLines = 0;
+        const totalLines = 4;
+        window.checkPledge = function(label) {
+            const box = label.querySelector('.pledge-checkbox');
+            const check = label.querySelector('.pledge-check');
+            const isChecked = box.classList.contains('checked');
+            if (isChecked) {
+                box.classList.remove('checked', 'bg-gold-accent/10', 'border-gold-accent', 'shadow-[0_0_8px_rgba(212,175,55,0.3)]');
+                check.classList.add('hidden');
+                checkedLines = Math.max(0, checkedLines - 1);
+            } else {
+                box.classList.add('checked', 'bg-gold-accent/10', 'border-gold-accent', 'shadow-[0_0_8px_rgba(212,175,55,0.3)]');
+                check.classList.remove('hidden');
+                checkedLines++;
+            }
+            const btn = document.getElementById('pledge-seal-btn');
+            if (checkedLines === totalLines) {
+                btn.disabled = false;
+                btn.classList.remove('opacity-40', 'cursor-not-allowed');
+                btn.classList.add('animate-glow-pulse');
+            } else {
+                btn.disabled = true;
+                btn.classList.add('opacity-40', 'cursor-not-allowed');
+                btn.classList.remove('animate-glow-pulse');
+            }
+        };
+        window.sealPledge = function() {
+            pledgeCount++;
+            localStorage.setItem('smriti_pledge_sealed', pledgeCount);
+            document.getElementById('pledge-sealed-count').textContent = pledgeCount;
+            document.getElementById('pledge-counter-wrap').classList.remove('hidden');
+            const btn = document.getElementById('pledge-seal-btn');
+            btn.textContent = '✓ Oath Sealed';
+            btn.disabled = true;
+            btn.classList.add('opacity-70', 'cursor-not-allowed');
+            btn.classList.remove('animate-glow-pulse');
+            if (typeof showToast === 'function') showToast();
+        };
+        // Init counter display
+        if (pledgeCount > 0) {
+            document.getElementById('pledge-sealed-count').textContent = pledgeCount;
+            document.getElementById('pledge-counter-wrap').classList.remove('hidden');
+        }
+    })();
+    </script>
+
     <!-- Archetype Nomination Section (v6.8) -->
     <section id="archetypes-section" class="py-24 px-4 relative z-10 border-t border-white/5 bg-slate-deep/50">
         <div class="max-w-5xl mx-auto space-y-12">
