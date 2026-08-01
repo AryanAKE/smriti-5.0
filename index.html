@@ -1642,6 +1642,114 @@ where every goodbye feels like a blockbuster climax.
         </div>
     </section>
 
+    <!-- Batch Wishlist Section (v7.6) -->
+    <section id="wishlist-section" class="py-24 px-4 relative z-10 border-t border-white/5 bg-slate-deep/30">
+        <div class="absolute inset-0 pointer-events-none" style="background: radial-gradient(ellipse 80% 50% at 50% 100%, rgba(212,175,55,0.03) 0%, transparent 70%);"></div>
+        <div class="max-w-4xl mx-auto space-y-10 relative">
+            <div class="text-center">
+                <p class="text-xs uppercase tracking-[0.3em] text-gold-accent font-semibold mb-3 opacity-80">Dreams Beyond the Blueprint</p>
+                <h2 class="text-3xl md:text-5xl font-serif text-white">Class of 2026 <span class="text-gold-gradient italic font-bold">Wishlist</span></h2>
+                <p class="text-gray-400 text-sm font-light mt-3 max-w-md mx-auto">What's on your bucket list after graduation? Share your post-college dreams with the batch.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
+                <!-- Submit Wish Form -->
+                <div class="glass-panel p-8 rounded-sm border border-gold-accent/25 space-y-5 text-left">
+                    <h3 class="text-white font-serif text-lg font-bold flex items-center gap-2">
+                        <span class="text-gold-accent">✨</span> Add Your Wish
+                    </h3>
+                    <form onsubmit="submitWish(event)" class="space-y-4">
+                        <div>
+                            <label class="block text-gray-400 text-[10px] uppercase tracking-wider font-bold mb-1.5" for="wish-name">Your Name</label>
+                            <input type="text" id="wish-name" placeholder="E.g., Priya Sharma" required class="w-full bg-slate-deep border border-gold-accent/25 rounded-sm px-3.5 py-2 text-xs text-white placeholder-gray-600 focus:outline-none focus:border-gold-accent/70 transition-colors">
+                        </div>
+                        <div>
+                            <label class="block text-gray-400 text-[10px] uppercase tracking-wider font-bold mb-1.5" for="wish-emoji">Pick an Emoji</label>
+                            <div class="flex flex-wrap gap-2" id="wish-emoji-picker">
+                                <button type="button" onclick="selectEmoji(this, '🌍')" class="wish-emoji-btn text-lg p-2 rounded-sm bg-slate-deep border border-white/5 hover:border-gold-accent/50 transition-all">🌍</button>
+                                <button type="button" onclick="selectEmoji(this, '🏗️')" class="wish-emoji-btn text-lg p-2 rounded-sm bg-slate-deep border border-white/5 hover:border-gold-accent/50 transition-all">🏗️</button>
+                                <button type="button" onclick="selectEmoji(this, '🎓')" class="wish-emoji-btn text-lg p-2 rounded-sm bg-slate-deep border border-white/5 hover:border-gold-accent/50 transition-all selected">🎓</button>
+                                <button type="button" onclick="selectEmoji(this, '✈️')" class="wish-emoji-btn text-lg p-2 rounded-sm bg-slate-deep border border-white/5 hover:border-gold-accent/50 transition-all">✈️</button>
+                                <button type="button" onclick="selectEmoji(this, '💡')" class="wish-emoji-btn text-lg p-2 rounded-sm bg-slate-deep border border-white/5 hover:border-gold-accent/50 transition-all">💡</button>
+                                <button type="button" onclick="selectEmoji(this, '🏆')" class="wish-emoji-btn text-lg p-2 rounded-sm bg-slate-deep border border-white/5 hover:border-gold-accent/50 transition-all">🏆</button>
+                                <button type="button" onclick="selectEmoji(this, '💼')" class="wish-emoji-btn text-lg p-2 rounded-sm bg-slate-deep border border-white/5 hover:border-gold-accent/50 transition-all">💼</button>
+                                <button type="button" onclick="selectEmoji(this, '🌸')" class="wish-emoji-btn text-lg p-2 rounded-sm bg-slate-deep border border-white/5 hover:border-gold-accent/50 transition-all">🌸</button>
+                            </div>
+                            <style>
+                                .wish-emoji-btn.selected { border-color: rgba(212,175,55,0.6); background: rgba(212,175,55,0.1); }
+                            </style>
+                        </div>
+                        <div>
+                            <label class="block text-gray-400 text-[10px] uppercase tracking-wider font-bold mb-1.5" for="wish-text">Your Wish / Dream</label>
+                            <textarea id="wish-text" placeholder="E.g., To design a bridge that gets featured on National Geographic..." required rows="3" class="w-full bg-slate-deep border border-gold-accent/25 rounded-sm px-3.5 py-2 text-xs text-white placeholder-gray-600 focus:outline-none focus:border-gold-accent/70 transition-colors resize-none"></textarea>
+                        </div>
+                        <button type="submit" class="w-full py-2.5 bg-gold-accent hover:bg-gold-light text-slate-deep text-xs font-bold uppercase tracking-wider rounded-sm hover:shadow-[0_0_20px_rgba(212,175,55,0.4)] transition-all duration-300">
+                            ✨ Pin My Wish
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Wishes Board -->
+                <div class="glass-panel p-6 rounded-sm border border-gold-accent/15 text-left bg-black/40 min-h-[400px] flex flex-col">
+                    <div class="flex justify-between items-center border-b border-gold-accent/10 pb-2 mb-4">
+                        <h3 class="text-gold-accent font-serif text-sm uppercase tracking-wider font-semibold">🌟 Pinned Wishes</h3>
+                        <span id="wish-count" class="text-xs px-2 py-0.5 rounded bg-gold-accent/10 border border-gold-accent/30 font-mono text-gold-accent">0 Wishes</span>
+                    </div>
+                    <div id="wish-list" class="space-y-3 overflow-y-auto max-h-[360px] pr-1 flex-1">
+                        <p id="wish-empty-msg" class="text-gray-600 text-xs text-center py-8 italic">No wishes yet — be the first to dream big ✨</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+    // Wishlist Logic
+    (function() {
+        let selectedEmoji = '🎓';
+        const wishes = JSON.parse(localStorage.getItem('smriti_wishes') || '[]');
+
+        window.selectEmoji = function(btn, emoji) {
+            document.querySelectorAll('.wish-emoji-btn').forEach(b => b.classList.remove('selected'));
+            btn.classList.add('selected');
+            selectedEmoji = emoji;
+        };
+
+        function renderWishes() {
+            const list = document.getElementById('wish-list');
+            const count = document.getElementById('wish-count');
+            const empty = document.getElementById('wish-empty-msg');
+            if (!list) return;
+            count.textContent = wishes.length + ' Wish' + (wishes.length !== 1 ? 'es' : '');
+            if (wishes.length === 0) { empty.style.display = 'block'; return; }
+            empty.style.display = 'none';
+            list.innerHTML = [...wishes].reverse().map(w => `
+                <div class="bg-slate-deep/60 border border-gold-accent/10 rounded-sm p-3 hover:border-gold-accent/25 transition-all duration-200 flex gap-3">
+                    <span class="text-2xl shrink-0 mt-0.5">${w.emoji}</span>
+                    <div class="flex-1 min-w-0">
+                        <p class="text-white text-xs font-semibold">${w.name}</p>
+                        <p class="text-gray-400 text-xs mt-0.5 leading-relaxed">${w.text}</p>
+                    </div>
+                </div>
+            `).join('') + `<p id="wish-empty-msg" style="display:none"></p>`;
+        }
+
+        window.submitWish = function(e) {
+            e.preventDefault();
+            const name = document.getElementById('wish-name').value.trim();
+            const text = document.getElementById('wish-text').value.trim();
+            if (!name || !text) return;
+            wishes.push({ name, text, emoji: selectedEmoji });
+            localStorage.setItem('smriti_wishes', JSON.stringify(wishes));
+            renderWishes();
+            e.target.reset();
+            if (typeof showToast === 'function') showToast();
+        };
+
+        renderWishes();
+    })();
+    </script>
+
     <!-- Memories Wall Section -->
     <section id="memories-section" class="py-24 px-4 relative z-10 border-t border-white/5">
         <div class="max-w-5xl mx-auto">
