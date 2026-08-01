@@ -1681,6 +1681,115 @@ where every goodbye feels like a blockbuster climax.
         </div>
     </section>
 
+    <!-- Farewell Anthem Dedication Section (v7.6) -->
+    <section id="anthem-section" class="py-24 px-4 relative z-10 border-t border-white/5 bg-black/20">
+        <div class="max-w-4xl mx-auto space-y-12">
+            <div class="text-center">
+                <p class="text-xs uppercase tracking-[0.3em] text-gold-accent font-semibold mb-3 opacity-80">The Soundtrack of Our Years</p>
+                <h2 class="text-3xl md:text-5xl font-serif text-white">Farewell <span class="text-gold-gradient italic font-bold">Anthem Wall</span></h2>
+                <p class="text-gray-400 text-sm font-light mt-3 max-w-md mx-auto">Dedicate a song to your classmates, professor, or best memory. Our cinematic farewell deserves a legendary playlist.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
+                <!-- Vinyl Record Visual + Submit Form -->
+                <div class="glass-panel p-8 rounded-sm border border-gold-accent/25 space-y-6 text-left relative overflow-hidden">
+                    <!-- Animated Vinyl -->
+                    <div class="flex justify-center mb-2">
+                        <div id="vinyl-disc" class="relative w-28 h-28 rounded-full border-4 border-gold-accent/30 bg-gradient-to-br from-slate-900 via-gray-800 to-black shadow-[0_0_30px_rgba(212,175,55,0.2)] flex items-center justify-center" style="animation: vinylSpin 4s linear infinite paused;">
+                            <div class="absolute inset-3 rounded-full bg-gradient-to-br from-gray-900 to-black border border-gold-accent/10"></div>
+                            <div class="absolute inset-0 rounded-full" style="background: repeating-radial-gradient(circle at center, transparent 0px, transparent 6px, rgba(212,175,55,0.04) 6px, rgba(212,175,55,0.04) 7px);"></div>
+                            <div class="w-5 h-5 rounded-full bg-gold-accent/80 border-2 border-gold-accent z-10 shadow-[0_0_10px_rgba(212,175,55,0.6)]"></div>
+                        </div>
+                    </div>
+                    <style>
+                        @keyframes vinylSpin { to { transform: rotate(360deg); } }
+                        #vinyl-disc.playing { animation-play-state: running; }
+                    </style>
+                    <p id="vinyl-now-playing" class="text-center text-gold-accent/50 text-[10px] font-mono uppercase tracking-widest">♪ Drop the needle on a memory ♪</p>
+
+                    <form onsubmit="submitAnthemDedication(event)" class="space-y-4 border-t border-gold-accent/10 pt-5">
+                        <div>
+                            <label class="block text-gray-400 text-[10px] uppercase tracking-wider font-bold mb-1.5" for="anthem-from">Your Name</label>
+                            <input type="text" id="anthem-from" placeholder="E.g., Arjun Roy" required class="w-full bg-slate-deep border border-gold-accent/25 rounded-sm px-3.5 py-2 text-xs text-white placeholder-gray-600 focus:outline-none focus:border-gold-accent/70 transition-colors">
+                        </div>
+                        <div>
+                            <label class="block text-gray-400 text-[10px] uppercase tracking-wider font-bold mb-1.5" for="anthem-to">Dedicated To</label>
+                            <input type="text" id="anthem-to" placeholder="E.g., The Entire Batch / Prof. Sharma" required class="w-full bg-slate-deep border border-gold-accent/25 rounded-sm px-3.5 py-2 text-xs text-white placeholder-gray-600 focus:outline-none focus:border-gold-accent/70 transition-colors">
+                        </div>
+                        <div>
+                            <label class="block text-gray-400 text-[10px] uppercase tracking-wider font-bold mb-1.5" for="anthem-song">Song Name &amp; Artist</label>
+                            <input type="text" id="anthem-song" placeholder="E.g., Tujhe Bhula Diya – Euphoria" required class="w-full bg-slate-deep border border-gold-accent/25 rounded-sm px-3.5 py-2 text-xs text-white placeholder-gray-600 focus:outline-none focus:border-gold-accent/70 transition-colors">
+                        </div>
+                        <div>
+                            <label class="block text-gray-400 text-[10px] uppercase tracking-wider font-bold mb-1.5" for="anthem-reason">Why this song?</label>
+                            <textarea id="anthem-reason" placeholder="A line about why this song matters..." rows="2" class="w-full bg-slate-deep border border-gold-accent/25 rounded-sm px-3.5 py-2 text-xs text-white placeholder-gray-600 focus:outline-none focus:border-gold-accent/70 transition-colors resize-none"></textarea>
+                        </div>
+                        <button type="submit" class="w-full py-2.5 bg-gold-accent hover:bg-gold-light text-slate-deep text-xs font-bold uppercase tracking-wider rounded-sm hover:shadow-[0_0_20px_rgba(212,175,55,0.4)] transition-all duration-300">
+                            🎵 Dedicate This Song
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Dedications List -->
+                <div class="glass-panel p-6 rounded-sm border border-gold-accent/15 space-y-4 text-left bg-black/40 min-h-[400px] flex flex-col">
+                    <h3 class="text-gold-accent font-serif text-sm uppercase tracking-wider font-semibold border-b border-gold-accent/10 pb-2 flex justify-between items-center">
+                        <span>🎶 Live Dedication Board</span>
+                        <span id="anthem-count" class="text-xs px-2 py-0.5 rounded bg-gold-accent/10 border border-gold-accent/30 font-mono">0 Songs</span>
+                    </h3>
+                    <div id="anthem-list" class="space-y-3 overflow-y-auto max-h-[360px] pr-1 flex-1">
+                        <p id="anthem-empty-msg" class="text-gray-600 text-xs text-center py-8 italic">No dedications yet — be the first to drop a track ♪</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+    // Anthem Dedication Logic
+    (function() {
+        const anthems = JSON.parse(localStorage.getItem('smriti_anthems') || '[]');
+        function renderAnthems() {
+            const list = document.getElementById('anthem-list');
+            const count = document.getElementById('anthem-count');
+            const emptyMsg = document.getElementById('anthem-empty-msg');
+            if (!list) return;
+            count.textContent = anthems.length + ' Song' + (anthems.length !== 1 ? 's' : '');
+            if (anthems.length === 0) { emptyMsg.style.display = 'block'; return; }
+            emptyMsg.style.display = 'none';
+            const html = [...anthems].reverse().map(a => `
+                <div class="bg-slate-deep/60 border border-gold-accent/10 rounded-sm p-3 hover:border-gold-accent/30 transition-all duration-200">
+                    <div class="flex justify-between items-start gap-2 mb-1">
+                        <span class="text-gold-accent font-serif font-bold text-xs truncate">♪ ${a.song}</span>
+                        <span class="text-[8px] text-gray-600 font-mono shrink-0">${a.time}</span>
+                    </div>
+                    <p class="text-[10px] text-gray-400"><span class="text-white font-semibold">${a.from}</span> → <span class="text-gold-accent/70">${a.to}</span></p>
+                    ${a.reason ? `<p class="text-[10px] text-gray-500 italic mt-1 leading-relaxed">"${a.reason}"</p>` : ''}
+                </div>
+            `).join('');
+            list.innerHTML = html + `<p id="anthem-empty-msg" style="display:none"></p>`;
+        }
+        window.submitAnthemDedication = function(e) {
+            e.preventDefault();
+            const from = document.getElementById('anthem-from').value.trim();
+            const to = document.getElementById('anthem-to').value.trim();
+            const song = document.getElementById('anthem-song').value.trim();
+            const reason = document.getElementById('anthem-reason').value.trim();
+            if (!from || !to || !song) return;
+            const now = new Date();
+            anthems.push({ from, to, song, reason, time: now.toLocaleTimeString('en-IN', {hour:'2-digit', minute:'2-digit'}) });
+            localStorage.setItem('smriti_anthems', JSON.stringify(anthems));
+            // Animate vinyl
+            const vinyl = document.getElementById('vinyl-disc');
+            const nowPlaying = document.getElementById('vinyl-now-playing');
+            if (vinyl) { vinyl.classList.add('playing'); nowPlaying.textContent = '♪ Now spinning: ' + song + ' ♪'; }
+            renderAnthems();
+            e.target.reset();
+            if (typeof showToast === 'function') showToast();
+        };
+        renderAnthems();
+    })();
+    </script>
+
     <!-- Photo Gallery Section -->
     <section id="gallery-section" class="py-24 px-4 relative z-10 border-t border-white/5">
         <div class="max-w-5xl mx-auto">
