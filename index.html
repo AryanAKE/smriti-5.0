@@ -928,29 +928,66 @@ where every goodbye feels like a blockbuster climax.
     </section>
 
     <!-- Legacy in Numbers Stats Bar -->
-    <section class="py-12 px-4 relative z-10 border-y border-gold-accent/10 bg-black/30">
-        <div class="max-w-4xl mx-auto">
-            <p class="text-center text-xs uppercase tracking-[0.3em] text-gold-accent/60 font-semibold mb-8">Legacy in Numbers</p>
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
-                <div class="group">
-                    <p class="text-gold-gradient font-serif font-black text-5xl md:text-6xl glow-text leading-none group-hover:scale-110 transition-transform duration-300">5</p>
+    <section class="py-16 px-4 relative z-10 border-y border-gold-accent/10 bg-black/30">
+        <div class="max-w-5xl mx-auto">
+            <p class="text-center text-xs uppercase tracking-[0.3em] text-gold-accent/60 font-semibold mb-10">Legacy in Numbers</p>
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 text-center">
+                <div class="group stat-counter-item">
+                    <p class="text-gold-gradient font-serif font-black text-5xl md:text-6xl glow-text leading-none group-hover:scale-110 transition-transform duration-300 stat-num" data-target="5" data-suffix="">0</p>
                     <p class="text-gray-500 text-xs uppercase tracking-[0.2em] font-semibold mt-3">Editions of Smriti</p>
                 </div>
-                <div class="group">
-                    <p class="text-gold-gradient font-serif font-black text-5xl md:text-6xl glow-text leading-none group-hover:scale-110 transition-transform duration-300">4</p>
+                <div class="group stat-counter-item">
+                    <p class="text-gold-gradient font-serif font-black text-5xl md:text-6xl glow-text leading-none group-hover:scale-110 transition-transform duration-300 stat-num" data-target="4" data-suffix="">0</p>
                     <p class="text-gray-500 text-xs uppercase tracking-[0.2em] font-semibold mt-3">Years of Bonding</p>
                 </div>
-                <div class="group">
-                    <p class="text-gold-gradient font-serif font-black text-5xl md:text-6xl glow-text leading-none group-hover:scale-110 transition-transform duration-300">1</p>
+                <div class="group stat-counter-item">
+                    <p class="text-gold-gradient font-serif font-black text-5xl md:text-6xl glow-text leading-none group-hover:scale-110 transition-transform duration-300 stat-num" data-target="8" data-suffix="">0</p>
+                    <p class="text-gray-500 text-xs uppercase tracking-[0.2em] font-semibold mt-3">Semesters Survived</p>
+                </div>
+                <div class="group stat-counter-item">
+                    <p class="text-gold-gradient font-serif font-black text-5xl md:text-6xl glow-text leading-none group-hover:scale-110 transition-transform duration-300 stat-num" data-target="200" data-suffix="+">0</p>
+                    <p class="text-gray-500 text-xs uppercase tracking-[0.2em] font-semibold mt-3">Lab Submissions</p>
+                </div>
+                <div class="group stat-counter-item">
+                    <p class="text-gold-gradient font-serif font-black text-5xl md:text-6xl glow-text leading-none group-hover:scale-110 transition-transform duration-300 stat-num" data-target="1" data-suffix="">0</p>
                     <p class="text-gray-500 text-xs uppercase tracking-[0.2em] font-semibold mt-3">Unforgettable Night</p>
                 </div>
-                <div class="group">
+                <div class="group stat-counter-item">
                     <p class="text-gold-gradient font-serif font-black text-5xl md:text-6xl glow-text leading-none group-hover:scale-110 transition-transform duration-300">∞</p>
                     <p class="text-gray-500 text-xs uppercase tracking-[0.2em] font-semibold mt-3">Memories Made</p>
                 </div>
             </div>
         </div>
     </section>
+    <script>
+    // Animated count-up on scroll
+    (function() {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting && !entry.target.dataset.animated) {
+                    entry.target.dataset.animated = 'true';
+                    entry.target.querySelectorAll('.stat-num').forEach(el => {
+                        const target = parseInt(el.dataset.target);
+                        const suffix = el.dataset.suffix || '';
+                        let current = 0;
+                        const duration = 1500;
+                        const step = target / (duration / 16);
+                        const tick = setInterval(() => {
+                            current = Math.min(current + step, target);
+                            el.textContent = Math.floor(current) + suffix;
+                            if (current >= target) clearInterval(tick);
+                        }, 16);
+                    });
+                }
+            });
+        }, { threshold: 0.3 });
+        document.querySelectorAll('.stat-counter-item').forEach(el => observer.observe(el.closest('section') || el));
+        // Actually observe the section
+        const statSection = document.querySelector('.stat-counter-item')?.closest('section');
+        if (statSection) observer.observe(statSection);
+    })();
+    </script>
+
 
     <!-- Video Invitation Section -->
     <section id="video-section" class="py-24 px-4 w-full relative z-10 bg-black/40 border-y border-gold-accent/20">
