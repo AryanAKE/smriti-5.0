@@ -5496,15 +5496,27 @@ Status: APPROVED & MEMORIALIZED FOR ETERNITY
             <div class="flex flex-col md:flex-row items-center justify-between gap-4 border-t border-white/5 pt-6">
                 <div class="flex items-center gap-3">
                     <span class="w-1 h-1 rounded-full bg-gold-accent/40 inline-block"></span>
-                    <p class="text-gray-700 text-xs font-mono tracking-wider">© 2026 Smriti — Civil Engineering Department</p>
+                    <p class="text-gray-700 text-xs font-mono tracking-wider">© 2026 Smriti — Civil Engineering Department · All rights reserved</p>
                 </div>
-                <div class="flex items-center gap-3">
+                <div class="flex items-center gap-4">
+                    <span class="text-gray-700 text-[10px] font-mono" id="footer-updated-date"></span>
                     <span class="text-[9px] px-2 py-0.5 rounded bg-gold-accent/10 border border-gold-accent/20 text-gold-accent font-mono tracking-widest">v7.7</span>
                     <span class="text-gray-700 text-xs font-mono">Built with 💛 &amp; Engineering Precision</span>
                 </div>
             </div>
         </div>
     </footer>
+    <script>
+        // Dynamically set last-updated timestamp in footer
+        (function() {
+            const el = document.getElementById('footer-updated-date');
+            if (el) {
+                const d = new Date();
+                const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+                el.textContent = 'Updated ' + d.getDate() + ' ' + months[d.getMonth()] + ' ' + d.getFullYear();
+            }
+        })();
+    </script>
 
 </body>
 </html>
