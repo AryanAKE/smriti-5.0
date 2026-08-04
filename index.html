@@ -693,6 +693,17 @@
             pointer-events: none;
             z-index: 99998;
         }
+
+        /* Accessibility: Respect reduced-motion preference */
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+                scroll-behavior: auto !important;
+            }
+            #particle-canvas { display: none; }
+        }
     </style>
 </head>
 <body class="draft-grid text-gray-200 font-sans antialiased selection:bg-gold-accent selection:text-slate-deep relative">
