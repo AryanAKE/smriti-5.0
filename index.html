@@ -2249,6 +2249,13 @@ where every goodbye feels like a blockbuster climax.
                         </div>
                         <p class="text-gray-300 text-sm leading-relaxed font-light group-hover:text-white transition-colors">To <span class="text-gold-accent font-semibold">never stop building</span> — not just structures of steel and stone, but communities of courage, kindness, and purpose, wherever life places me.</p>
                     </label>
+                    <!-- Pledge line 7 -->
+                    <label class="flex items-start gap-4 cursor-pointer group" onclick="checkPledge(this)">
+                        <div class="pledge-checkbox w-5 h-5 rounded-sm border border-gold-accent/40 bg-slate-deep flex items-center justify-center shrink-0 mt-0.5 transition-all duration-300 group-hover:border-gold-accent">
+                            <svg class="pledge-check w-3 h-3 text-gold-accent hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg>
+                        </div>
+                        <p class="text-gray-300 text-sm leading-relaxed font-light group-hover:text-white transition-colors">To <span class="text-gold-accent font-semibold">cherish every friendship</span> forged in these corridors — for it is the people, not the textbooks, that a civil engineer will remember forever.</p>
+                    </label>
                 </div>
 
                 <div class="flex items-center justify-center gap-4 mt-8">
@@ -2264,7 +2271,7 @@ where every goodbye feels like a blockbuster climax.
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
                     Seal My Oath
                 </button>
-                <p class="text-gray-600 text-xs uppercase tracking-wider font-semibold">Check all 6 pledges to seal your oath</p>
+                <p class="text-gray-600 text-xs uppercase tracking-wider font-semibold">Check all 7 pledges to seal your oath</p>
                 <div id="pledge-counter-wrap" class="hidden">
                     <p class="text-gold-accent/60 font-mono text-sm"><span id="pledge-sealed-count">0</span> engineers have sealed this oath</p>
                 </div>
@@ -2277,7 +2284,7 @@ where every goodbye feels like a blockbuster climax.
     (function() {
         let pledgeCount = parseInt(localStorage.getItem('smriti_pledge_sealed') || '0');
         let checkedLines = 0;
-        const totalLines = 6;
+        const totalLines = 7;
         window.checkPledge = function(label) {
             const box = label.querySelector('.pledge-checkbox');
             const check = label.querySelector('.pledge-check');
